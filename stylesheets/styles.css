@@ -46,7 +46,7 @@ a small {
 }
 
 .wrapper {
-  width:1060px;
+  width:800px;
   margin:0 auto;
 }
 
@@ -60,7 +60,7 @@ blockquote {
 code, pre {
   font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
   color:#333;
-  font-size:12px;
+  font-size:11px;
 }
 
 pre {
@@ -96,7 +96,7 @@ img {
 }
 
 header {
-  width:280px;
+  width:230px;
   float:left;
   position:fixed;
 }
@@ -115,7 +115,7 @@ header li2 {
 }
 
 header ul {
-  font-size:11px;
+  font-size:10px;
   list-style:none;
   height:40px;
   
@@ -132,11 +132,11 @@ header ul {
   border-radius:5px;
   border:1px solid #d2d2d2;
   box-shadow:inset #fff 0 1px 0, inset rgba(0,0,0,0.03) 0 -1px 0;
-  width:300px;
+  width:210px;
 }
 
 header li {
-  width:89px;
+  width:70px;
   float:left;
   border-right:1px solid #d2d2d2;
   height:40px;
@@ -166,13 +166,13 @@ strong {
 }
 
 header ul li + li {
-  width:88px;
+  width:68px;
   border-left:1px solid #fff;
 }
 
 header ul li + li + li {
   border-right:none;
-  width:89px;
+  width:60px;
 }
 
 header ul a strong {
@@ -182,7 +182,7 @@ header ul a strong {
 }
 
 section {
-  width:650px;
+  width:500px;
   float:right;
   padding-bottom:50px;
 }
@@ -199,10 +199,10 @@ hr {
 }
 
 footer {
-  width:300px;
+  width:240px;
   float:left;
   position:fixed;
-  bottom:10px;
+  bottom:0px;
 }
 
 @media print, screen and (max-width: 960px) {
@@ -219,7 +219,7 @@ footer {
   }
   
   header {
-    padding-right:320px;
+    padding-right:300px;
   }
   
   section {
@@ -271,7 +271,7 @@ footer {
 @media print {
   body {
     padding:0.4in;
-    font-size:12pt;
+    font-size:11pt;
     color:#444;
   }
 }
