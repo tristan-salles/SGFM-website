@@ -79,7 +79,7 @@ table {
 th, td {
   text-align:left;
   padding:5px 10px;
-  border-bottom:1px solid #e5e5e5;
+  border-bottom:0px solid #e5e5e5;
 }
 
 dt {
