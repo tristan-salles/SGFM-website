@@ -75,7 +75,6 @@
 			<span class="octicon octicon-link"></span></a>Under construction...
 		</h3>
 		
-<<<<<<< HEAD
 <p>Nothing fancy here</p>
 <pre class="prettyprint"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;lecode:lecodeInput xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -83,18 +82,1633 @@
   xmlns:xi="http://www.w3.org/2001/XInclude"
   xsi:schemaLocation="http://subversion.assembla.com/svn/xsd/XSDlecode
   http://subversion.assembla.com/svn/xsd/XSDlecode/LECODE.xsd"&gt;
+
+  &lt;!-- Definition of stratigraphic grid 
+	and flow computational grid (TIN) 
+  --&gt;
+  &lt;struct-Mesh-TIN&gt;
+
+    &lt;!-- Stratigraphic grid parameters --&gt;
+    &lt;Strata_grid&gt;
+
+      &lt;!-- Name of the basement node file and its path.
+			The path is from the main input file location. 
+			This ASCII file provides for each line the following information:
+				- node IDs
+				- X coordinates in metres (this axis has a West to East orientation)
+				- Y coordinates in metres (this axis has a South to West orientation)
+				- Z coordinates in metres
+			In addition the nodes should be defined in increasing order starting
+			from the Sout-West corner and going first along the X axis (West to East).
+	   	--&gt;
+      &lt;StrataGrid&gt;data/gbr_N.nodes&lt;/StrataGrid&gt;
+
+      &lt;!-- Number of nodes along the X axis (West to East direction). 
+			It should conform with basement node file definition.
+		  --&gt;
+      &lt;GridX&gt;330&lt;/GridX&gt;
+
+      &lt;!-- Number of nodes along the Y axis (South to West direction). 
+			It should conform with basement node file definition.
+		  --&gt;
+      &lt;GridY&gt;330&lt;/GridY&gt;
+
+      &lt;!-- Grid spacing (in metres), defining the stratigraphic grid resolution.
+			It should conform with basement node file definition.
+		  --&gt;
+      &lt;GridSpace unit="m"&gt;500&lt;/GridSpace&gt;
+
+      &lt;!-- South West corner X coordinate expressed in metres.
+			It should conform with basement node file definition.
+		  --&gt;
+      &lt;GridXo unit="m"&gt;305250.0&lt;/GridXo&gt;
+
+      &lt;!-- South West corner Y coordinate expressed in metres.
+			It should conform with basement node file definition.
+		  --&gt;
+      &lt;GridYo unit="m"&gt;8220250.0&lt;/GridYo&gt;
+
+    &lt;/Strata_grid&gt;
+
+    &lt;!-- Triangular Irregular Network (TIN) definition. 
+		The TIN is used to compute the flow surface evolution and is
+		automatically generated during simulation to ensure better resolution
+		calculation in places most subject to potential flow processes.
+	  --&gt;
+    &lt;TIN_refine&gt;
+      &lt;!-- Highest resolution for the TIN in metres.
+			The value should be equal or higher than the stratigraphic grid
+			spacing defined above in parameter &lt;GridSpace&gt;. In addition this
+			value needs to be a multiple of the grid spacing.
+		  --&gt;
+      &lt;HighRes unit="m"&gt;500&lt;/HighRes&gt;
+
+      &lt;!-- Lowest resolution for the TIN in metres.
+			The value should be equal or higher than the highest resolution
+			defined above in parameter &lt;HighRes&gt;. In addition this
+			value needs to be a multiple of the grid spacing.
+		  --&gt;
+      &lt;LowRes unit="m"&gt;1000&lt;/LowRes&gt;
+
+      &lt;!-- Parameter used to fill all of the depressions on the stratigraphic 
+			grid topography and to remove the flat and hole areas. This is a 
+			pre-processing step used to ensure continuous flow from each grid 
+			cell. This parameter is an incremental step used during the depression 
+			filling process and is expressed in metres. 
+			
+			Note: in case the depression filling algorithm is not required for
+			your simulation set the value to 0.0. 
+			
+			Ref: Planchon, O., and F., Darboux (2001). A fast, simple and versatile 
+			algorithm to fill the depres- sions of digital elevation models. 
+			Catena, 46, 159–176.
+		  --&gt;
+      &lt;StepFill unit="m"&gt;0.001&lt;/StepFill&gt;
+
+      &lt;!-- Flow accumulation operation performs a cumulative count of the number 
+			of pixels that naturally drain into outlets. This operation is performed 
+			several time during the simulation to adjust and adapt the TIN grid 
+			resolution depending on the areas of highest flow accumulation values.
+			This parameter sets the minimum flow accumulation value over which the 
+			high resolution (parameter &lt;HighRes&gt; defined above) is used to generate
+			the TIN resolution. For areas with flow accumulation values below this 
+			parameter the &lt;LowRes&gt; parameter is used.
+			
+			Note: the minimum value for the flow accumulation is 1. 
+      --&gt;
+      &lt;FlowAcc&gt;10&lt;/FlowAcc&gt;
+
+    &lt;/TIN_refine&gt;
+
+    &lt;!-- Specify the model boundary types for the stratigraphic grid.
+		 For each border the following values could be set:
+		 	- 0 for infinite flat boundary, 
+		 	- 1 to insert a wall and prevent sediment transfert and fluid   
+		 		loss outside the simulated domain,
+		 	- 2 for extended slope. 
+	  --&gt;
+    &lt;Boundary&gt;
+      &lt;!-- North boundary 
+		  --&gt;
+      &lt;North&gt;2&lt;/North&gt;
+
+      &lt;!-- South boundary 
+		  --&gt;
+      &lt;South&gt;0&lt;/South&gt;
+
+      &lt;!-- East boundary 
+		  --&gt;
+      &lt;East&gt;0&lt;/East&gt;
+
+      &lt;!-- West boundary 
+		  --&gt;
+      &lt;West&gt;0&lt;/West&gt;
+
+    &lt;/Boundary&gt;
+
+    &lt;!-- Control of the restart functionality. Model can be set 
+		to restart from a previous simulation step.
+		
+		Note: This element is optional and only required to perform
+		a simulation based on a previously simulation.
+	  --&gt;
+    &lt;Restart&gt;
+
+      &lt;!-- Name of the output folder from the previous run. 
+			
+			Note: it corresponds to the &lt;OutputDirectory&gt; parameter defined
+			in the previous XmL input file that needs to be restarted.
+		  --&gt;
+      &lt;RestartFolder&gt;path/to/previous/output/Folder&lt;/RestartFolder&gt;
+
+      &lt;!-- The restart iteration number is informing the code on which file ID needs
+			to be ran from the previous simulations. Depending on how the &lt;CheckPointing&gt;
+			parameters were set (if set) the software is outputing a serie of checkpointing
+			files at given time steps (See &lt;CheckPointing&gt; parameter for additional definition).
+			These files are located in the runfiles directory under the folder specified in the
+			&lt;RestartFolder&gt; element above and are named "checkpoint.&lt;RestartIt&gt;.pID.h5" where 
+			&lt;RestartIt&gt; corresponds to a given &lt;LayerTime&gt; iteration number and pID to a given 
+			processor ID number
+			
+			Note: You will need to ensure that the restart iteration number corresponds to the 
+			&lt;startTime&gt; value of the simulation that you are currentlty defining. 
+			
+			Note: In case you did not set the &lt;CheckPointing&gt; parameter in the previous simulation
+			the code is generating the check pointing files just for the end of your previous run
+			which means that you should have only one &lt;RestartIt&gt; number and that the new simulation
+			&lt;startTime&gt; parameter will be equal to the &lt;endTime&gt; parameter of the previous one. 
+		  --&gt;
+      &lt;RestartIt&gt;40&lt;/RestartIt&gt;
+
+      &lt;!-- Number of processors used in the last simulation. This number could be retreived by 
+			looking at the check pointing files located in the runfiles directory under the folder 
+			specified in the &lt;RestartFolder&gt; element above. The number will be equal to the biggest
+			ID of the checkpoint.&lt;RestartIt&gt;.pID.h5 file names plus 1.
+		  --&gt;
+      &lt;ProcNb&gt;2&lt;/ProcNb&gt;
+
+    &lt;/Restart&gt;
+
+  &lt;/struct-Mesh-TIN&gt;
+  
+  &lt;!-- Definition of simulation and
+	processes time step.
+  --&gt;
+  &lt;struct-time&gt;
+    
+    &lt;!-- General time controlling parameters --&gt;
+    &lt;Time&gt;
+      
+      &lt;!-- Delaration of simulation starting time in years. 
+			
+			Note: the start time parameter accepts both positive and 
+				negative value to represent time before present.
+	 	  --&gt;
+      &lt;startTime unit="a"&gt;-120000&lt;/startTime&gt;
+      
+      &lt;!-- Delaration of simulation ending time in years. Obviously, this 
+			value needs to be greater than the starting time one.
+			
+			Note: the end time parameter accepts both positive and 
+				negative value to represent time before present.
+		  --&gt;
+      &lt;endTime unit="a"&gt;-110000&lt;/endTime&gt;
+      
+      &lt;!-- Sedimentary layers are recorded through time and each layer
+			corresponds to a specific time interval. This time interval 
+			is expressed in years. 
+			
+			Note: The smaller the layer time, the higher the temporal resolution
+			of the sedimentary record will be. However it will also impact the 
+			simulation computational time so compromise needs to be made.
+		  --&gt;
+      &lt;layerTime unit="a"&gt;1000&lt;/layerTime&gt;
+      
+      &lt;!-- Time at which a new output is generated. The value should be at least 
+			equal to the layer time interval and could be set as a multiple of this 
+			parameter. In case of simulation creating large output files it is recommend 
+			to set this value to 4 or 5 times the &lt;layerTime&gt; one.
+			
+			Note: Consider increasing the output time interval to gain save some
+			computational time and space on your remote or local machine.
+		  --&gt;
+      &lt;outputTime unit="a"&gt;2000&lt;/outputTime&gt;
+      
+      &lt;!-- Flow time sampling interval expressed in years. It controls how often
+			flow walkers are released from their sources. The sources are defined in
+			the &lt;Sources&gt; element and correspond to rivers or gravity currents flowing
+			within the simulation domain.
+			
+			Note: The value should be a factor of the layer time interval.
+				In case the simulation has no sources declared set this value to a large number.
+		  --&gt;
+      &lt;riverInterval unit="a"&gt;250&lt;/riverInterval&gt;
+      
+      &lt;!-- Rain time sampling interval expressed in years. It controls how often
+			flow walkers are released from rainfall grid. The rainfall is defined in
+			the &lt;RainfallGrid&gt; element.
+			
+			Note: The value should be a factor of the layer time interval.
+				In case the simulation has no rain declared set this value to a large number.
+		  --&gt;
+      &lt;rainInterval unit="a"&gt;500&lt;/rainInterval&gt;
+      
+      &lt;!-- Slope diffusion time sampling interval expressed in years. It controls how 
+			often slope diffusion algorithm is used to smooth top layer newly deposited
+			sediments. 
+			
+			Note: The value should be a factor of the layer time interval.
+		  --&gt;
+      &lt;SlopeInterval unit="a"&gt;250&lt;/SlopeInterval&gt;
+      
+      &lt;!-- The sampling interval is expressed in years and controls how 
+			often sea level fluctuations, displacements are updated within the simulation.
+			
+			Note: The value should be a factor of the layer time interval.
+		  --&gt;
+      &lt;samplingInterval unit="a"&gt;250&lt;/samplingInterval&gt;
+      
+    &lt;/Time&gt;
+    
+    &lt;!-- The software is not able to restart a simulation from a given time step using the
+		output files generated. To make it possible the &lt;CheckPointing&gt; element needs to be 
+		set. This element enable the creation of a series of restarting files located in the  
+		runfiles directory under the folder specified in the &lt;OutputDirectory&gt; element. These 
+		files are named "checkpoint.tID.pID.h5" where tID corresponds to a particular time   
+		iteration step and pID to a given processor ID number.
+		
+		Note: This element is optional.
+		
+		Note: By default the code is going to generate a checkpoint file at the end of the
+		simulation.
+	  --&gt;
+    &lt;CheckPointing&gt;
+      
+      &lt;!-- Frequency at which check pointing is performed. This integer is directly linked to the 
+			layer time interval element and corresponding simulation time for a given checkpoint file
+			is retreived by multiplying the frequency ID number (defined as tID in explanation above) 
+			by the layer time interval and by adding the simulation starting time.
+		  --&gt;	
+      &lt;Frequency&gt;10&lt;/Frequency&gt;	
+      
+    &lt;/CheckPointing&gt;
+    
+  &lt;/struct-time&gt;
+  
+  &lt;!-- Definition of ocean characteristics 
+	and hemipelagic processes.
+  --&gt;
+  &lt;struct-ocean&gt;
+    
+    &lt;!-- Declaration of the sea-level fluctuations.
+		
+		Note: This element is optional.
+	  --&gt;
+    &lt;SeaLevelFluctuations&gt;
+      &lt;!-- Name of the sea-level fluctuations file and its associated path.
+			The path is from the main input file location. 
+			This ASCII file provides for each line the following information:
+				- time in years
+				- sea-level elevation for the considered time in metres
+			In addition the defined fluctuation times should be set in increasing 
+			order starting from the oldest time.
+		  --&gt;
+      &lt;SeaLevelFile&gt;data/sealevel.sl&lt;/SeaLevelFile&gt;
+      
+    &lt;/SeaLevelFluctuations&gt;
+    
+    &lt;!-- Sedimentation rates of hemipelagic particles.
+		
+		Note: This element is optional.
+	  --&gt;
+    &lt;HemipelagicRates&gt;
+      &lt;!-- Name of the hemipelagic rates file and its associated path.
+  		The path is from the main input file location. 
+          This ASCII file provides for each line the following information:
+          	- contour elevation in metres relative to sea-level elevation (should be negative)
+          	- hemipelagic rates in metres per year for the considered contour line.
+          	
+          Note: To work correctly an hemipelagic material type is required in 
+          the &lt;Material&gt; element with the following Material named "Hemi".
+  		--&gt;
+      &lt;HemipelagicFile&gt;data/hemipelagic.rates&lt;/HemipelagicFile&gt;
+    &lt;/HemipelagicRates&gt;
+    
+    &lt;!-- Water densities declaration
+	  --&gt;
+    &lt;WaterDensities&gt;
+      
+      &lt;!-- Density of fresh water entering the system in kg/m3.
+			This is the density of rivers and rain particles.
+		  --&gt;
+      &lt;enteringFluid unit="kg/m3"&gt;1.000E3&lt;/enteringFluid&gt;
+      
+      &lt;!-- Sea water density in kg/m3.
+		  --&gt;
+      &lt;seaDensity unit="kg/m3"&gt;1.027E3&lt;/seaDensity&gt;
+      
+    &lt;/WaterDensities&gt;
+    
+  &lt;/struct-ocean&gt;
+  
+  &lt;!-- Definition of vertical displacement rates 
+	
+	Note: This structure is optional.
+  --&gt;
+  &lt;struct-geodyn&gt;
+    
+    &lt;!-- Definition of the vertical displacement fields within
+		simulated spatial and temporal domain. 
+	  --&gt;
+    &lt;Displacement&gt;
+      
+      &lt;!-- Total number of displacement intervals that will be simulated. 
+			The displacement intervals need to be declared by increasing
+			time and should not overlap with each others.
+			
+			Note: this is not required to have the displacement start and end times 
+			continuous between each others or within the range of the sampling interval
+			values.
+		  --&gt;
+      &lt;nbDispInterval&gt;1&lt;/nbDispInterval&gt;
+      
+      &lt;!-- Definition of an individual displacement field. --&gt;
+      &lt;disp&gt;
+        
+        &lt;!-- Time in years at which the considered vertical displacement
+				will start.
+			  --&gt;
+        &lt;startDispTime unit="a"&gt;-163000000&lt;/startDispTime&gt;
+        
+        &lt;!-- Time in years at which the considered vertical displacement
+				will end.
+			  --&gt;
+        &lt;endDispTime unit="a"&gt;-150000001&lt;/endDispTime&gt;
+        
+        &lt;!-- Name of the displacement file and its associated path.
+				The path is from the main input file location. 
+				This ASCII file provides for each line the following information:
+					- the node ID (which should match with one defined in the basement grid &lt;StrataGrid&gt;)
+					- cumulative vertical displacement for each considered node in metres.
+					
+				Attention: The file defines the cumulative displacement during the duration defined 
+					above and not a displacement rate.
+					
+				Note: the nodes have been defined in increasing order starting from the Sout-West
+				 	corner and going first along the X axis (West to East)
+			  --&gt;
+        &lt;dispFile&gt;data/tectonic.disp&lt;/dispFile&gt;
+        
+      &lt;/disp&gt;
+      
+    &lt;/Displacement&gt;
+    
+  &lt;/struct-geodyn&gt;
+
+  &lt;!-- Definition of sediment types and characteristics 
+	 as well as initial deposit layer composition. 
+--&gt;
+  &lt;struct-sediments&gt;
+    
+    &lt;!-- Declaration of material classes present in the simulated domain. 
+		The definition of the material classes starts with the declaration of the
+	 	siliciclastics, then the carbonates and finally the organics. 
+	 	
+	 	Note: The total number of materials is equal to the sum of siliclastics, carbonates
+	 		and organics. It is not required to set some materials for each type but it is 
+	 		required to have at least one material defined. 
+	 		
+	 	Note: The total number of materials is set to 10 in the default version of LECODE. 
+	 		If the simulation requires more grain sizes you will need to change the default
+	 		value (called max_grn) within LECODE and recompile it. 
+	 	
+	 	Note: Each 3 types of materials needs to be organise by decreasing diametre size. 
+	  --&gt;
+    &lt;Materials&gt;
+      
+      &lt;!-- Number of siliclastics defined for this simulation 
+		  --&gt;
+      &lt;NbSiliciclastics&gt;1&lt;/NbSiliciclastics&gt;
+      
+      &lt;!-- Number of carbonates defined for this simulation 
+		  --&gt;
+      &lt;NbCarbonates&gt;1&lt;/NbCarbonates&gt;
+      
+      &lt;!-- Number of organics defined for this simulation 
+		  --&gt;
+      &lt;NbOrganics&gt;1&lt;/NbOrganics&gt;
+      
+      &lt;!-- Minimum slope of deposited sediment taken into account for slope diffusion
+		  calculation. Below this threshold value, slope diffusion is not computed. 
+      --&gt;
+      &lt;MinSlope&gt;0.00001&lt;/MinSlope&gt;
+      
+      &lt;!-- Collection of siliciclastics classes. 
+			
+			Note: it is possible to defined two classes with the same parameters as long
+				as they have a different name. This could be usefull when looking at 
+				provenance problems.
+				
+			Note: This element is optional.
+		  --&gt;
+      &lt;si&gt;
+        &lt;!-- Name of the considered siliclastic class.
+				
+				Note: chosen names are not predefined and could be anything but should differ 
+					between each class. 
+					
+				Note: in case the &lt;HemipelagicRates&gt; element has been set, it is required for 
+				 	one of the siliclastic class to have its name set to Hemi. 
+			  --&gt;
+        &lt;MaterialName&gt;slop_grav&lt;/MaterialName&gt;
+        
+        &lt;!-- Grain size diameter of the considered siliclastic class in millimetres. 
+			  --&gt;
+        &lt;Diameter unit="mm"&gt;0.5&lt;/Diameter&gt;
+        
+        &lt;!-- Density of the considered siliclastic class in kg/m3. 
+			  --&gt;
+        &lt;Density unit="kg/m3"&gt;2620.0&lt;/Density&gt;
+        
+        &lt;!-- Angle of repose of the considered siliclastic class when deposited in
+				marine environment. This angle is used during the diffusion process to 
+				define the stability of the newly deposited sediments.
+			  --&gt;
+        &lt;SlopeMarine&gt;0.007&lt;/SlopeMarine&gt;
+        
+        &lt;!-- Angle of repose of the considered siliclastic class when deposited in
+				above sea level. This angle is used during the diffusion process to 
+				define the stability of the newly deposited sediments.
+			  --&gt;
+        &lt;SlopeAerial&gt;0.00016&lt;/SlopeAerial&gt;
+      &lt;/si&gt;
+      
+      &lt;!-- Collection of carbonates classes. 
+		
+			Note: This element is optional.
+		  --&gt;
+      &lt;carb&gt;
+        &lt;!-- Name of the considered carbonate class.
+				
+				Note: chosen names are not predefined and could be anything but should differ 
+					between each class. 
+			  --&gt;
+        &lt;MaterialName&gt;car_grav&lt;/MaterialName&gt;
+        
+        &lt;!-- Grain size diameter of the considered carbonates class in millimetres. 
+			  --&gt;
+        &lt;Diameter unit="mm"&gt;0.5&lt;/Diameter&gt;
+        
+        &lt;!-- Density of the considered carbonates class in kg/m3. 
+			  --&gt;
+        &lt;Density unit="kg/m3"&gt;2600.0&lt;/Density&gt;
+        
+        &lt;!-- Angle of repose of the considered carbonates class when deposited in
+				marine environment. This angle is used during the diffusion process to 
+				define the stability of the newly deposited sediments.
+			  --&gt;
+        &lt;SlopeMarine&gt;0.0141&lt;/SlopeMarine&gt; 
+        
+        &lt;!-- Angle of repose of the considered carbonates class when deposited in
+				above sea level. This angle is used during the diffusion process to 
+				define the stability of the newly deposited sediments.
+			  --&gt;
+        &lt;SlopeAerial&gt;0.002&lt;/SlopeAerial&gt; 
+        
+      &lt;/carb&gt;
+      
+      &lt;!-- Collection of organics classes. 
+		
+			Note: This element is optional.
+		  --&gt;
+      &lt;org&gt;
+        &lt;!-- Name of the considered organic class.
+				
+				Note: chosen names are not predefined and could be anything but should differ 
+					between each class. 
+			  --&gt;
+        &lt;MaterialName&gt;org_coal&lt;/MaterialName&gt;
+        
+        &lt;!-- Grain size diameter of the considered organic class in millimetres. 
+			  --&gt;
+        &lt;Diameter unit="mm"&gt;0.05&lt;/Diameter&gt;
+        
+        &lt;!-- Density of the considered organic class in kg/m3. 
+			  --&gt;
+        &lt;Density unit="kg/m3"&gt;2400.0&lt;/Density&gt;
+        
+        &lt;!-- Angle of repose of the considered organic class when deposited in
+				marine environment. This angle is used during the diffusion process to 
+				define the stability of the newly deposited sediments.
+			  --&gt;
+        &lt;SlopeMarine&gt;0.05&lt;/SlopeMarine&gt; 
+        
+        &lt;!-- Angle of repose of the considered organic class when deposited in
+				above sea level. This angle is used during the diffusion process to 
+				define the stability of the newly deposited sediments.
+			  --&gt;
+        &lt;SlopeAerial&gt;0.002&lt;/SlopeAerial&gt; 
+        
+      &lt;/org&gt;
+      
+    &lt;/Materials&gt;
+    
+    &lt;!-- Declaration of initial deposit layers prior to the simulation starting time.
+		This element allows the user to start with a predefined sediment architecture.
+		This architecture could be composed of several layers with various thicknesses
+		througout the spatial area making it possible to set up initially complex 
+		geometries. 
+		
+		Note: if your simulation starts without any predefined sedimentary layers, you will
+			not be able to erode the basement and it is in any case required to set up a initial
+			layer of null thicknesses.
+		
+		Note: in case of a restarted simulation the initial deposition layer declaration
+			should not be changed from the original definition 
+	
+	  --&gt;
+    &lt;Init_deposit&gt;
+      
+      &lt;!-- Number of initial deposit layers defined. 
+		  --&gt;
+      &lt;LayersNb&gt;1&lt;/LayersNb&gt;
+      
+      &lt;!-- Declaration of a specific sedimentary layers. 
+			
+			Note: the layers will be arranged one over the other based on how they were
+				declared. Which means that the first &lt;dep&gt; layer will be the bottom one 
+				and the last one the top one.
+			
+			Note: the layer will add up to each others starting from the basement topography
+				defined in the &lt;StrataGrid&gt; element.
+		  --&gt;
+      &lt;dep&gt;
+        &lt;!-- Name of a specific deposit layer file and its path.
+				The path is from the main input file location. 
+				This ASCII file provides for each line the following information:
+					- node IDs
+					- thickness of first defined material classes on this node in metres
+					- thickness of second defined material classes on this node in metres
+						:	:	:	:	:	:	:	:	:	:	:	:	:	:	:	:	
+						:	:	:	:	:	:	:	:	:	:	:	:	:	:	:	:	
+					- thickness of last defined material classes on this node in metres
+					- sedimentary layer hardness
+				
+				Note: the hardness of a given sedimentary layer is a parameter (always positive) 
+					which defines how easy a specific layer can be eroded. A value of 1 or below 
+					means that the layer erodability is high for this node whereas a value of 10 
+					or above will means that the layer erodability is low and can be seen as a
+					cemented rock.
+					
+				Note: In case a particular sediment is not present its thickness needs to be set 
+					to 0.0.
+				
+				Note: the nodes have been defined in increasing order starting from the Sout-West
+				 	corner and going first along the X axis (West to East)
+				
+				Attention: this is a requirement to defined the various sediment class thicknesses
+					by following the same order as the one used in the definition of the different
+					materials. If not the initial sedimentary layers will not be set properly.
+			  --&gt;
+        &lt;FileName&gt;data/gbr_N.dep&lt;/FileName&gt;
+        
+      &lt;/dep&gt;
+      
+    &lt;/Init_deposit&gt;
+    
+  &lt;/struct-sediments&gt;	
+
+  &lt;!-- Definition of the forcing processes such as rivers, rain, 
+	mass movements required to move sediments around and build
+	up the sedimentary architectures. 
+  --&gt;
+  &lt;struct-processes&gt;
+    
+    &lt;!-- For each flow walker, the continuity equation is solved 
+		using a semi-empirical technique based on stream classification 
+		approach (Rosgen, 2003).
+		
+		Definition of the stream parameters is dependent of the type of
+		simulation which is set. The classification sets the width to depth
+		ratio based on specific slope angles. 
+  	--&gt;
+    &lt;StreamClass&gt;
+      
+      &lt;!-- Total number of stream classes required to define river 
+			characteristics over the simulated area.
+			
+			Note: the element variable should be equal or greater 
+				than 2.
+  		--&gt;
+      &lt;NbClass&gt;2&lt;/NbClass&gt;
+      
+      &lt;!--  Parameters collection for the considered stream class.
+			
+            Note: the number of classes needs to be equal to the number given 
+                in the &lt;NbClass&gt; element. 
+  		--&gt;
+      &lt;cl&gt;
+        
+        &lt;!-- Value of the local topographic slope (dz/dx).
+  			--&gt;
+        &lt;BedSlope&gt;0.0&lt;/BedSlope&gt;
+        
+        &lt;!-- Width to depth ratio for the considered slope. 
+  			--&gt;
+        &lt;WDRatio&gt;30&lt;/WDRatio&gt;
+        
+      &lt;/cl&gt;
+      
+      &lt;!--  Parameters collection for the second stream class.
+  		--&gt;
+      &lt;cl&gt;
+        
+        &lt;!-- Value of the local topographic slope (dz/dx).
+  			--&gt;
+        &lt;BedSlope&gt;0.2&lt;/BedSlope&gt;
+        
+        &lt;!-- Width to depth ratio for the considered slope. 
+  			--&gt;
+        &lt;WDRatio&gt;10&lt;/WDRatio&gt;
+        
+      &lt;/cl&gt;
+      
+    &lt;/StreamClass&gt;
+    
+    &lt;!-- Definition of river and turbidity flows transporting sediments within
+	   the simulated domain. These flows will then erode and deposit sediments
+	   depending of their internal characteristics.
+	
+	   Note: This element is optional.
+    --&gt;
+    &lt;Sources&gt;
+      
+      &lt;!-- Total number of sources that will be activated within the domain
+		  during the entire simulated time. 
+	    --&gt;
+      &lt;totalSourcesNb&gt;1&lt;/totalSourcesNb&gt;
+      
+      &lt;!-- Maximum sources depth. 
+		
+     		Note: this element controls the number of flow walkers released per sources. 
+     			If &lt;maxDepth&gt; is lower than &lt;streamDepth&gt; then the source will
+     			be splitted in several flow walkers.
+     	--&gt;
+      &lt;maxDepth unit="m"&gt;6&lt;/maxDepth&gt;
+      
+      &lt;!-- Collection of parameters defining each source. 
+		
+             Note: the number of &lt;sourceVal&gt; needs to be equal to the number given 
+             	in the &lt;totalSourcesNb&gt; element. 
+     	--&gt;
+      &lt;sourceVal&gt;
+        
+        &lt;!-- Source start time in years. 
+    		--&gt; 
+        &lt;ts unit="a"&gt;-128000&lt;/ts&gt;
+        
+        &lt;!-- Source end time in years. 
+    		--&gt;
+        &lt;te unit="a"&gt;10000&lt;/te&gt;
+        
+        &lt;!-- Percentage of time the considered flow is active over a year.
+			
+    			Note: values are between 0 and 100. 
+    		--&gt;
+        &lt;recurencePerc&gt;75.0&lt;/recurencePerc&gt;
+        
+        &lt;!-- Source location along Ox within the simulated domain space (m). 
+			
+    			Note: The simulation will crash if the location of the source
+    				is outside the simulation domain.
+    		--&gt;
+        &lt;x unit="m"&gt;310709.3&lt;/x&gt;
+        
+        &lt;!-- Source location along Oy within the simulated domain space (m). 
+			
+    			Note: The simulation will crash if the location of the source
+    				is outside the simulation domain.
+    		--&gt;
+        &lt;y unit="m"&gt;8325284.0&lt;/y&gt;
+        
+        &lt;!-- X position of the source can randomly vary from its defined 
+    			location. This element defined the maximum range along along Ox (m). 
+    			
+    			Note: Set the value to 0.0 to prevent any change of position along 
+    				X direction.
+    			
+    			Note: The simulation will crash if when applying the random variation
+    				the new source position is outside the simulation domain.
+    		--&gt;
+        &lt;xRange unit="m"&gt;55&lt;/xRange&gt;
+        
+        &lt;!-- Y position of the source can randomly vary from its defined 
+    			location. This element defined the maximum range along along Oy (m). 
+    			
+    			Note: Set the value to 0.0 to prevent any change of position along 
+    				Y direction.
+    			
+    			Note: The simulation will crash if when applying the random variation
+    				the new source position is outside the simulation domain.
+    		--&gt;
+        &lt;yRange unit="m"&gt;32&lt;/yRange&gt;
+        
+        &lt;!-- Source height (m). 
+		
+    			Note: Depending on the value sets for the &lt;maxDepth&gt; element the source 
+    				might be splitted in several flow walkers.
+    		--&gt;
+        &lt;streamDepth unit="m"&gt;6&lt;/streamDepth&gt;
+        
+        &lt;!-- Vx is the source velocity component along the
+    			X direction (m/s). 
+    			
+    			Note: negative means towards West and positive towards East.
+    		--&gt;
+        &lt;Vx unit="m/s"&gt;2.0&lt;/Vx&gt;
+        
+        &lt;!-- Vy is the source velocity component along the
+    			Y direction (m/s). 
+    			
+    			Note: negative means towards South and positive towards North.
+    		--&gt;
+        &lt;Vy unit="m/s"&gt;2.0&lt;/Vy&gt;
+        
+        &lt;!-- Water flux (m3/s). 
+    		--&gt;
+        &lt;Q unit="m3/s"&gt;100&lt;/Q&gt;
+        
+        &lt;!-- Sediment discharge (Mt/year). 
+    		--&gt;
+        &lt;Qs unit="Mt/a"&gt;0.07&lt;/Qs&gt;
+        
+        &lt;!-- Percentage of each siliciclastic sediments defined in the source. 
+			
+    			Note: the sum of each percentage needs to be equal to 100.
+    			
+    			Note: this is a requirement to defined a percentage for each siliciclatic 
+    				sediment defined in the &lt;Materials&gt; element and to follow the same order 
+    				as the one used in the definition of the different siliclastic materials. 
+    				If not the transported sediments will not be set properly.
+    		--&gt;
+        &lt;sedConcentration&gt;0 0 0 20 40 40 0&lt;/sedConcentration&gt;
+        
+        &lt;!-- Definition of the source type. Two choices are available:
+    			- 0 for river stream and, 
+    			- 1 for turbidity current.
+    		--&gt;
+        &lt;flowType&gt;0&lt;/flowType&gt;
+        
+      &lt;/sourceVal&gt;
+      
+    &lt;/Sources&gt;
+    
+    &lt;!-- Define rainfall parameters and regime, user specifies a serie of maps files
+    	  with rainfall values defined for each nodes.  
+        
+		Note: This element is optional.
+  	--&gt;
+    &lt;RainfallGrid&gt;
+      
+      &lt;!-- Maximum flow accumulation value used to define the rain flow 
+			walkers places. 
+		
+			Note: Flow accumulation operation performs a cumulative   
+				count of the number of pixels that naturally drain 
+				into outlets.
+  		--&gt;
+      &lt;rainFlowAccu&gt;100&lt;/rainFlowAccu&gt;
+      
+      &lt;!-- Maximum number of rain flow walkers released per flow interval 
+			time. 
+  		--&gt;
+      &lt;rainMaxFW&gt;500&lt;/rainMaxFW&gt;
+      
+      &lt;!-- Flow walkers height for the rain in metres. 
+  		--&gt;
+      &lt;rainElevation unit="m"&gt;1.5&lt;/rainElevation&gt;
+      
+      &lt;!--  Rain flow walkers combination is used to create a river based 
+			on merging of several rain flow walkers. 
+			
+			Note: The value is set to 0 to forbid any combination to occur and should be
+				set to 1 otherwise.
+			
+			Note: this option needs further testing.
+  		--&gt;
+      &lt;rainCombination&gt;0&lt;/rainCombination&gt;
+      
+      &lt;!-- Water flux used when rain walker combination is enable to define 
+			the minimal flow rate required to transformed the merged rain walkers as 
+			a river flow walker. 
+			
+			Note: this option is used only if the &lt;rainCombination&gt; is set to 1.
+  		--&gt;
+      &lt;rainStreamQ unit="m3/s"&gt;0.5&lt;/rainStreamQ&gt;
+      
+      &lt;!-- Defines the number of rainfall serie imported for the considered
+	        simulation. 
+  		--&gt;
+      &lt;nbRainfallInterval&gt;1&lt;/nbRainfallInterval&gt;
+      
+      &lt;!-- Collection of rainfall parameters defining each rainfall series. 
+            
+            Note: the number of classes needs to be equal to the number given 
+                in the &lt;nbRainfallInterval&gt; element. 
+      --&gt;
+      &lt;rain&gt;
+        &lt;!-- Give the start time of the considered rainfall grid interval 
+				in years.
+  			--&gt;
+        &lt;startTime unit="a"&gt;0&lt;/startTime&gt;
+        
+        &lt;!-- Give the end time of the considered rainfall grid interval 
+				in years.
+  			--&gt;
+        &lt;endTime unit="a"&gt;1000000&lt;/endTime&gt;
+        
+        &lt;!-- Name of the rainfall file and its associated path.
+				The path is from the main input file location. 
+				This ASCII file provides for each line the following two informations:
+					- the node ID (which should match with one defined in the basement 
+						grid &lt;StrataGrid&gt;),
+					- the averaged precipitation for each considered node in metres/year.
+					
+				Note: the nodes have been defined in increasing order starting from the Sout-West
+				 	corner and going first along the X axis (West to East)
+				 	
+				Note: in case a specific node does not have any precipitation it is required
+					to set it in the file with a 0.0 value 
+			  --&gt;
+        &lt;rainFile&gt;data/ridge.rain&lt;/rainFile&gt;
+        
+      &lt;/rain&gt;
+      
+    &lt;/RainfallGrid&gt;
+    
+    &lt;!-- Parameter defining mass movements. It encompasses the
+        following types of: 
+        	- landslides, 
+        	- slumps, 
+        	- debris flows. 
+        Mass movements susceptibility map is derived from
+        emprical relationships based on surface of the upslope
+        contributing area and slope. The relation is function of 2
+        additional parameters: 
+        	- the steepness index and, 
+        	- the concavity index.
+        
+        Note: Example of such relation can be found in several
+        litterature papers such as Horton et al. (2008), Blahut et
+        al. (2010) or Kappes et al. (2011).
+        
+	 	    Note: This element is optional.
+  	--&gt;
+    &lt;MassMovement&gt;
+      
+      &lt;!-- Flow accumulation threshold under which no mass movement 
+			can be initiated.
+		
+			Note: Flow accumulation operation performs a cumulative   
+				count of the number of pixels that naturally drain 
+				into outlets.
+  		--&gt;
+      &lt;massFlowAccu&gt;20&lt;/massFlowAccu&gt;
+      
+      &lt;!-- Plan curvature threshold over which no mass movements 
+			can be initiated. This threshold is expected to vary
+		 	with the location and the type of mass flows, and 
+		 	strongly depends on the grid resolution and accuracy.
+			
+			Note: in western Switzerland, Horton et al. (2013)
+		 		found an optimum at -0.02 per metre. Fisher et al.
+		 		(2012) considered values of -0.015 to -0.005 as more 
+		 		accurate for Norway. 
+  		--&gt;
+      &lt;massCurvature&gt;0.0&lt;/massCurvature&gt;
+      
+      &lt;!-- Parameters collection for aerial mass movement.
+  		--&gt;
+      &lt;Aerial&gt;
+        
+        &lt;!-- Surface of the upslope contributing area (km2).
+				
+				Note: on a specific node, it corresponds to the product of
+					the flow accumulation and the stratigraphic grid cell 
+					area.
+  			--&gt;
+        &lt;upSlopeArea unit="km2"&gt;2.5&lt;/upSlopeArea&gt;
+        
+        &lt;!-- Parameters collection for area below the upslope contributing
+            	area.
+  			--&gt;
+        &lt;belowUpSlope&gt;
+          
+          &lt;!-- Value of the steepness index. 
+  				--&gt;
+          &lt;steepnessIndex&gt;0.31&lt;/steepnessIndex&gt;
+          
+          &lt;!-- Value of the concavity index. 
+  				--&gt;
+          &lt;concavityIndex&gt;0.2&lt;/concavityIndex&gt;
+          
+        &lt;/belowUpSlope&gt;
+        
+        &lt;!-- Parameters collection for area above the upslope contributing
+            	area. 
+  			--&gt;
+        &lt;aboveUpSlope&gt;
+          
+          &lt;!-- Value of the steepness index. 
+  				--&gt;
+          &lt;steepnessIndex&gt;0.26&lt;/steepnessIndex&gt;
+          
+          &lt;!-- Value of the concavity index. 
+  				--&gt;
+          &lt;concavityIndex&gt;0.&lt;/concavityIndex&gt;
+          
+        &lt;/aboveUpSlope&gt;
+        
+      &lt;/Aerial&gt;
+      
+      &lt;!-- Parameters collection for marine mass movement.
+  		--&gt;
+      &lt;Marine&gt;
+        
+        &lt;!-- Surface of the upslope contributing area (km2).
+				
+				Note: on a specific node, it corresponds to the product of
+					the flow accumulation and the stratigraphic grid cell 
+					area.
+  			--&gt;
+        &lt;upSlopeArea unit="km2"&gt;2.5&lt;/upSlopeArea&gt;
+        
+        &lt;!-- Parameters collection for area below the upslope contributing
+            	area.
+  			--&gt;
+        &lt;belowUpSlope&gt;
+          
+          &lt;!-- Value of the steepness index. 
+  	 			--&gt;
+          &lt;steepnessIndex&gt;0.31&lt;/steepnessIndex&gt;
+          
+          &lt;!-- Value of the concavity index. 
+  				--&gt;
+          &lt;concavityIndex&gt;0.2&lt;/concavityIndex&gt;
+          
+        &lt;/belowUpSlope&gt;
+        
+        &lt;!-- Parameters collection for area above the upslope contributing
+            	area. 
+  			--&gt;
+        &lt;aboveUpSlope&gt;
+          
+          &lt;!-- Value of the steepness index. 
+  				--&gt;
+          &lt;steepnessIndex&gt;0.26&lt;/steepnessIndex&gt;
+          
+          &lt;!-- Value of the concavity index. 
+  				--&gt;
+          &lt;concavityIndex&gt;0.&lt;/concavityIndex&gt;
+          
+        &lt;/aboveUpSlope&gt;
+        
+      &lt;/Marine&gt;
+      
+    &lt;/MassMovement&gt;
+    
+    &lt;!-- Definition of carbonates and organics evolution within the simulated
+    	domain. The evolution is based on fuzzy logic.
+    	
+    	Note: This element is optional.
+    --&gt;
+    &lt;Carbonates-Organics&gt;
+      
+      &lt;!-- Carbonates and organics evolution time interval expressed in years. 
+		
+     		Note: The value should be a factor of the layer time interval.
+     	--&gt;
+      &lt;carborgTime unit="a"&gt;250&lt;/carborgTime&gt;
+      
+      &lt;!-- Name of the salinity and temperature file and its associated path.
+     		The path is from the main input file location. 
+     		This ASCII file provides for each line the following information:
+     			- time in years, 
+     			- sea temperature for the considered time in Celcius and, 
+     			- sea salinity for the considered time in ppm.
+     			
+     		Note: In addition the defined times should be set in increasing
+     			 order starting from the oldest time.
+     	--&gt;
+      &lt;tempsalFile&gt;data/temperature_salinity.csv&lt;/tempsalFile&gt;
+      
+      &lt;!-- Total number of membership functions.
+     		A membership function allows to graphically represent a fuzzy set. 
+     		The x-axis represents the values of a given variable, whereas the
+     		y-axis represents the degrees of membership in the [0,1] interval.
+     	--&gt;
+      &lt;membershipfunctionNb&gt;1&lt;/membershipfunctionNb&gt;
+      
+      &lt;!-- Total number of fuzzy functions. 
+     		In LECODE, a fuzzy function defined the evolution of carbonates / 
+     		organics systems based on derived local prediction of their behaviours.
+     	--&gt;
+      &lt;fuzzyfunctionNb&gt;1&lt;/fuzzyfunctionNb&gt;
+      
+      &lt;!-- Total number of fuzzy rules. 
+     		The fuzzy rules defined the "defuzzification" process from a set of
+     		fuzzy and membership functions. It will produce for a specific 
+     		carbonate / organic material a quantifiable results of its evolution
+     		for a considered set of conditions.
+     	--&gt;
+      &lt;fuzzyruleNb&gt;1&lt;/fuzzyruleNb&gt;
+      
+      &lt;!-- Definition of the collection of membership	functions.
+		
+     		Note: The number of membership functions should equal the number
+     			provided in the &lt;membershipfunctionNb&gt; element.
+     			
+     		Note: Simple functions are used to build membership functions. 
+     			Because we are defining fuzzy concepts, using more complex 
+     			functions does not add more precision.
+     	--&gt;
+      &lt;membershipFunction&gt;
+        
+        &lt;!-- User defined membership function name.
+			
+    			This name in fuzzy logic is called a linguistic variable and is
+    			used to facilitate the expression of fuzzy rules.
+    		--&gt;
+        &lt;functionName&gt;shallow&lt;/functionName&gt;
+        
+        &lt;!-- Default variable name to set up. 
+			
+    			The user can choose between 14 default membership variable names listed below:
+    				- "depth" : water depth in metres
+    				- "shore-distance" : distance in metres to shoreline
+    				- "river-distance" : distance in metres to nearest river source
+    				- "carbonate-distance" : distance in metres to nearest surface exposed carbonate
+    				- "organic-distance" : distance in metres to nearest surface exposed organic
+    				- "sedimentation-rate" : sedimentation rate in metres per year
+    				- "temperature" : surface temperature in Celsius
+    				- "salinity" : degree of salinity in ppm
+    				- "valley" : normalise number of surrounding points uphill from the reference 
+    					point (calculated from all grid points within two grid cells): 
+    						* -1 = all points downhill, 
+    						*  1 = all points uphill [-1,1].
+    				- "gradient" : average gradient of the point (calculated from all grid points 
+    					within two grid cells) negative value indicates that most surrounding 
+    					points are downhill from the point.
+    				- "exposed-time" : time the layer has been undisturbed on the surface in years.
+    				- "ocean-energy" : wind-induced wave and currents circulation velocity in the 
+    					area in m/s. You must have the plugin &lt;OceanPlugin&gt; turns on.
+    				- "burial" : depth to which the material has been buried by subsequent 
+    					deposits in metres (affects material subsurface).
+    				- "age" : time since the layer was deposited in years (affects material 
+    					subsurface).
+    		--&gt;
+        &lt;functionVariable&gt;depth&lt;/functionVariable&gt;
+        
+        &lt;!-- Number of points describing the shape of the 
+    			membership function. 
+    			
+    		--&gt;
+        &lt;functionPts&gt;3&lt;/functionPts&gt;
+        
+        &lt;!-- Collection of points defining the membership function.
+			
+    			Note: The number of membership function points should equal the 
+    				number provided in the &lt;functionPts&gt; element.
+    		--&gt;
+        &lt;functionSubset&gt;
+          
+          &lt;!-- Function coordinates values.  
+     				- X corrdinates values refer to the values of one of 14
+     				 	default variable names chosen above.
+     				- Y coordinates must be between 0 and 1.
+     			--&gt;
+          &lt;xypoints&gt;0.0 0.0&lt;/xypoints&gt;
+          
+          &lt;!-- Function coordinates values.  
+     				- X corrdinates values refer to the values of one of 14
+     				 	default variable names chosen above.
+     				- Y coordinates must be between 0 and 1.
+     			--&gt;
+          &lt;xypoints&gt;0.0 1.0&lt;/xypoints&gt;
+          
+          &lt;!-- Function coordinates values.  
+     				- X corrdinates values refer to the values of one of 14
+     				 	default variable names chosen above.
+     				- Y coordinates must be between 0 and 1.
+     			--&gt;
+          &lt;xypoints&gt;25.0 0.0&lt;/xypoints&gt;
+          
+        &lt;/functionSubset&gt;
+        
+      &lt;/membershipFunction&gt;
+      
+      &lt;!-- Definition of the collection of fuzzy functions.
+    		
+    		Note: The number of fuzzy functions should equal the number
+    			provided in the &lt;fuzzyfunctionNb&gt; element.
+    			
+    		Note: The fuzzy function defined the evolution of carbonates / 
+    			organics based on derived local prediction of their behaviours.
+    	--&gt;
+      &lt;fuzzyFunction&gt;
+        
+        &lt;!-- User defined fuzzy function name.
+			
+    			This name in fuzzy logic is called a linguistic variable and is
+    			used to facilitate the expression of fuzzy rules.
+    		--&gt;
+        &lt;fuzzyName&gt;slow_growth&lt;/fuzzyName&gt;
+        
+        &lt;!-- Default variable name to set up. 
+     			
+     			The user can choose between 4 default fuzzy function variable names listed below:
+     				- "growth" : function controlling carbonates or organics growth rate 
+     					in metres per years.
+     				- "erosion" : function controlling carbonates or organics erosion rate 
+     					in metres per years.
+     				- "porosity" : function controlling carbonates or organics porosity 
+     					reduction between 0 and 1.
+     				- "hardness" : Function controlling carbonates or organics hardness 
+     					( &gt; 1 ).
+     		--&gt;
+        &lt;fuzzyVariable&gt;growth&lt;/fuzzyVariable&gt; 
+        
+        &lt;!-- Number of points describing the shape of the fuzzy logic 
+    			function. 
+    		--&gt;
+        &lt;fuzzyPts&gt;2&lt;/fuzzyPts&gt;
+        
+        &lt;!-- Collection of points defining the fuzzy function.
+			
+    			Note: The number of membership function points should equal the 
+    				number provided in the &lt;fuzzyPts&gt; element.
+    		--&gt;
+        &lt;fuzzySubset&gt;
+          
+          &lt;!-- Function coordinates values.  
+     				- X corrdinates values refer to the values of one of 4
+     				 	default variable names chosen above.
+     				- Y coordinates must be between 0 and 1.
+     			--&gt;
+          &lt;xycoords&gt;0.0 0.0&lt;/xycoords&gt;
+          
+          &lt;!-- Function coordinates values.  
+     				- X corrdinates values refer to the values of one of 4
+     				 	default variable names chosen above.
+     				- Y coordinates must be between 0 and 1.
+     			--&gt;
+          &lt;xycoords&gt;0.0005 1.0&lt;/xycoords&gt;
+          
+        &lt;/fuzzySubset&gt;
+        
+      &lt;/fuzzyFunction&gt;
+      
+      &lt;!-- Definition of the collection of fuzzy functions.
+     		The fuzzy rules defined the "defuzzification" process from a set of
+     		fuzzy and membership functions. 
+     	--&gt;
+      &lt;fuzzyRule&gt;
+        
+        &lt;!-- Name of the carbonate or organic type defined in the &lt;Materials&gt; 
+    			element. 
+    			
+    			Note: This is one of the name (&lt;MaterialName&gt;) defined in the &lt;carb&gt; or 
+    			&lt;org&gt; element.
+    		--&gt;
+        &lt;matName&gt;car_sand&lt;/matName&gt;
+        
+        &lt;!-- Previously user defined fuzzy logic function name to be used 
+    			with the considered material. 
+    			
+    			Note: This is one of the &lt;fuzzyName&gt; element.
+    		--&gt;
+        &lt;fuzzyFctName&gt;slow_growth&lt;/fuzzyFctName&gt;
+        
+        &lt;!-- Number of membership functions describing the fuzzy rule. 
+    		--&gt;
+        &lt;variableNb&gt;1&lt;/variableNb&gt;
+        
+        &lt;!-- Collection of membership functions used during the defuzzification
+     			process.
+     			
+     				
+     			Note: It will produce for the chosen carbonate / organic material a 
+     				quantifiable results of its evolution.
+     		--&gt;
+        &lt;membershipSet&gt;
+          
+          &lt;!-- User defined name &lt;functionName&gt; used to define membership
+            	functions. 
+                 	
+     				Note: The number of membership function element &lt;membershipFctName&gt; 
+     					should equal the number provided in the &lt;variableNb&gt; element.
+     			--&gt;
+          &lt;membershipFctName&gt;shallow&lt;/membershipFctName&gt;
+          
+        &lt;/membershipSet&gt;
+        
+      &lt;/fuzzyRule&gt; 
+      
+    &lt;/Carbonates-Organics&gt;
+    
+  &lt;/struct-processes&gt;
+  
+  
+  &lt;!-- Definition of additional processes parameters such as
+	flow walkers sediment transport controlling factors and
+	evoution of porosity and compaction in buried sedimentary 
+	layers. 
+  --&gt;
+  &lt;struct-param&gt;
+    
+    &lt;!-- Controlling factors for flow walker and sediment
+		transport.
+    --&gt;
+    &lt;SedimentTransportParameters&gt;
+      
+      &lt;!-- Minimum depth for a river stream in the simulation in metres.
+  		--&gt;
+      &lt;streamMinDepth unit="m"&gt;0.05&lt;/streamMinDepth&gt;
+      
+      &lt;!-- Maximum depth for a river stream in the simulation in metres.
+  		--&gt;
+      &lt;streamMaxDepth unit="m"&gt;20&lt;/streamMaxDepth&gt;
+      
+      &lt;!-- Minimum width for a river stream in the simulation in metres.
+  		--&gt;
+      &lt;streamMinWidth unit="m"&gt;1&lt;/streamMinWidth&gt;
+      
+      &lt;!-- Maximum width for a river stream in the simulation in metres.
+  		--&gt;
+      &lt;streamMaxWidth unit="m"&gt;1000&lt;/streamMaxWidth&gt;
+      
+      &lt;!-- Minimum velocity of flow walkers (m/s) under which flow walkers
+			are supposed to have no influence on topography.
+			
+			Note: When a flow walker velocity decreases below this threshold value, 
+				all sediment load is forced to be deposited. 
+  		--&gt;
+      &lt;flowWalkerMinVelocity unit="m/s"&gt;0.0001&lt;/flowWalkerMinVelocity&gt;
+      
+      &lt;!-- Maximum eroded thickness for each flow computation step in metres.
+			 
+			Note: This value could be set to a large number in case no limits 
+				are required regarding erosion thickness. 
+  		--&gt; 
+      &lt;flowWalkerErosionLimit unit="m"&gt;0.25&lt;/flowWalkerErosionLimit&gt;
+      
+      &lt;!-- Maximum deposited thickness for each flow computation step in metres.
+			
+			Note: This value could be set to a large number in case no limits 
+				are required regarding deposition thickness. 
+  		--&gt; 
+      &lt;flowWalkerDepositionLimit unit="m"&gt;0.25&lt;/flowWalkerDepositionLimit&gt;
+      
+      &lt;!-- Minimum sediment load threshold in tons per year under which flow walkers  
+			are supposed to have no influence on topography. Below this threshold, flow
+			walkers are erased from the simulation.
+		
+			Note: This value does not have to be modified for most of the simulations. 
+  		--&gt; 
+      &lt;minSedimentLoad unit="t/a"&gt;0.000000000001&lt;/minSedimentLoad&gt;
+      
+      &lt;!-- Maximum authorised number of iterations a given flow walker can remain in a 
+			stratigraphic grid cell before deposition is forced. Possible values range 
+			between 100 and 400.
+		
+			Note: In flat area, flow walker velocity decreases and sediments are deposited. 
+				In some cases, the flow walker remains within a cell without really having
+				much influence on the topography. This parameter helps to speed up the flow 
+				walker computation process by forcing deposition after a given number of time
+				step. 
+  		--&gt; 
+      &lt;maxFWStepPerCell&gt;150&lt;/maxFWStepPerCell&gt;
+      
+    &lt;/SedimentTransportParameters&gt;
+    
+    &lt;!-- Bottom friction coefficient for flow walker is approximated using the approach  
+		of Manning combined with a Chezy’s type form for equation. The Manning’s 
+		roughness coefficient is required for different types of flows.  
+  	--&gt;
+    &lt;Manning&gt;
+      
+      &lt;!-- Coefficient for open-channel flow. 
+  	 	--&gt;
+      &lt;openchannelFlow&gt;0.02&lt;/openchannelFlow&gt;
+      
+      &lt;!-- Coefficient for hyperpycnal flow. 
+  		--&gt;
+      &lt;hyperpycnalFlow&gt;0.01&lt;/hyperpycnalFlow&gt;
+      
+      &lt;!-- Coefficient for hypopycnal flow. 
+  		--&gt;
+      &lt;hypopycnalFlow&gt;0.080&lt;/hypopycnalFlow&gt;
+      
+    &lt;/Manning&gt;
+    
+    
+    &lt;!-- The porosity changes and associated compaction of burial sedimentary layers 
+		is defined as a function of grain size and lithostatic pressure expressed in 
+		MPa (also called overburden or vertical pressure). 
+		
+		Note: This element is optional.
+  	--&gt;
+    &lt;Porosity&gt;
+      
+      &lt;!-- Number of effective pressures used to defined the porosity evolution 
+			table. 
+  		--&gt;
+      &lt;EffPressureNb&gt;6&lt;/EffPressureNb&gt;
+      
+      &lt;!-- Name of the porosity look-up table file and its path.
+			The path is from the main input file location. 
+			
+			This ASCII file provides on its first line the effective pressure values
+			arranged by increasing order starting at 0 MPa on the surface. 
+			
+			Note: the lithostatic pressure gradient is usually assumed to be around 
+				25 MPa/km.
+			
+			Then follows one line for each sediment type defined in the &lt;Materials&gt;
+			element. Each line contains values of porosity of the considered sediment 
+			type for the given lithostatic pressure value provided on the first line. 
+			
+			Note: The lines should be ordered in the same way as the declaration of the 
+				&lt;Materials&gt;
+				
+			Note: The table forms a matrix with a number of columns equal to &lt;EffPressureNb&gt;
+				and a number of lines equal to the total number of materials plus 1.
+		  --&gt;
+      &lt;PorosityFile&gt;data/porosity.por&lt;/PorosityFile&gt;
+      
+    &lt;/Porosity&gt;
+    
+  &lt;/struct-param&gt;
+  
+  &lt;!-- Definition of output information.
+  --&gt;
+  &lt;struct-output&gt;
+    
+    &lt;!-- Definition of the output directory where both simulation
+		results and runfiles will be stored.
+		The directory is divided in two sub-directories:
+			- one called "outputs" which record simulation output
+			- one called "runfiles" which record simulation informations
+			
+		Note: the "outputs" sub-directory contains time-series files that can be visualised
+			in Paraview or Visit for both the TIN grid, recorded stratigraphic mesh and flow walkers
+			evolution.
+		
+		Note: the "runfiles" sub-directory contains the checkpointing files required to restart 
+			a simulation.
+		
+		Note: to preserve previous runs, change the output directory name otherwise it will be
+			automatically rewritten and previous outputs will be lost.
+	  --&gt;
+    &lt;OutputDirectory&gt;outSPM&lt;/OutputDirectory&gt;
+    
+    &lt;!-- Sea-level fluctuations output control parameter. To save some space sea-level
+		fluctuations outputs can be turned on and off. The value for this element can be: 
+			- 0 meaning sea-level will not need to be visualised, 
+			- 1 meaning sea-level fluctuations will be outputed (this is the default value). 
+	
+		Note: This element is optional.
+	  --&gt;
+    &lt;OutputWaterLevel&gt;1&lt;/OutputWaterLevel&gt;
+    
+  &lt;/struct-output&gt;
+  
+  &lt;!-- Definition of elements to increase LECODE
+    modularity by interaction with other codes.
+    
+    Note: All the elements presented in this 
+        structure are optional. 
+  --&gt;
+  &lt;struct-plugin&gt;
+    
+    &lt;!-- Export of a 2D pseudo seismic section. The pseudo seismic section
+        records along the X or Y direction the sedimentary layer
+        characteristics.
+        
+        Two files are generated in the "runfiles" sub-directory of the output
+        directory (&lt;OutputDirectory&gt; element). 
+        The first one is the seismic data itself called "seismic.csv" and 
+        records:
+            - the position along the X or Y direction depending of the seismic 
+                line orientation,
+            - the layer top elevation,
+            - the mean grain size for the considered layer and,
+            - the average porosity for the considered layer.
+        
+        The second file represents the envelop of the seismic section and
+        is called "envelop.csv" it records for each stratigraphic grid nodes
+        present in the seismic line the top and bottom elevation.
+        
+        Note: the export is realised at the end of the simulation.
+        
+        Note: the section needs to be aligned with the mesh gridding
+    
+        Going beyond: These two files could then be further processed to create  
+            regularly spaced grid interpolating the seismic data values using 
+            Fatiando tools.
+            Scripts have been developed to make this conversion and could be 
+            provided if required.
+    --&gt;
+    &lt;SeismicLine&gt;
+      
+      &lt;!-- Seismic line minimum coordinate along X. 
+        --&gt;
+      &lt;Xmin unit="m"&gt;1000.0&lt;/Xmin&gt;
+      
+      &lt;!-- Seismic line maximum coordinate along X. 
+        --&gt;
+      &lt;Xmax unit="m"&gt;1000.0&lt;/Xmax&gt;
+      
+      &lt;!-- Seismic line minimum coordinate along Y. 
+        --&gt;
+      &lt;Ymin unit="m"&gt;30000.0&lt;/Ymin&gt;
+      
+      &lt;!-- Seismic line maximum coordinate along Y.
+        --&gt;
+      &lt;Ymax unit="m"&gt;50000.0&lt;/Ymax&gt;
+      
+    &lt;/SeismicLine&gt;
+    
+    &lt;!-- Export of a geo-cellular box model defined by its X and Y minimum
+        and maximum coordinates. The geocellular model records for within
+        the defined box the sedimentary layers characteristics.
+        
+        The geo-cellular file is generated in the "runfiles" sub-directory of 
+        the output directory (&lt;OutputDirectory&gt; element). 
+        The file is called "geocellular.grdecl" and records:
+            - the coordinate of each sedimentary points within the box,
+            - the averaged porosity and,
+            - the proportion of each sediment types composing each 
+                sedimentary layer.
+        
+        Note: the export is realised at the end of the simulation.
+            
+        Note: the RMSModel plugin only works in serial.
+        
+        Note: the model can be used within a reservoir model and as been 
+            tested using RMS and Temis.
+    --&gt;
+    &lt;RMSModel&gt;
+      
+      &lt;!-- Geo-cellular model minimum coordinate along X (West border).
+        --&gt;
+      &lt;Xmin unit="m"&gt;200300&lt;/Xmin&gt;
+      
+      &lt;!-- Geo-cellular model maximum coordinate along X (East border).
+        --&gt;
+      &lt;Xmax unit="m"&gt;250300&lt;/Xmax&gt;
+      
+      &lt;!-- Geo-cellular model minimum coordinate along Y (South border).
+        --&gt;
+      &lt;Ymin unit="m"&gt;3928300&lt;/Ymin&gt;
+      
+      &lt;!-- Geo-cellular model maximum coordinate along Y (North border).
+        --&gt;
+      &lt;Ymax unit="m"&gt;4928300&lt;/Ymax&gt;
+      
+    &lt;/RMSModel&gt;
+    
+    &lt;!-- This plugin enable the soft coupling between Underworld geodynamic
+        model and LECODE.
+        
+        To work the plugin requires that both Underworld and Lecode have been
+        compiled on the same machine. In Underworld specific input parameters
+        have to be turn on to enable the coupling.
+        
+        The communications between the codes are done at specific time steps and 
+        are driven by a file called 'maestro' localised in a synchronisation
+        folder known by the 2 codes.
+        
+        Lecode will provide to Underworld a VTK file containing top surface 
+        information ('topsurface.vtk'). 
+        Underworld will provide to Lecode an ASCII file containing vertical
+        displacement fields ('uw_output.ascii').
+        
+        Note: the plugin only looks at vertical displacements.
+    --&gt;
+    &lt;UnderworldPlugin&gt;
+      
+      &lt;!-- Path to the synchronisation folder used by each code to read and
+            write required coupling files.
+            The path is from the main input file location. 
+        --&gt;
+      &lt;UsyncFolder&gt;udw_lecode&lt;/UsyncFolder&gt;
+      
+      &lt;!-- Time for synchronisation of LECODE and Underworld.
+        --&gt;
+      &lt;UsyncTime unit="a"&gt;500000&lt;/UsyncTime&gt;
+      
+    &lt;/UnderworldPlugin&gt;
+    
+    &lt;!-- Ocean plugin for waves and currents circulation. This module
+        enable the coupling with CSIRO wave/current ocean circulation
+        code that could be provided if requested.
+        
+        The plugin allows the simulation of wind generated waves and
+        currents circulation for various climatic scenarios.
+        
+        Note: These elements need to be appropriately filled in relation
+            to what has been set up in the ocean code input file.
+    --&gt;
+    &lt;OceanPlugin&gt;
+      
+      &lt;!-- Calculation of wind induced ocean currents circulation is 
+            enable if the element is set to 1 (otherwise 0).
+        --&gt;
+      &lt;circForcing&gt;1&lt;/circForcing&gt;
+      
+      &lt;!-- Calculation of wind generated wave currents is 
+            enable if the element is set to 1 (otherwise 0). 
+        --&gt;
+      &lt;waveForcing&gt;1&lt;/waveForcing&gt;
+      
+      &lt;!-- Path to the synchronisation folder used by each code to read and
+            write required coupling files.
+            The path is from the main input file location. 
+        --&gt;
+      &lt;OsyncFolder&gt;lecode_ocean&lt;/OsyncFolder&gt;
+      
+      &lt;!-- Time for synchronisation of LECODE and the Ocean code.
+        --&gt;
+      &lt;OsyncTime unit="a"&gt;500&lt;/OsyncTime&gt;
+      
+      &lt;!-- Maximum morphological change thickness for each ocean computation 
+            step in metres.
+			 
+			Note: This value could be set to a large number in case no limits 
+				are required regarding morphological change. 
+		  --&gt; 
+      &lt;morphLimit unit="m"&gt;2.5&lt;/morphLimit&gt;
+      
+      &lt;!-- Morphological acceleration factor. Long-term morphological 
+			evolution is achieved using hydrodynamic calculations of only 
+			a fraction of the simulated duration. This need to be calibrated 
+			based on temporal and spatial resolution of the considered 
+			simulation. 
+		  --&gt;
+      &lt;morphAc&gt;500.0&lt;/morphAc&gt;
+      
+      &lt;!-- Number of wind climate classes defined during the simulation time. 
+      --&gt;
+      &lt;nbForecast&gt;1&lt;/nbForecast&gt;
+      
+      &lt;!-- Collection of wind hindcast parameters for each forecast class. 
+            
+            Note: the number of classes needs to be equal to the number given 
+                in the &lt;nbForecast&gt; element. 
+      --&gt;
+      &lt;forecastClass&gt;
+        &lt;!-- Number of subgroup regime defined for the considered forecast 
+                class. 
+                
+                Note: this needs to match with the definition provided in the
+                    ocean code input file.
+        --&gt;
+        &lt;subgroupNb&gt;1&lt;/subgroupNb&gt;
+        
+        &lt;!-- Starting time of the considered forecast in year. 
+                
+                Note: this needs to match with the definition provided in the
+                    ocean code input file.
+        --&gt;
+        &lt;Ostart unit="a"&gt;-120000&lt;/Ostart&gt;
+        
+        &lt;!-- Ending time of the considered forecast in year. 
+                
+                Note: this needs to match with the definition provided in the
+                    ocean code input file.
+        --&gt;
+        &lt;Oend unit="a"&gt;1000&lt;/Oend&gt;
+        
+        &lt;!-- Proportion of time a considered wind subgroup is active over a year. 
+                The subgroup parameters such as wind velocity and direction are provided 
+                in the ocean code input file.
+                
+                Note: the value for the element could not exceed 1. 
+                
+                Note: this needs to match with the definition provided in the
+                    ocean code input file.
+        --&gt;
+        &lt;subgroupProp&gt;0.1&lt;/subgroupProp&gt;
+        
+      &lt;/forecastClass&gt;
+      
+    &lt;/OceanPlugin&gt;
+    
+  &lt;/struct-plugin&gt;
+
 &lt;/lecode:lecodeInput&gt;</code></pre>
 
-<p>Nothing fancy here</p>
-<pre class="prettyprint"><code>#include 
-int main() {
-    printf("Hello, world3!\n");
-}</code></pre>
-=======
-		<p>
-			<pre><code><?xml version="1.0"?></code></pre>
-		</p>
->>>>>>> FETCH_HEAD
 		
 	  </section>
 	  
