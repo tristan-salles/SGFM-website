@@ -206,6 +206,17 @@ header ul a strong {
   color:#222;
 }
 
+#mydiv{
+    margin:0px;
+    position:relative;
+    overflow:hidden;
+    width:450px;
+}
+#myframe{
+    position:absolute;
+    top:100px;
+    left:300px;
+}
 section {
   width:500px;
   float:right;
