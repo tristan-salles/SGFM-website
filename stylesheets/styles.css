@@ -229,6 +229,7 @@ footer {
   position:fixed;
   bottom:0px;
 }
+hr { margin: 0px 0 0px 0; }
 
 @media print, screen and (max-width: 960px) {
   
