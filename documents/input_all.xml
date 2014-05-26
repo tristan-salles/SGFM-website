@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lecode:lecodeInput xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:lecode="http://subversion.assembla.com/svn/xsd/XSDlecode"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xsi:schemaLocation="http://subversion.assembla.com/svn/xsd/XSDlecode
+  http://subversion.assembla.com/svn/xsd/XSDlecode/LECODE.xsd">
+
+  <struct-Mesh-TIN>
+
+    <Strata_grid>
+      <StrataGrid>data/gbr_N.nodes</StrataGrid>
+      <GridX>330</GridX>
+      <GridY>330</GridY>
+      <GridSpace unit="m">500</GridSpace>
+      <GridXo unit="m">305250.0</GridXo>
+      <GridYo unit="m">8220250.0</GridYo>
+    </Strata_grid>
+
+    <TIN_refine>
+      <HighRes unit="m">500</HighRes>
+      <LowRes unit="m">1000</LowRes>
+      <StepFill unit="m">0.001</StepFill>
+      <FlowAcc>10</FlowAcc>
+    </TIN_refine>
+
+    <Boundary>
+      <North>2</North>
+      <South>0</South>
+      <East>0</East>
+      <West>0</West>
+    </Boundary>
+
+    <Restart>
+      <RestartFolder>path/to/previous/output/Folder</RestartFolder>
+      <RestartIt>40</RestartIt>
+      <ProcNb>2</ProcNb>
+    </Restart>
+
+  </struct-Mesh-TIN>
+  
+  <struct-time>
+    
+    <Time>
+      <startTime unit="a">-120000</startTime>
+      <endTime unit="a">-110000</endTime>
+      <layerTime unit="a">1000</layerTime>
+      <outputTime unit="a">2000</outputTime>
+      <riverInterval unit="a">250</riverInterval>
+      <rainInterval unit="a">500</rainInterval>
+      <SlopeInterval unit="a">250</SlopeInterval>
+      <samplingInterval unit="a">250</samplingInterval>
+    </Time>
+    
+    <CheckPointing>
+      <Frequency>10</Frequency>	
+    </CheckPointing>
+    
+  </struct-time>
+  
+  <struct-ocean>
+
+    <SeaLevelFluctuations>
+      <SeaLevelFile>data/sealevel.sl</SeaLevelFile>
+    </SeaLevelFluctuations>
+    
+    <HemipelagicRates>
+      <HemipelagicFile>data/hemipelagic.rates</HemipelagicFile>
+    </HemipelagicRates>
+    
+    <WaterDensities>
+      <enteringFluid unit="kg/m3">1.000E3</enteringFluid>
+      <seaDensity unit="kg/m3">1.027E3</seaDensity>
+    </WaterDensities>
+    
+  </struct-ocean>
+  
+  <struct-geodyn>
+  
+     <Displacement>
+        <nbDispInterval>1</nbDispInterval>
+        <disp>
+            <startDispTime unit="a">-163000000</startDispTime>
+            <endDispTime unit="a">-150000001</endDispTime>
+            <dispFile>data/tectonic.disp</dispFile>
+        </disp>
+     </Displacement>
+    
+  </struct-geodyn>
+
+  <struct-sediments>
+    
+    <Materials>
+      <NbSiliciclastics>1</NbSiliciclastics>
+      <NbCarbonates>1</NbCarbonates>
+      <NbOrganics>1</NbOrganics>
+      <MinSlope>0.00001</MinSlope>
+      <si>
+        <MaterialName>slop_grav</MaterialName>
+        <Diameter unit="mm">0.5</Diameter>
+        <Density unit="kg/m3">2620.0</Density>
+        <SlopeMarine>0.007</SlopeMarine>
+        <SlopeAerial>0.00016</SlopeAerial>
+      </si>
+      
+      <carb>
+        <MaterialName>car_grav</MaterialName>
+        <Diameter unit="mm">0.5</Diameter>
+        <Density unit="kg/m3">2600.0</Density>
+        <SlopeMarine>0.0141</SlopeMarine> 
+        <SlopeAerial>0.002</SlopeAerial> 
+      </carb>
+      
+      <org>
+        <MaterialName>org_coal</MaterialName>
+        <Diameter unit="mm">0.05</Diameter>
+        <Density unit="kg/m3">2400.0</Density>
+        <SlopeMarine>0.05</SlopeMarine> 
+        <SlopeAerial>0.002</SlopeAerial> 
+      </org>
+      
+    </Materials>
+
+    <Init_deposit>
+      <LayersNb>1</LayersNb>
+      <dep>
+        <FileName>data/gbr_N.dep</FileName>
+      </dep>
+    </Init_deposit>
+    
+  </struct-sediments>	
+
+  <struct-processes>
+
+    <StreamClass>
+      <NbClass>2</NbClass>
+      <cl>
+        <BedSlope>0.0</BedSlope>
+        <WDRatio>30</WDRatio>
+      </cl>
+      <cl>
+        <BedSlope>0.2</BedSlope>
+        <WDRatio>10</WDRatio>
+      </cl>
+    </StreamClass>
+    
+    <Sources>
+      <totalSourcesNb>1</totalSourcesNb>
+      <maxDepth unit="m">6</maxDepth>
+      <sourceVal>
+        <ts unit="a">-128000</ts>
+        <te unit="a">10000</te>
+        <recurencePerc>75.0</recurencePerc>
+        <x unit="m">310709.3</x>
+        <y unit="m">8325284.0</y>
+        <xRange unit="m">55</xRange>
+        <yRange unit="m">32</yRange>
+        <streamDepth unit="m">6</streamDepth>
+        <Vx unit="m/s">2.0</Vx>
+        <Vy unit="m/s">2.0</Vy>
+        <Q unit="m3/s">100</Q>
+        <Qs unit="Mt/a">0.07</Qs>
+        <sedConcentration>0 0 0 20 40 40 0</sedConcentration>
+        <flowType>0</flowType>
+      </sourceVal>
+    </Sources>
+    
+    <RainfallGrid>
+      <rainFlowAccu>100</rainFlowAccu>
+      <rainMaxFW>500</rainMaxFW>
+      <rainElevation unit="m">1.5</rainElevation>
+      <rainCombination>0</rainCombination>
+      <rainStreamQ unit="m3/s">0.5</rainStreamQ>
+      <nbRainfallInterval>1</nbRainfallInterval>
+      <rain>
+        <startTime unit="a">0</startTime>
+        <endTime unit="a">1000000</endTime>
+        <rainFile>data/ridge.rain</rainFile>
+      </rain>
+    </RainfallGrid>
+    
+    <MassMovement>
+      <massFlowAccu>20</massFlowAccu>
+      <massCurvature>0.0</massCurvature>
+      <Aerial>
+        <upSlopeArea unit="km2">2.5</upSlopeArea>
+        <belowUpSlope>
+          <steepnessIndex>0.31</steepnessIndex>
+          <concavityIndex>0.2</concavityIndex>
+        </belowUpSlope>
+        <aboveUpSlope>
+          <steepnessIndex>0.26</steepnessIndex>
+          <concavityIndex>0.</concavityIndex>
+        </aboveUpSlope>
+      </Aerial>
+      <Marine>
+        <upSlopeArea unit="km2">2.5</upSlopeArea>
+        <belowUpSlope>
+          <steepnessIndex>0.31</steepnessIndex>
+          <concavityIndex>0.2</concavityIndex>
+        </belowUpSlope>
+        <aboveUpSlope>
+          <steepnessIndex>0.26</steepnessIndex>
+          <concavityIndex>0.</concavityIndex>
+        </aboveUpSlope>
+      </Marine>
+    </MassMovement>
+    
+    <Carbonates-Organics>
+      <carborgTime unit="a">250</carborgTime>
+      <tempsalFile>data/temperature_salinity.csv</tempsalFile>
+      <membershipfunctionNb>1</membershipfunctionNb>
+      <fuzzyfunctionNb>1</fuzzyfunctionNb>
+      <fuzzyruleNb>1</fuzzyruleNb>
+      <membershipFunction>
+        <functionName>shallow</functionName>
+        <functionVariable>depth</functionVariable>
+        <functionPts>3</functionPts>
+        <functionSubset>
+          <xypoints>0.0 0.0</xypoints>
+          <xypoints>0.0 1.0</xypoints>
+          <xypoints>25.0 0.0</xypoints>
+        </functionSubset>
+      </membershipFunction>
+      
+      <fuzzyFunction>
+        <fuzzyName>slow_growth</fuzzyName>
+        <fuzzyVariable>growth</fuzzyVariable> 
+        <fuzzyPts>2</fuzzyPts>
+        <fuzzySubset>
+          <xycoords>0.0 0.0</xycoords>
+          <xycoords>0.0005 1.0</xycoords>
+        </fuzzySubset>
+      </fuzzyFunction>
+      
+      <fuzzyRule>
+        <matName>car_sand</matName>
+        <fuzzyFctName>slow_growth</fuzzyFctName>
+        <variableNb>1</variableNb>
+        <membershipSet>
+          <membershipFctName>shallow</membershipFctName>
+        </membershipSet>
+      </fuzzyRule> 
+      
+    </Carbonates-Organics>
+    
+  </struct-processes>
+  
+  <struct-param>
+    
+    <SedimentTransportParameters>
+      <streamMinDepth unit="m">0.05</streamMinDepth>
+      <streamMaxDepth unit="m">20</streamMaxDepth>
+      <streamMinWidth unit="m">1</streamMinWidth>
+      <streamMaxWidth unit="m">1000</streamMaxWidth>
+      <flowWalkerMinVelocity unit="m/s">0.0001</flowWalkerMinVelocity>
+      <flowWalkerErosionLimit unit="m">0.25</flowWalkerErosionLimit>
+      <flowWalkerDepositionLimit unit="m">0.25</flowWalkerDepositionLimit>
+      <minSedimentLoad unit="t/a">0.000000000001</minSedimentLoad>
+      <maxFWStepPerCell>150</maxFWStepPerCell>
+    </SedimentTransportParameters>
+    
+    <Manning>
+      <openchannelFlow>0.02</openchannelFlow>
+      <hyperpycnalFlow>0.01</hyperpycnalFlow>
+      <hypopycnalFlow>0.080</hypopycnalFlow>
+    </Manning>
+    
+    <Porosity>
+      <EffPressureNb>6</EffPressureNb>
+      <PorosityFile>data/porosity.por</PorosityFile>
+    </Porosity>
+    
+  </struct-param>
+  
+  <struct-output>
+    
+    <OutputDirectory>outSPM</OutputDirectory>
+    <OutputWaterLevel>1</OutputWaterLevel>
+    
+  </struct-output>
+  
+  <struct-plugin>
+  
+    <SeismicLine>
+      <Xmin unit="m">1000.0</Xmin>
+      <Xmax unit="m">1000.0</Xmax>
+      <Ymin unit="m">30000.0</Ymin>
+      <Ymax unit="m">50000.0</Ymax>
+    </SeismicLine>
+    
+    <RMSModel>
+      <Xmin unit="m">200300</Xmin>
+      <Xmax unit="m">250300</Xmax>
+      <Ymin unit="m">3928300</Ymin>
+      <Ymax unit="m">4928300</Ymax>
+    </RMSModel>
+    
+    <UnderworldPlugin>
+      <UsyncFolder>udw_lecode</UsyncFolder>
+      <UsyncTime unit="a">500000</UsyncTime>
+    </UnderworldPlugin>
+  
+    <OceanPlugin>
+      <circForcing>1</circForcing>
+      <waveForcing>1</waveForcing>
+      <OsyncFolder>lecode_ocean</OsyncFolder>
+      <OsyncTime unit="a">500</OsyncTime>
+      <morphLimit unit="m">2.5</morphLimit>
+      <morphAc>500.0</morphAc>
+      <nbForecast>1</nbForecast>
+      <forecastClass>
+        <subgroupNb>1</subgroupNb>
+        <Ostart unit="a">-120000</Ostart>
+        <Oend unit="a">1000</Oend>
+        <subgroupProp>0.1</subgroupProp>
+      </forecastClass>
+    </OceanPlugin>
+    
+  </struct-plugin>
+
+</lecode:lecodeInput>
