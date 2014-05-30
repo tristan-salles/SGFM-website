@@ -1116,7 +1116,7 @@
 <pre  ><code>    &lt;Carbonates-Organics&gt;
       &lt;carborgTime unit="a"&gt;250&lt;/carborgTime&gt;
       &lt;tempsalFile&gt;data/temperature_salinity.csv&lt;/tempsalFile&gt;
-      &lt;membershipfunctionNb&gt;1&lt;/membershipfunctionNb&gt;
+      &lt;membershipfunctionNb&gt;2&lt;/membershipfunctionNb&gt;
       &lt;fuzzyfunctionNb&gt;1&lt;/fuzzyfunctionNb&gt;
       &lt;fuzzyruleNb&gt;1&lt;/fuzzyruleNb&gt;
       &lt;membershipFunction&gt;
@@ -1127,6 +1127,17 @@
           &lt;xypoints&gt;0.0 0.0&lt;/xypoints&gt;
           &lt;xypoints&gt;0.0 1.0&lt;/xypoints&gt;
           &lt;xypoints&gt;25.0 0.0&lt;/xypoints&gt;
+        &lt;/functionSubset&gt;
+      &lt;/membershipFunction&gt;
+      &lt;membershipFunction&gt;
+        &lt;functionName&gt;distance_to_sand&lt;/functionName&gt;
+        &lt;functionVariable&gt;material-distance&lt;/functionVariable&gt;
+        &lt;sedName&gt;car_sand&lt;/sedName&gt;
+        &lt;functionPts&gt;3&lt;/functionPts&gt;
+        &lt;functionSubset&gt;
+          &lt;xypoints&gt;0.0 0.0&lt;/xypoints&gt;
+          &lt;xypoints&gt;10000.0 1.0&lt;/xypoints&gt;
+          &lt;xypoints&gt;25000.0 0.0&lt;/xypoints&gt;
         &lt;/functionSubset&gt;
       &lt;/membershipFunction&gt;
       &lt;fuzzyFunction&gt;
@@ -1196,12 +1207,12 @@
     			used to facilitate the expression of fuzzy rules.<hr>
   	<stronger> &lt;functionVariable&gt; element</stronger>: Default variable name to set up. 
 			<br>
-    			The user can choose between 14 default membership variable names listed below:<br>
+    			The user can choose between 13 default membership variable names listed below:<br>
     				&nbsp;&nbsp;&nbsp; &#9675; depth: water depth in metres<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; ocean-energy: wind-induced wave and currents circulation velocity in the area in m/s (the ocean plugin needs to be turned on)<br>
     				&nbsp;&nbsp;&nbsp; &#9675; shore-distance: distance in metres to shoreline<br>
     				&nbsp;&nbsp;&nbsp; &#9675; river-distance: distance in metres to nearest river source<br>
-    				&nbsp;&nbsp;&nbsp; &#9675; carbonate-distance: distance in metres to nearest surface exposed carbonate<br>
-    				&nbsp;&nbsp;&nbsp; &#9675; organic-distance: distance in metres to nearest surface exposed organic<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; material-distance: distance in metres to nearest surface exposed sediment (the sediment type is specified in element &lt;sedName&gt;)<br>
     				&nbsp;&nbsp;&nbsp; &#9675; sedimentation-rate: sedimentation rate in metres per year<br>
     				&nbsp;&nbsp;&nbsp; &#9675; temperature: surface temperature in Celsius<br>
     				&nbsp;&nbsp;&nbsp; &#9675; salinity: degree of salinity in ppm<br>
@@ -1219,6 +1230,9 @@
     					deposits in metres (affects material subsurface).<br>
     				&nbsp;&nbsp;&nbsp; &#9675; age: time since the layer was deposited in years (affects material 
     					subsurface).	<hr>
+  	<stronger> &lt;sedName&gt; element</stronger>: This element is optional and is only required when using the material-name fuzzy variable.
+  			 Name of the sediment type defined in the &lt;Materials&gt; 
+    			element that will be used to compute the distance.<hr>
   	<stronger> &lt;functionPts&gt; element</stronger>: Number of points describing the shape of the 
     			membership function.<hr>
   	<stronger> &lt;functionSubset&gt; element</stronger>:Collection of points defining the membership function.
