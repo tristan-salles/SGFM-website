@@ -1,162 +1,370 @@
-<!doctype html>
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>SGFM Framework</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Sediment Transport Geological Scale">
+    <meta name="author" content="Tristan Salles">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-	<link rel="icon" type="image/png" href="figures/favicon.png" />
-     <link rel="shortcut icon" href="figures/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  </head>
-  
-  
-  <body>
-    <div class="wrapper">
+    <title>SgFm - Sediment Transport @ Geological Scale</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/freelancer.css" rel="stylesheet" type="text/css">
+
+    <!-- Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="shortcut icon" href="img/favicon.png" />
+
+    <!-- IE8 support for HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#page-top">SgFm framework</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#access">ACCESS</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#about">ABOUT</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#Lecode">Lecode</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#portfolio">PORTFOLIO</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#contact">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="img/profile.png" alt="">
+                    <div class="intro-text">
+                        <span class="name">SgFm</span>
+						<br>
+                        <!--hr class="star-light"-->
+                        <span class="skills">Sediment Transport @ Geological Scale</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
     
-      <header>
+    <section id="access">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Access</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+           <div class="row">
+            	<div class="col-lg-4 col-lg-offset-2">
+            		<p>The website and the associated github repository is hosting some documentation related to Lecode and the SgFm framework and 
+            		not the source codes!</p>
+            	</div>
+            	<div class="col-lg-4">
+            		<p>The code is not available as an open source package. However, there are possible agreements for non-commercial licensing so 
+            		feel free to drop us a line to discuss possible collaborations and specific arrangements.</p>
+            	</div>
+            </div>
+        </div>
+    </section>
     
-        <h1>Stratigraphic &amp; Geomorphic Forward Modelling Framework </h1>
-        <h4>Sediment Transport @ Geological Scales.</h4>
-
-        <p class="view"><a href="https://github.com/lecode-model/SGFM">
-        	<stronger>View the Doc on GitHub</stronger> <small>Lecode-model/SGFM</small></a>
-        </p>
-        
-        <ul>
-          <li><a href="https://github.com/lecode-model/SGFM/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/lecode-model/SGFM/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/lecode-model/SGFM">View On <strong>GitHub</strong></a></li>
-        </ul>
-        
-        <p class="Main"><a href="index.html">
-			<stronger>Main</stronger> <small>The way back home...</small></a>
-			<small>
-      		<ul2>
-				<li2> <a href="#lecode-mdl">LECODE</a></li2>
-				<li2> <a href="#access">Access</a></li2>
-				<li2> <a href="#support-or-contact">Support</a></li2>
-				<li2><font color="white"> .. </font></li2>
-			</ul2>
-			</small>
-		</p>
-		
-        <p class="overview"><a href="overview.html">
-        	<stronger>LECODE Capability in a Nutshell</stronger> <small>A quick overview...</small></a>
-        </p>
-        
-        <p class="dependencies"><a href="dependencies.html">
-        	<stronger>Installation</stronger> <small>Dependencies requirements</small></a>
-        </p>
-        
-        <p class="input"><a href="inputs.html">
-        	<stronger>XmL Input</stronger> <small>How input files are structured ?</small></a>
-        </p>
-        
-        <p class="examples"><a href="examples.html">
-        	<stronger>Getting Started</stronger> <small>Hands-on examples...</small></a>
-        </p>
+    <section class="success" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>About</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2">
+                    <p>The <strong>Stratigraphic  &amp; Geomorphic Forward Modelling Framework</strong> (SgFm)  is an innovative 
+                     parallel numerical framework which aims to conduct coupled 
+                    thermal-mechanical / stratigraphic-oceanic modelling of continental margins, sedimentary basins and 
+                    associated landscape dynamics.
+                    </p>
+                </div>
+			</div>
+			<div class="row">
+				<div class="col-xs-8 col-xs-offset-2"><!--col-md-8 col-md-offset-2"-->
+					<img src="figures/sgfm.png" class="img-responsive img-centered" alt="">
+				</div>
+			</div>
+            <div class="row">
+	            <div class="col-lg-4">
+					<br>
+                    <p><strong>Lecode</strong> represents the first milestone in the development 
+                    of the SgFm Framework and is designed to be the core scientific and numerical component of the infrastructure.
+                    </p>
+                </div>
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <a href="https://github.com/Lecode-model/SGFM" target="_blank" class="btn btn-lg btn-outline">
+                        <i class="fa fa-download"></i> Website hosted on <strong>GitHub</strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
     
-        <p class="wiki"><a href="wiki.html">
-			<stronger>Forum</stronger> <small>Connect with the community.</small></a>
-		</p>
-      </header>
-      
-      <section>
-        
-        <h3>
-			<a name="welcome-to-SGFM-pages" class="anchor" href="#welcome-to-SGFM-pages">
-			<span class="octicon octicon-link"></span></a>Welcome to the SGFM framework
-		</h3>
+    <section id="Lecode">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Lecode</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+            <p>
+            <strong>Lecode</strong> is a new numerical approach for simulating geomorphic and stratigraphic processes that combines open-channel flow with non-uniform sediment transport law, and semi-empirical diffusive mass wasting.
+            </p>
+            <p> The main enhancements in <strong>Lecode</strong> implementation in comparison to other stratigraphic forward models are:
+            <br><br>
+		    &otimes; a fully parallelised approach, which increases the computational power and could take fully advantage of <i>High Performance Computing</i> (HPC) infrastructures, 
+			<br><br>
+		    &otimes; a new formulation for open-channel transport and mass-wasting representation, ensuring conservation of mass and momentum
+			and allowing simultaneous erosion, transport and deposition, <br><br>
+		    &otimes; a hybrid approach inspired by the simplified <i>Marker-and-Cell</i> theory and the <i>Path-Sampling</i> method to simulate flow 
+			dynamics on a <i>triangulated irregular network</i> (TIN),
+			<br><br>
+		    &otimes; an <i>innovative remeshing strategy</i> of the TIN based on depressionless and flow accumulation algorithms, which allows for variable spatial resolution and ensure the stability of open-channel flow hydrodynamics solution,<br><br>
+		    &otimes; the representation of a virtually <i>unlimited number of user-defined sediment classes</i>.
+	        </p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="success" id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Portfolio</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 portfolio-item">
+					<a href="http://lecode-model.github.io/test-template/overview.html" class="portfolio-link" data-toggle="modal">
+                    <!--a href="#portfolioModal1" class="portfolio-link" data-toggle="modal"-->
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+								<p> <strong>Lecode Overview</strong> </p>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/lecode.png" class="img-responsive" alt="" />
+					</a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="http://lecode-model.github.io/test-template/installation.html" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+								<p> <strong>Installation Guide</strong> </p>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/installation.png" class="img-responsive" alt="" />
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="http://lecode-model.github.io/test-template/input.html" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+								<p> <strong>Input File</strong> </p>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/input.png" class="img-responsive" alt="" />
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+								<p> <strong>Input Generation from GIS data</strong> </p>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/gis.png" class="img-responsive" alt="" />
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+								<p> <strong>Visualisation Tips</strong> </p>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/visu.png" class="img-responsive" alt="" />
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
+                    <a href="http://lecode-model.github.io/test-template/cookbook.html" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+								<p> <strong>Cookbook - hands-on examples</strong> </p>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/cookbook.png" class="img-responsive" alt="" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Contact Us</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                
+                    <p>Wanting more information or having troubles with the code? Check out the documentation in the portfolio or 
+                    use the contact form below and we’ll help you sort it out.<br><br>
+		    </p>
+            
+                    <form method="POST" action="http://forms.brace.io/sgfm.framework@gmail.com">
+    
+                        <div class="row">
+                            <div class="form-group col-xs-12 floating-label-form-group">
+                                <label for="exampleInputName">Name</label>
+                                <input name="name" type="name" class="form-control" id="exampleInputName" placeholder="Enter name">
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="form-group col-xs-12 floating-label-form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input name="_replyto" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                            </div>
+                        </div>    
+                        
+                        <div class="row">
+                            <div class="form-group col-xs-12 floating-label-form-group">
+                                <label for="exampleTextArea">Message</label>
+                                <textarea name="message" class="form-control" rows="5"  placeholder="Message"></textarea>    
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="form-group col-xs-12 floating-label-form-group">
+                                <button type="submit" class="btn btn-lg btn-success">Send</button>
+                                <input type="hidden" name="_next" value="http://lecode-model.github.io/test-template/index.html"
+                            </div>
+                         </div>  
+                         
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-xs-4">
+                        <h3>Location</h3>
+                        <p>11 Julius Avenue, Earth Science Centre
+                            <br>North Ryde, NSW 2113
+                            <br> Australia</p>
+                    </div>
+                    <div class="footer-col col-xs-4">
+                        <h3>Around the Web</h3>
+                        <ul class="list-inline">
+                            <!--li><a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                            </li-->
+                            <li><a href="https://plus.google.com/112301016143001604171/posts" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                            </li>
+                            <!--li><a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                            </li-->
+                            <li><a href="http://au.linkedin.com/in/sallestristan/"  target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                            </li>
+                            <!--li><a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
+                            </li-->
+                        </ul>
+                    </div>
+                    <div class="footer-col col-xs-4">
+                        <h3>About the Site</h3>
+                        <p>Project maintained by the <a href="https://github.com/Lecode-model">SgFm Team</a>. 
+                        Hosted on GitHub Pages and using Freelancer Theme created by <a href="http://startbootstrap.com">Bootstrap</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; 2014 - SgFm Framework
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-		<p>
-			<strongest>
-				SGFM is an innovative parallel numerical framework which aims to conduct coupled thermal-mechanical-stratigraphic-oceanic 
-				modelling of continental margins, sedimentary basins and associated landscape dynamics.
-			</strongest>
-			<br>
-			<br>
-			<a href="http://csiro.au" class="user-mention">CSIRO</a> has been investing over the past 3 years in a unified, predictive science of surface 
-			processes and stratigraphy through the development of a Stratigraphic  &amp; Geomorphic Forward Modelling Framework 
-			(SGFM). 
-			<br>
-			<br>
-			<br>
-			<img src="figures/sgfm.png">
-			<br>
-			<br>
-			<br>
-			<br>
-			<strongest>LECODE</strongest> represents the first milestone in the development of the SGFM Framework and is designed to be the core scientific 
-			and numerical component of the infrastructure.
-		<p>
-
-		<h3>
-			<a name="lecode-mdl" class="anchor" href="#lecode-mdl">
-			<span class="octicon octicon-link"></span></a>LECODE model
-		</h3>
-		
-		<p><strongest>LECODE</strongest> is a new numerical approach for simulating geomorphic and stratigraphic processes that combines 
-			open-channel flow with non-uniform sediment transport law, and semi-empirical diffusive mass wasting.
-		</p>
-		
-		<p> The main enhancements in <strongest>LECODE</strongest> implementation in comparison to other stratigraphic forward models are:
-			<ul>
-				<li> a fully parallelised approach, which increases the computational power and could take fully advantage of <i>High Performance 
-					Computing</i> (HPC) infrastructures;
-				<li> a new formulation for open-channel transport and mass-wasting representation, ensuring conservation of mass and momentum
-					and allowing simultaneous erosion, transport and deposition.
-				<li> a hybrid approach inspired by the simplified <i>Marker-and-Cell</i> theory and the <i>Path-Sampling</i> method to simulate flow 
-					dynamics on a <i>triangulated irregular network</i> (TIN).
-				<li> an <i>innovative remeshing strategy</i> of the TIN based on depressionless and flow accumulation algorithms, which allows for variable 
-					spatial resolution and ensure the stability of open-channel flow hydrodynamics solution.
-				<li> the representation of a virtually <i>unlimited number of user-defined sediment classes</i>.
-			</ul>
-			<br>
-			<img src="figures/applications.png">
-			<br>
-			<br>
-		</p>
-
-		<h3>
-			<a name="access" class="anchor" href="#access">
-			<span class="octicon octicon-link"></span></a>Accessing the capability
-		</h3>
-
-		<p>The website and the associated github repository is <i> hosting some documentation</i> related to LECODE and the
-			SGFM framework  and not the source codes!
-			<br>  
-			<br>
-			The code is not available as an open source package. However, there are possible agreements for non-commercial licensing so feel free to drop us a line at 
-			<a href="mailto:tristan.salles@csiro.au">SGFM support team</a> to discuss possible collaborations and
-			specific arrangements.
-		</p>
-
-		<h3>
-			<a name="support-or-contact" class="anchor" href="#support-or-contact">
-			<span class="octicon octicon-link"></span></a>Support or Contact
-		</h3>
-
-		<p>Having troubles with the code? Check out the documentation in the child pages as well as the wiki or contact the
-			<a href="mailto:tristan.salles@csiro.au">SGFM support team</a> and we’ll help you sort it out.
-		</p>
-      
-      </section>
-      
-	  <footer>
-		
-		<p>
-			<img src="figures/lecode.png" alt="SGFM logo" width="20" hspace="5" align="left">
-			<small>Project maintained by the <a href="https://github.com/lecode-model">SGFM Team</a><br>
-			<small>Hosted on GitHub Pages.</small>
-		</p>
-	  </footer>
-      
+    <div class="scroll-top page-scroll visible-xs visble-sm">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
     </div>
-    
-	<script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+    <script src="js/freelancer.js"></script>
+
+</body>
+
 </html>

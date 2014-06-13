@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Sediment Transport Geological Scale">
+    <meta name="author" content="Tristan Salles">
+
+    <title>SgFm - Sediment Transport @ Geological Scale</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/freepage.css" rel="stylesheet" type="text/css">
+
+    <!-- Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="shortcut icon" href="img/favicon.png" />
+
+    <!-- IE8 support for HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" class="overview">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://lecode-model.github.io/test-template/index.html">SgFm framework</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#delta">DELTA</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#ridge">RIDGE</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#s2s">S2S</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#rift">RIFT</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="img/cookbook.png" alt="">
+                    <div class="intro-text">
+                        <span class="name">Cookbook</span>
+                        <span class="skills">Lecode Recipes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+			
+	<section id="overview">
+		<br><br>
+    	<div class="container">
+	  		<div class="row">
+    	     	<div class="col-lg-12 text-left">
+        	 		<p>	The following is the list of hands-on examples supported by the <a href="https://github.com/lecode-model" target="_blank">SGFM Team</a>. 
+			These applications are provided with Lecode code base and cover its main capabilities.
+			<br> 
+			These will help you to familiarise with the code. There are other applications which will be publicly released in the future.
+			</br>
+			To run an example you will need to open a Terminal, move to the chosen folder and use the following command:
+			<pre><code>$ mpirun -np X /path-to-lecode-folder/bin/lecode inputfile.xml
+</code></pre><p>
+			Where <code>X</code> is the number of processors you want to use, <code>path-to-lecode-folder</code> is quite self explanatory and <code>inputfile.xml</code> is the XmL input file
+			located in the example folder.</p>
+		</div> 
+		<div class="col-lg-12 text-center">
+   			<hr class="star-primary">
+   		</div>
+	</section>
+
+
+	<section id="delta">
+    	<div class="container">
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<h2>Delta application</h2>
+    	        </div>
+    	   	</div>
+	   		<div class="row">
+    	      	<div class="col-lg-12 text-left">
+	    	  		<p>
+   		         	The model has been applied to understand the relative importance of sediment supply over fault-controlled 
+					accommodation space in controlling the along-strike variability in shelf-margin and upper slope architecture of the Bonaparte Basin (NW Australia). 
+					<br>
+					<strong>Lecode</strong> allows the quantification of the range of: 
+					<i>(1)</i> sedimentation rates; 
+					<i>(2)</i> global shelf-margin subsidence; and 
+					<i> (3)</i> local fault-induced subsidence values 
+					necessary to reconstruct the 3D architecture of the shelf-margin delta and the Bonaparte Basin.
+					</p>
+				</div>
+    	   	</div>
+			<div class="row">
+  				<div class="col-xs-8 col-xs-offset-2"><br>
+					<img src="figures/delta1.png" class="img-responsive img-centered" alt=""><br>
+				</div>
+			</div>
+	   		<div class="row">
+    	      	<div class="col-lg-12 text-left">
+					<p>
+					Here, the proposed example simulates the first part of the Bonaparte Delta progradation.
+					To get more details on the results of <strong>Lecode</strong> Bonaparte Delta simulation see
+					<a href="http://www.searchanddiscovery.com/abstracts/html/2013/90163ace/abstracts/bourg.htm" target="_blank">Bourget et al., 2013</a>
+					</p>
+				</div>
+			</div>
+			<div class="row">
+  				<div class="col-xs-8 col-xs-offset-2"><br>
+					<img src="figures/delta.png" class="img-responsive img-centered" alt=""><br>
+				</div>
+			</div>
+	   		<div class="row">
+    	      	<div class="col-lg-12 text-left">
+					<p>
+					Download the delta <a href="examples/delta.tar target="_blank">input files</a> (tarball).
+					</p>
+					<p>
+<pre><code>folder: delta
+specs: 227x145 cells, 400 m resolution, 30 kyrs
+processes: uplift/subsidence + river + sea-level change
+run duration: ~20 mn
+</code></pre>
+					</p>
+	        	</div>
+			</div> 	   	
+		</div>
+		<div class="col-lg-12 text-center">
+   			<hr class="star-primary">
+   		</div>
+ 	</section>
+
+	<section id="ridge">
+    	<div class="container">
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<h2>Ridge evolution</h2>
+    	        </div>
+    	   	</div>
+	   		<div class="row">
+    	      	<div class="col-lg-12 text-left">
+	    	  		<p>
+   		         	The Ridge example  illustrates the impact of contrasting bedrock erodibility on drainage 
+					development and sediment yielding during the evolution of a plateau to a ridge in a bedrock landscape, 
+					under imposed climate and uplift.<br>
+					These two allogenic factors were set to represent a nonseasonal humid climate, with a mean annual rainfall 
+					of 1500 mm, and a constant tectonic uplift rate of 5 mm/yr with a fixed-elevation boundary condition. 
+					This fixed elevation boundary condition imposes a constant base-level but precludes the formation of a 
+					piedmont at the base of the rising landscape.
+					</p>
+				</div>
+    	   	</div>
+			<div class="row">
+  				<div class="col-xs-8 col-xs-offset-2"><br>
+					<img src="figures/ridge.png" class="img-responsive img-centered" alt=""><br>
+				</div>
+			</div>
+	   		<div class="row">
+    	      	<div class="col-lg-12 text-left">
+					<p>
+					The experiment initial deposits is divided in a southern domain with non cohesive material and a northern one 
+					with a basement material erodibility of 0.25.<br>
+					Download the ridge <a href="examples/ridge.tar target="_blank">input files</a> (tarball).</p><p>
+<pre><code>folder: ridge
+specs: 401x151 cells, 50 m resolution, 30 kyrs
+processes: uplift (5 mm/yr) + rain + mass movement
+run duration: ~50 mn
+</code></pre></p>
+					<p>
+					More <strong>Lecode</strong> simulations of the influence of contrasting bedrock erodibility on landscape dynamics 
+					are available in the following submitted paper <a href="documents/EPSL.pdf" target="_blank">EPSL Submission</a>.
+					</p>
+				</div>
+			</div> 	   	
+		</div>
+		<div class="col-lg-12 text-center">
+   			<hr class="star-primary">
+   		</div>
+ 	</section>
+
+	<section id="s2s">
+    	<div class="container">
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<h2>Source to sink model</h2>
+    	        </div>
+    	   	</div>
+	   		<div class="row">
+    	      	<div class="col-lg-12 text-left">
+	    	  		<p>
+   		         	The source-to-sink system comprises all areas that contribute to erosion, transportation and deposition of 
+					sediments within an erosional-depositional system from catchment headwater to deep-marine basin floor fan. 
+					You can divide the source-to-sink system into four segments as done in Sømme et al. (2009).
+					</p>
+				</div>
+    	   	</div>
+			<div class="row">
+  				<div class="col-xs-8 col-xs-offset-2"><br>
+					<img src="figures/s2s.png" class="img-responsive img-centered" alt=""><br>
+				</div>
+			</div>
+	   		<div class="row">
+    	      	<div class="col-lg-12 text-left">
+					<p>
+					Download the source to sink <a href="examples/src2sk.tar" target="_blank">input files</a> (tarball).</p><p>
+<pre><code>folder: src2sk
+specs: 298x314 cells, 250 m resolution, 500 yrs
+processes: rain + mass movement
+run duration: ~15 mn
+</code></pre></p>
+					<p>
+					The depositional pattern should be similar to the ones shown below..
+					</p>
+				</div>
+			</div> 	 
+			<div class="row">
+  				<div class="col-xs-8 col-xs-offset-2"><br>
+					<img src="figures/s2s-out.png" class="img-responsive img-centered" alt=""><br>
+				</div>
+			</div>  	
+		</div>
+		<div class="col-lg-12 text-center">
+   			<hr class="star-primary">
+   		</div>
+ 	</section>
+	
+	<section id="rift">
+    	<div class="container">
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<h2>Rift sedimentation</h2>
+    	        </div>
+    	   	</div>
+	   		<div class="row">
+    	      	<div class="col-lg-12 text-left">
+	    	  		<p>
+   		         	One of the <strong>SGFM</strong> developments effort is around the deformation of the lithosphere at 								intermediate time-scales and interlinks with surface evolution. <br>
+					To study the nature of the interferences between dynamic topography, sediment transport/erosion, and 
+					lithosphere instabilities, the <a href="https://www.underworldproject.org target="_blank">Underworld</a> model has been coupled to Lecode.
+					</p>
+				</div>
+    	   	</div>
+			<div class="row">
+  				<div class="col-xs-8 col-xs-offset-2"><br>
+					<img src="figures/udw-sgfm.png" class="img-responsive img-centered" alt=""><br>
+				</div>
+			</div>
+	   		<div class="row">
+    	      	<div class="col-lg-12 text-left">
+					<p>
+					The application is part of a larger project on <i>stratigraphic modelling of continental rifting</i>.
+					To get a detail information on the coupling technique and the full example results, see 
+					<a href="http://adsabs.harvard.edu/abs/2013EGUGA..15.6616M target="_blank">Mondy et al., 2013</a>.
+					<br>
+					<br>
+					The full model presents an oblique rifting with heterogeneous sub-continental lithospheric mantle. 
+					Two cratons of differing rheologies are rifted apart at 1cm/yr on each boundary.
+					Here, the provided example uses the displacement fields generated by Underworld and there is no 
+					coupling and consequently no feedback mechanisms between geodynamics and surface processes.
+					</p>
+				</div>
+			</div> 
+			
+			<!--div class="row">
+  				<div class="col-xs-8 col-xs-offset-2"><br>
+					<img src="figures/rift.png" class="img-responsive img-centered" alt=""><br>
+				</div>
+			</div--> 
+			
+			
+			<div class="row">
+  				<div class="col-lg-12 text-center">
+					<p>
+					<!--br>
+					<video controls="controls" width="295.5" height="246" name="Mean Grain Size Evolution" src="movies/media1.mov"></video>
+					<br--><br>
+					<video controls="controls" width="392.15" height="246" name="Cross-sections in 4D" src="movies/media4.mov"></video> 
+					<video controls="controls" width="392.15" height="246" name="Relative Elevation Evolution" src="movies/media6.mov"></video>
+					<br>
+					</p><p2>
+					Example of models ran by Luke Mondy in 2013 to illustrate the <code>vertical only</code> coupling mediator technique.
+					</p2>
+				</div>
+			</div> 
+			
+	   		<div class="row">
+    	      	<div class="col-lg-12 text-left">
+					<p><br>
+					Download the rift <a href="examples/rift.tar">input files</a> (tarball).
+<pre><code>folder: rift
+specs: 161x161 cells, 1875 m resolution, 150 kyrs
+processes: uplift/subsidence + rain + mass movement
+run duration: ~25 mn
+</code></pre>		</p>
+				</div>
+			</div> 
+		</div>
+		<div class="col-lg-12 text-center">
+   			<hr class="star-primary">
+   		</div>
+ 	</section>
+
+	
+	<footer class="text-center">
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; 2014 - SgFm Framework
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+			
+    <div class="scroll-top page-scroll visible-xs visble-sm">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+    <script src="js/freelancer.js"></script>
+
+</body>
+
+</html>

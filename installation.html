@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Sediment Transport Geological Scale">
+    <meta name="author" content="Tristan Salles">
+
+    <title>SgFm - Sediment Transport @ Geological Scale</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/freepage.css" rel="stylesheet" type="text/css">
+
+    <!-- Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="shortcut icon" href="img/favicon.png" />
+
+    <!-- IE8 support for HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" class="overview">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://lecode-model.github.io/test-template/index.html">SgFm framework</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#comp">COMPILERS</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#mpi">MPI</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#hdf5">HdF5</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#xml">XmL</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#kdtree">kdTREE</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#grid">GRID</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#lecode">Lecode</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="img/installation.png" alt="">
+                    <div class="intro-text">
+                        <span class="name">Installation Guide</span>
+                        <span class="skills">Dependencies requirements</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+	<section id="over">
+		<br><br>
+    	<div class="container">
+
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<h3>Installation Guide</h3>
+    	        </div>
+    	   	</div>
+
+	  		<div class="row">
+				<div class="col-lg-12 text-left">
+					<p>
+					This section provides steps and links on obtaining and setting up <strong>Lecode</strong> model.<br>
+					The following instructions assume a beginner’s level of familiarity with the Unix/Linux operating environment, including:
+					<br>
+			    	&otimes; How to open a terminal window,
+					<br>
+		    		&otimes; How to navigate between directories using a terminal application,
+					<br>
+		    		&otimes; How to open, edit, save and close a file using an editor through a terminal application.
+					<br>
+					There are many beginners Unix/Linux guides available as textbooks and on the Internet, including the 
+					<a href="http://www.ee.surrey.ac.uk/Teaching/Unix" target="_blank">Unix Tutorial for Beginners</a>.<br>
+					<br>
+					For help, advice or the latest information, check out the documentation in the child pages as well as 	the wiki or contact the <a href="mailto:sgfm.framework@gamil.com">SGFM support team</a> and we’ll help you sort it out.<br>
+					<br> 
+					<strong>Lecode</strong> relies on a suite of software applications, which need to be installed prior to installing <strong>Lecode</strong>. It is recommended that you install each program in the order listed. 
+					Below is the list of required dependencies:
+					<p>
+				</div>
+			</div>
+			<div class="row text-center">
+				<div class="footer-col col-xs-4">
+					<h4> <a href="#comp">Compilers</a> </h4>
+					<h4> <a href="#mpi">MPI</a> </h4>
+					<h4> <a href="#hdf5">HdF5</a> </h4>
+				</div>
+				<div class="footer-col col-xs-4">
+					<h4> <a href="#xml">XmL</a> </h4>
+					<h4> <a href="#kdtree">kd-Tree</a> </h4>
+				</div>
+				<div class="footer-col col-xs-4">
+					<h4> <a href="#grid">Gridding</a> </h4>
+					<h4> <a href="#lecode">Lecode</a> </h4>
+				</div>
+			</div>
+			
+			
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<h3>Operating Systems</h3>
+    	        </div>
+    	   	</div>
+	
+			<div class="row">
+				<div class="col-lg-12 text-left">
+					<p>
+						<strong>Lecode</strong> will work and is supported on:
+						<br>
+		    			&otimes; Linux-based OS (desktop and supercomputers)
+						<br>
+		    			&otimes; Mac OS X (Intel)
+						<br><br>
+						<b>Note:</b> <i> Lecode is currently not available on Windows.</i>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12 text-center">
+   			<hr class="star-primary">
+   		</div>
+	</section>
+	
+	<section id="comp">
+    	<div class="container">
+    		<div class="row">
+				<div class="col-lg-12">
+                  	<h2>Compilers</h2>
+   	           	</div>
+           	</div>
+	  		<div class="row">
+    	     	<div class="col-lg-12 text-left">
+        	 		<p>
+          			<strong>Lecode</strong> is currently supported for GNU compilers , however it works as well with Intel 						compilers. <br>
+					Both C, C++ and fortran compilers are required. For Linux OS , they should already been installed with your distribution. <br>
+					GNU compilers for Mac OS can be downloaded from the <a href="http://hpc.sourceforge.net" target="_blank">HPC website</a>. To install them you could follow the explanations provided on the website or proceed as follow in a Terminal: 
+<pre><code>$ gunzip gcc-X.X-bin.tar.gz   
+$ sudo tar -xvf gcc-X.X-bin.tar -C /
+</code></pre>
+					</p>
+					<p>
+					It installs everything in <code>/usr/local</code>. Then edit your <code>~/.profile</code> in Mac OS or <code>~/.bashrc</code> in Linux environment and set up the path to the installed compilers.
+<pre><code>export PATH=/usr/local/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+</code></pre>
+					</p>
+					<p>
+					Now update the configuration file in your Terminal by typing:
+<pre><code>$ source ~/.profile  (on Mac)
+$ source ~/.bashrc  (on Linux)
+</code></pre>
+					</p>
+					<p>
+					Then check that the version you've just installed of the compilers is set as the default one.
+<pre><code>$ g++ --version
+$ gfortran --version   
+$ gcc --version 
+</code></pre>					
+					</p>
+				</div>
+			</div>
+		</div> 
+		<div class="col-lg-12 text-center">
+   			<hr class="star-primary">
+   		</div>
+	</section>
+	
+	<section id="mpi">
+    	<div class="container">
+    		<div class="row">
+				<div class="col-lg-12">
+                  	<h2>Message Passing Interface</h2>
+   	           	</div>
+           	</div>
+	  		<div class="row">
+    	     	<div class="col-lg-12 text-left">
+        	 		<p>
+		 			<strong>Lecode</strong> supports MPICH and OpenMPI.  Below you will find guide to install MPICH.<br> 
+		 			MPICH can be downloaded from the <a href= "http://www.mpich.org" target="_blank">MPICH website</a>. You 			will need to download the
+					source code such as the <code>mpich-3.1 (stable release)</code>.  Once downloaded, open a Terminal, go to the untar folder and do:
+<pre><code>$ tar -xvf mpich3-xxx.tar
+$ cd mpich3-xxx
+$ CC=gcc FC=gfortran CXX=g++ ./configure --prefix=/usr/local/lecode/mpich --enable-fast=all --enable-shared --enable-sharedlibs=osx-gcc
+$ make
+$ sudo make install
+</code></pre>
+					</p><p>
+					Then edit your <code>~/.profile</code> in Mac OS or <code>~/.bashrc</code> in Linux environment and set up the paths to the installed libraries and compilers.
+<pre><code>export MPI_DIR=/usr/local/lecode/mpich
+export PATH=$MPI_DIR/bin:$PATH
+export LD_LIBRARY_PATH=$MPI_DIR/lib:$LD_LIBRARY_PATH
+export DYLD_LIBRARY_PATH=$MPI_DIR/lib:$DYLD_LIBRARY_PATH
+</code></pre>
+					</p><p>
+					Now update the configuration file in your Terminal by typing:
+<pre><code>$ source ~/.profile  (on Mac)
+$ source ~/.bashrc  (on Linux)
+</code></pre>
+					</p><p>
+			Then check that the version you've just installed of the compilers is set as the default one.
+<pre><code>$ which mpicc
+$ which mpif90  
+$ which mpic++ 
+</code></pre>
+   					</p>
+				</div>
+			</div>
+		</div> 
+		<div class="col-lg-12 text-center">
+   			<hr class="star-primary">
+   		</div>
+	</section>
+			
+			
+	<section id="hdf5">
+    	<div class="container">
+    		<div class="row">
+				<div class="col-lg-12">
+                  	<h2>Hdf5 Library</h2>
+   	           	</div>
+           	</div>
+	  		<div class="row">
+    	     	<div class="col-lg-12 text-left">
+        	 		<p>
+					<strong>Lecode</strong> uses Hdf5 as default library to produce its outputs.<br> 
+		 			Hdf5 can be downloaded from the <a href= "http://www.hdfgroup.org/HDF5/release/obtain5.html" 						target="_blank">Hdf5 website</a>. 
+		 			You will need to download the source code available for all platform such as the <code>HDF5-1.8.13 					Source Code</code>. 
+		  			Once downloaded, open a Terminal and navigate to the <code>untar</code> folder and do:
+<pre><code>$ CC=mpicc FC=mpif90 ./configure --prefix=/usr/local/lecode/hdf5 --enable-parallel --enable-fortran --enable-shared
+</code></pre>
+					</p><p>
+		  			After the configuration script has finished, checked the summary of the log which is printed on your 				screen and ensure that both Hdf5 for Fortran and Hdf5 for C are present as well as the Hdf5 compression 			facility (Zlib). If Zlib is missing you will have to install it first following documentation in the 
+		  			<a href= http://www.zlib.net" target="_blank">Zlib website</a>. 
+<pre><code>$ make
+$ sudo make install
+</code></pre>
+					</p><p>
+					Then edit your <code>~/.profile</code> in Mac OS or <code>~/.bashrc</code> in Linux environment and set up the paths to the installed libraries and compilers.
+<pre><code>export HDF5_DIR=/usr/local/lecode/hdf5
+export PATH=$HDF5_DIR/bin:$PATH
+export LD_LIBRARY_PATH=$HDF5_DIR/lib:$LD_LIBRARY_PATH
+export DYLD_LIBRARY_PATH=$HDF5_DIR/lib:$DYLD_LIBRARY_PATH
+</code></pre>
+					</p><p>
+					Now update the configuration file in your Terminal by typing:
+<pre><code>$ source ~/.profile  (on Mac)
+$ source ~/.bashrc  (on Linux)
+</code></pre>
+   					</p>
+				</div>
+			</div>
+		</div> 
+		<div class="col-lg-12 text-center">
+   			<hr class="star-primary">
+   		</div>
+	</section>
+	
+	<section id="xml">
+    	<div class="container">
+    		<div class="row">
+				<div class="col-lg-12">
+                  	<h2>XmL Parser</h2>
+   	           	</div>
+           	</div>
+	  		<div class="row">
+    	     	<div class="col-lg-12 text-left">
+        	 		<p>
+					<strong>Lecode</strong> uses FoX XmL parser for fortran.<br> 
+		 			FoX can be downloaded from the <a href= "http://www1.gly.bris.ac.uk/~walker/FoX/source" 							target="_blank">FoX repository</a>. 
+		 			You will need to download the source code available as a tarball such as <code>FoX-4.1.2.tar.gz</code>. 
+					Once downloaded, open a Terminal and navigate to the untar folder and do:
+<pre><code>$ cd FoX-xxx
+$ FCFLAGS='-O2 -fPIC' FC=mpif90 ./configure --prefix=/usr/local/lecode/FoX
+$ make
+$ sudo make install
+</code></pre>
+					</p><p>
+					Once compiled, you will need to open the <code>/usr/local/lecode/FoX/bin/FoX-config</code> file using your preferred editing file:
+<pre><code>$ sudo emacs /usr/local/lecode/FoX-xxx/bin/FoX-config
+</code></pre>
+					</p><p>
+					And change the comp_prefix (third line of the file) to the correct prefix in this case: <code>/usr/local/lecode/FoX</code> and delete the <code>/objs</code> at the end of the path.<br>
+					<br>
+					Then edit your <code>~/.profile</code> in Mac OS or <code>~/.bashrc</code> in Linux environment and set up the paths to the installed libraries and compilers.
+<pre><code>export PATH=/usr/local/lecode/FoX/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/lecode/FoX/lib:$LD_LIBRARY_PATH
+</code></pre>
+					</p><p>
+					Now update the configuration file in your Terminal by typing:
+<pre><code>$ source ~/.profile  (on Mac)
+$ source ~/.bashrc  (on Linux)
+</code></pre>
+   					</p>
+				</div>
+			</div>
+		</div> 
+		<div class="col-lg-12 text-center">
+   			<hr class="star-primary">
+   		</div>
+	</section>				
+
+	<section id="kdtree">
+    	<div class="container">
+    		<div class="row">
+				<div class="col-lg-12">
+                  	<h2>Kd-Tree</h2>
+   	           	</div>
+           	</div>
+	  		<div class="row">
+    	     	<div class="col-lg-12 text-left">
+        	 		<p>
+					<strong>Lecode</strong> uses a kd-Tree search algorithm to position flow walkers over the grids.<br> 
+		 			A kd-Tree algorithm for fortran can be downloaded from the <a href= "https://github.com/jmhodges/					kdtree2" target="_blank">kd-Tree repository</a>. 
+		 			Before downloading the required files, you will have to create a folder called <code>kdtree2</code> on 				your desktop and then download the following files from the kd-Tree webpage:
+		 			<br>
+			 		&otimes; kdtree.f90, and <br>
+			 		&otimes; kdtree2.f90
+					</br>
+					Then in your preferred text editor, copy the lines below in a new file named <code>Makefile</code> within the new <code>kdtree2</code> folder:
+<pre><code># KD_TREE2
+# For gfortran
+#
+FLAGSOPT= -O3 -funroll-loops --param max-unroll-times=2 -cpp -ftree-vectorize -ffast-math -lstdc++
+F90=mpif90
+#
+FLAGS= ${FLAGSMACHINE} ${FLAGSALWAYS} ${FLAGSOPT}  
+MY_DIR=`basename ${PWD}`
+all:  kdtree2_test kdtree_test 
+	ar -rcs libkdtree.a kdtree.o  kdtree2.o
+kdtree2_test: kdtree2.o
+	${F90} ${FLAGS} -c kdtree2.o
+kdtree_test: kdtree.o
+	${F90} ${FLAGS} -c kdtree.o
+%.o : %.f90
+	${F90} ${FLAGS} -c $<
+clean:
+	/bin/rm -f *.o *.mod *.il  
+</code></pre>
+					</p><p>
+					Save and close the file and open the downloaded <code>kdtree2.f90</code> file and change lines 22 and 23 to:
+<pre><code>! integer, parameter :: kdkind = sp
+integer, parameter :: kdkind = dp
+</code></pre>
+					</p><p>
+					It will enable the use of double precision real numbers.<br>
+					Then compile the kd-Tree library by writing the following command in your Terminal:
+<pre><code>$ cd ~/Desktop/kdtree2
+$ make 
+</code></pre>
+					</p><p>
+					Once compiled, move the folder to a place that will be pointed out within <strong>Lecode</strong> configuration file. The default is:
+<pre><code>$ sudo mv ~/Desktop/kdtree2 /usr/local/lecode/kdtree2
+</code></pre>
+					</p><p>
+					Then edit your <code>~/.profile</code> in Mac OS or <code>~/.bashrc</code> in Linux environment and set up the paths to the installed libraries and compilers.
+<pre><code>export PATH=/usr/local/lecode/kdtree2:$PATH
+export LD_LIBRARY_PATH=/usr/local/lecode/kdtree2:$LD_LIBRARY_PATH
+</code></pre>
+					</p><p>
+					Now update the configuration file in your Terminal by typing:
+<pre><code>$ source ~/.profile  (on Mac)
+$ source ~/.bashrc  (on Linux)
+</code></pre>
+   					</p>
+				</div>
+			</div>
+		</div> 
+		<div class="col-lg-12 text-center">
+   			<hr class="star-primary">
+   		</div>
+	</section>	
+
+	<section id="grid">
+    	<div class="container">
+    		<div class="row">
+				<div class="col-lg-12">
+                  	<h2>TIN Generation Library</h2>
+   	           	</div>
+           	</div>
+	  		<div class="row">
+    	     	<div class="col-lg-12 text-left">
+        	 		<p>
+		 			To generate the triangular irregular network (TIN), <strong>Lecode</strong> uses the Triangle 						Library.<br> 
+		 			Triangle can be downloaded from the <a href="http://www.cs.cmu.edu/~quake/triangle.html" 							target="_blank">Triangle website</a>. 
+		 			You will need to download the source code available as a zip file. <br>
+					Once downloaded, open a Terminal and navigate to the zip file and using root privileges move it:
+<pre><code>$ sudo mv triangle.zip /usr/local/
+$ sudo unzip triangle.zip
+$ sudo make
+</code></pre>
+					</p><p>
+					Then go within the <code>triangle.c</code> file and change the <i>main(int argc, char **argv)</i>  &amp;
+		 			<i>main(argc, argv)</i> to <i>main2(int argc, char **argv)</i> &amp; <i>main2(argc, argv)</i> at lines 				15682 &amp; 15684 respectively.<br>
+					Then compile the new file using: 
+<pre><code>$ gcc -O -DLINUX -I/usr/X11R6/include -L/usr/X11R6/lib -c -o ./triangle.o ./triangle.c 
+</code></pre>
+					</p><p>
+					Then edit your <code>~/.profile</code> in Mac OS or <code>~/.bashrc</code> in Linux environment and set up the paths to the installed libraries and compilers.
+<pre><code>export PATH=/usr/local/lecode/triangle:$PATH
+</code></pre>
+					</p><p>
+					Now update the configuration file in your Terminal by typing:
+<pre><code>$ source ~/.profile  (on Mac)
+$ source ~/.bashrc  (on Linux)
+</code></pre>
+					</p><p>
+					Finally do one of the following depending of your compiler (GNU or Intel):
+<pre><code>$ gcc -O3 -m64 -fno-common -fPIC -c -o triangle.o triangle.c 
+$ icc -O3 -m64 -fno-common -fPIC -c -o triangle.o triangle.c 
+</code></pre>
+   					</p>
+				</div>
+			</div>
+		</div> 
+		<div class="col-lg-12 text-center">
+   			<hr class="star-primary">
+   		</div>
+	</section>	
+		
+	<section id="lecode">
+    	<div class="container">
+    		<div class="row">
+				<div class="col-lg-12">
+                  	<h2>Fire Up Lecode</h2>
+   	           	</div>
+           	</div>
+	  		<div class="row">
+    	     	<div class="col-lg-12 text-left">
+        	 		<p>
+		 			If you've obtained the authorisations required for <strong>Lecode</strong> source code and if you've 				managed to install all the dependencies above, you are ready to compile <strong>Lecode</strong>.<br> 				<br> 
+		 			Prior to starting the compilation process, you will need to check the path to the libraries you've 					installed on your system as they might differs from one to the other. In <strong>Lecode</strong>, 					the configuration are defined in the <code>config</code> folder. <br>
+		 			The folder contains a bunch of configuration files associated to different configuration e.g. Linux/Mac 			or Intel/Gnu. Depending on the ones you've installed copy of the files and edit it:
+<pre><code>$ cp Makefile.cfg.osx Makefile.cfg.myconfig
+$ emacs Makefile.cfg.myconfig
+</code></pre>
+					</p><p>
+		 			In the file insure that the paths are set correctly (if not sure look at your <code>~/.profile</code> or 			<code>~/.bashrc</code> :
+<pre><code>FC= mpif90 
+CC=mpicc 
+CPP=mpicxx 
+FOX=/usr/local/lecode/FoX/bin
+TRIANGLELIB=/usr/local/lecode/triangle
+HDF5=/usr/local/lecode/hdf5
+KDTREE=/usr/local/lecode/kdtree2 
+</code></pre>
+					</p><p>
+		  			Make the necessary changes and save your file. Now open the <code> Makefile.inc</code>  file and change 			the first line to match with your new configuration file name:
+<pre><code>CFGFILE = $(TOP)/config/Makefile.cfg.myconfig
+</code></pre>
+					</p><p>
+					If you are using Intel compilers there are 3 other things that needs to be done in the file <code>Classes/ClassGeneral.f90</code>:<br>
+					&otimes; at line 18 of the file: delete the comment "!" in front of the line<br>
+					&otimes; at line 65 of the file: delete the comment "!" in front of the line<br>
+					&otimes; at line 67 of the file: add a comment "!" in front of the line<br>
+					Then compile <strongest>LECODE</strongest> sources from the top directory:
+<pre><code>$ make clobber
+$ make dist		
+</code></pre>
+					</p><p>
+					Then edit your <code>~/.profile</code> in Mac OS or <code>~/.bashrc</code> in Linux environment and set up the paths to the installed libraries and compilers.
+<pre><code>export PATH=/lecode-install-dir/bin:$PATH
+export DYLD_LIBRARY_PATH=/lecode-install-dir/build/lib:$DYLD_LIBRARY_PATH
+</code></pre>
+					</p><p>
+					Now update the configuration file in your Terminal by typing:
+<pre><code>$ source ~/.profile  (on Mac)
+$ source ~/.bashrc  (on Linux)
+</code></pre>
+					</p><p>
+					You are now ready to go... well done!
+   					</p>
+				</div>
+			</div>
+		</div> 
+		<div class="col-lg-12 text-center">
+   			<hr class="star-primary">
+   		</div>
+	</section>	
+						
+	<footer class="text-center">
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; 2014 - SgFm Framework
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+			
+    <div class="scroll-top page-scroll visible-xs visble-sm">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+    <script src="js/freelancer.js"></script>
+
+</body>
+
+</html>

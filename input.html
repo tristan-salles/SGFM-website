@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Sediment Transport Geological Scale">
+    <meta name="author" content="Tristan Salles">
+
+    <title>SgFm - Sediment Transport @ Geological Scale</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/freepage.css" rel="stylesheet" type="text/css">
+
+    <!-- Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="shortcut icon" href="img/favicon.png" />
+
+    <!-- IE8 support for HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+	<link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/solarized_light.min.css">
+	<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+    <script>
+     hljs.tabReplace = '    ';
+     hljs.initHighlightingOnLoad();
+	</script>
+
+</head>
+
+<body id="page-top" class="overview">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://lecode-model.github.io/test-template/index.html">SgFm framework</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#grid">GRID</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#time">TIME</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#ocean">OCEAN</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#sed">SEDIMENTS</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#proc">PROCESSES</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#param">PARAMETERS</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#plug">PLUGINS</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="img/input.png" alt="">
+                    <div class="intro-text">
+                        <span class="name">Lecode Input</span>
+                        <span class="skills">XmL Structure</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+	<section id="xml">
+    	<div class="container">
+	       	<div class="row">
+             	<div class="col-lg-12"><br><br>
+                	<h2>XML Input</h2>
+					<br>
+    	        </div>
+    	   	</div>
+
+			<div class="row">
+    	    	<div class="col-lg-12 text-left">
+    	        	<p>
+ 					<strong>Lecode</strong> is using XML input file. XML language, compared to standard <code>ASCII</code>, is well 						formatted and has a controlled structured. 
+					The XML input file has both constrains on the structure and content of the elements which are used to control the parameters of the simulation.  <br>
+					The XML file is at the core of the experiment design and contains all the variables and properties applicable to the simulation. <br>
+					External ASCII files (formatted in CSV) are referenced inside the XML document and provide information on the basal node position, the geometry and composition of the initial layers, uplift/subsidence, rainfall and sea level...<br>
+		 			Along side the XML input files, we developed an XML schema (XSD) file, to assist the user in setting up a particular 			experiment as well as to give some informations regarding the definition of the parameters used in the input files. 
+		 			<br><br>
+		 			The XML input file is not intended to work but contains all the elements that could be declared for any particular 				<strong>Lecode</strong> simulations (<a href="documents/input_all.xml" target="_blank">the complete XML input file</a>). To start with a working input file it is recommended to use one of the <a href="http://lecode-model.github.io/test-template/examples.html" target="_blank">cookbook examples</a>.
+					</p>
+	        	</div>
+			</div>
+
+		</div>
+ 	</section>
+			
+
+	<section id="xml2">
+    	<div class="container">
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<h2>Header</h2>
+					<br>
+    	        </div>
+    	   	</div>
+	
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p>
+ 	   	<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;lecode:lecodeInput xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:lecode="http://subversion.assembla.com/svn/xsd/XSDlecode"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xsi:schemaLocation="http://subversion.assembla.com/svn/xsd/XSDlecode
+  http://subversion.assembla.com/svn/xsd/XSDlecode/LECODE.xsd"&gt;</code></pre>
+					</p>
+	        	</div>
+			</div>
+
+		</div>
+		<div class="col-lg-12 text-center">
+   			<hr class="star-primary">
+   		</div>
+ 	</section>
+		
+	<section id="grid">
+    	<div class="container">
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<br><h2>Mesh  &amp; TIN Declaration</h2>
+					<br>
+    	        </div>
+    	   	</div>
+	
+			<div class="row">
+    	    	<div class="col-lg-12 text-left">
+    	        	<p>
+					The first structure which appears on the input file is related to the definition of the stratigraphic grid 	and flow computational grid (TIN). <br><b>Most of the elements within this structure are required.</b>
+					</p>
+	        	</div>
+			</div>
+			
+			<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;Strata_grid&gt; element definitions</h3>
+					<br>
+    	        </div>
+    	   	</div>
+
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p>
+<pre><code  >  &lt;struct-Mesh-TIN&gt;
+    &lt;Strata_grid&gt;
+      &lt;StrataGrid&gt;data/gbr_N.nodes&lt;/StrataGrid&gt;
+      &lt;GridX&gt;330&lt;/GridX&gt;
+      &lt;GridY&gt;330&lt;/GridY&gt;
+      &lt;GridSpace unit="m"&gt;500&lt;/GridSpace&gt;
+      &lt;GridXo unit="m"&gt;305250.0&lt;/GridXo&gt;
+      &lt;GridYo unit="m"&gt;8220250.0&lt;/GridYo&gt;
+    &lt;/Strata_grid&gt;</code></pre>
+					</p>
+					<p2><strong> &lt;StrataGrid&gt; element</strong>:  
+		It refers to the name of the basement node file and its path.
+			The path is from the main input file location. 
+			This ASCII file provides for each line the following information:<br>
+			&nbsp;&nbsp;&nbsp; &#9675; node IDs,<br>
+			&nbsp;&nbsp;&nbsp; &#9675; X coordinates in metres (this axis has a West to East orientation),<br>
+			&nbsp;&nbsp;&nbsp; &#9675; Y coordinates in metres (this axis has a South to West orientation), and<br>
+			&nbsp;&nbsp;&nbsp; &#9675; Z coordinates in metres.<br>
+			In addition the nodes should be defined in increasing order starting
+			from the Sout-West corner and going first along the X axis (West to East).<br>
+			<strong> &lt;GridX&gt; element</strong>:  
+		Number of nodes along the X axis (West to East direction). 
+			It should conform with basement node file definition.
+			<br>
+			<strong> &lt;GridY&gt; element</strong>:  
+		Number of nodes along the Y axis (West to East direction). 
+			It should conform with basement node file definition.
+			<br>
+			<strong> &lt;GridSpace&gt; element</strong>:  
+		Grid spacing (in metres), defining the stratigraphic grid resolution.
+			It should conform with basement node file definition.
+			<br>
+			<strong> &lt;GridXo&gt; element</strong>:  
+		South West corner X coordinate expressed in metres.
+			It should conform with basement node file definition.
+			<br>
+			<strong> &lt;GridYo&gt; element</strong>:  
+		South West corner Y coordinate expressed in metres.
+			It should conform with basement node file definition.	
+					</p2>
+				</div>
+			</div>
+		
+			<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;TIN_refine&gt; element definitions</h3>
+					<br>
+    	        </div>
+    	   	</div>
+
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p>
+<pre  ><code>    &lt;TIN_refine&gt;
+      &lt;HighRes unit="m"&gt;500&lt;/HighRes&gt;
+      &lt;LowRes unit="m"&gt;1000&lt;/LowRes&gt;
+      &lt;StepFill unit="m"&gt;0.001&lt;/StepFill&gt;
+      &lt;FlowAcc&gt;10&lt;/FlowAcc&gt;
+    &lt;/TIN_refine&gt;</code></pre>
+					</p>
+					<p2>
+					This elements defines the Triangular Irregular Network (TIN) . 
+		The TIN is used to compute the flow surface evolution and is
+		automatically generated during simulation to ensure better resolution
+		calculation in places most subject to potential flow processes.<br>
+		<strong> &lt;HighRes&gt; element</strong>:  
+		Highest resolution for the TIN in metres.
+			The value should be equal or higher than the stratigraphic grid
+			spacing defined above in parameter &lt;GridSpace&gt;. In addition this
+			value needs to be a multiple of the grid spacing.
+			<br>
+			<strong> &lt;LowRes&gt; element</strong>:  
+		Lowest resolution for the TIN in metres.
+			The value should be equal or higher than the highest resolution
+			defined above in parameter  &lt;HighRes &gt;. In addition this
+			value needs to be a multiple of the grid spacing.
+			<br>
+			<strong> &lt;StepFill&gt; element</strong>:  
+		Parameter used to fill all of the depressions on the stratigraphic 
+			grid topography and to remove the flat and hole areas. This is a 
+			pre-processing step used to ensure continuous flow from each grid 
+			cell. This parameter is an incremental step used during the depression 
+			filling process and is expressed in metres. <br>
+			
+			<i>Note: in case the depression filling algorithm is not required for
+			your simulation set the value to 0.0. 
+			<br>
+			Ref: Planchon, O., and F., Darboux (2001). A fast, simple and versatile 
+			algorithm to fill the depressions of digital elevation models. 
+			Catena, 46, 159–176.
+			</i>
+			<br>
+			<strong> &lt;FlowAcc&gt; element</strong>:  
+		Flow accumulation operation performs a cumulative count of the number 
+			of pixels that naturally drain into outlets. This operation is performed 
+			several time during the simulation to adjust and adapt the TIN grid 
+			resolution depending on the areas of highest flow accumulation values.
+			This parameter sets the minimum flow accumulation value over which the 
+			high resolution (parameter &lt;HighRes&gt; defined above) is used to generate
+			the TIN resolution. For areas with flow accumulation values below this 
+			parameter the &lt;LowRes&gt; parameter is used.
+			<br>
+			<i>Note: the minimum value for the flow accumulation is 1. </i>	
+					</p2>
+				</div>
+			</div>
+			
+			
+			<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;Boundary&gt; element definitions</h3>
+					<br>
+    	        </div>
+    	   	</div>
+
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p>
+<pre><code>    &lt;Boundary&gt;
+      &lt;North&gt;2&lt;/North&gt;
+      &lt;South&gt;0&lt;/South&gt;
+      &lt;East&gt;0&lt;/East&gt;
+      &lt;West&gt;0&lt;/West&gt;
+    &lt;/Boundary&gt;</code></pre>
+					</p>
+					<p2>
+					This element specifies the model boundary types for the stratigraphic grid along all sides (North, South, East &amp; West).		 For each border the following values could be set:<br>
+		 &nbsp;&nbsp;&nbsp; &#9675; 0 for infinite flat boundary, <br>
+			&nbsp;&nbsp;&nbsp; &#9675; 1 to insert a wall and prevent sediment transfer and fluid loss outside the simulated domain,<br>
+			&nbsp;&nbsp;&nbsp; &#9675; 2 for extended slope.	
+					</p2>
+				</div>
+			</div>	
+			
+			<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;Restart&gt; element definitions - This is an optional element</h3>
+					<br>
+    	        </div>
+    	   	</div>
+
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p>
+<pre><code>    &lt;Restart&gt;
+      &lt;RestartFolder&gt;path/to/previous/output/Folder&lt;/RestartFolder&gt;
+      &lt;RestartIt&gt;40&lt;/RestartIt&gt;
+      &lt;ProcNb&gt;2&lt;/ProcNb&gt;
+    &lt;/Restart&gt;
+  &lt;/struct-Mesh-TIN&gt;</code></pre>  
+					</p>
+					<p2>
+  		It controls of the restart functionality. Model can be set 
+		to restart from a previous simulation step.
+		<br><i>
+		Note: This element is optional and only required to perform
+		a simulation based on a previously simulation. </i>
+		<br>	
+		<strong> &lt;RestartFolder&gt; element</strong>:  
+		Name of the output folder from the previous run. 
+			<br>
+			<i>
+			Note: it corresponds to the &lt;OutputDirectory&gt; parameter defined
+			in the previous XmL input file that needs to be restarted.</i>
+			<br>
+		<strong> &lt;RestartIt&gt; element</strong>:  
+		The restart iteration number is informing the code on which file ID needs
+			to be ran from the previous simulations. Depending on how the &lt;CheckPointing&gt;
+			parameters were set (if set) the software is outputting a series of checkpointing
+			files at given time steps (See &lt;CheckPointing&gt; parameter for additional definition).
+			These files are located in the runfiles directory under the folder specified in the
+			&lt;RestartFolder&gt; element above and are named <i>checkpoint.&lt;RestartIt&gt;.pID.h5</i> where 
+			&lt;RestartIt&gt; corresponds to a given &lt;LayerTime&gt; iteration number and pID to a given 
+			processor ID number
+			<br>
+			<i>
+			Note: You will need to ensure that the restart iteration number corresponds to the 
+			<startTime> value of the simulation that you are currently defining. 
+			<br>
+			Note: In case you did not set the &lt;CheckPointing&gt; parameter in the previous simulation
+			the code is generating the check pointing files just for the end of your previous run
+			which means that you should have only one &lt;RestartIt&gt; number and that the new simulation
+			<startTime> parameter will be equal to the &lt;endTime&gt; parameter of the previous one. </i>
+			<br>
+			<strong> &lt;ProcNb&gt; element</strong>:  
+		Number of processors used in the last simulation. This number could be retrieved by 
+			looking at the check pointing files located in the runfiles directory under the folder 
+			specified in the &lt;RestartFolder&lt; element above. The number will be equal to the biggest
+			ID of the <i>checkpoint.&lt;RestartIt&gt;.pID.h5</i> file names plus 1.
+					</p2>
+				</div>
+			</div>	
+		</div>
+
+
+		<div class="col-lg-12 text-center">
+   			<hr class="star-primary">
+   		</div>
+ 	</section>
+			
+
+	<section id="time">
+    	<div class="container">
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<br><h2>Time Parameters</h2>
+    	        </div>
+    	   	</div>
+
+			<div class="row">
+    	    	<div class="col-lg-12 text-left">
+    	        	<p><br>
+			The second structure defines simulation and processes time steps. <br><b>Most of the elements within
+		this structure are required.</b>
+					</p>
+				</div>
+			</div>
+			
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;Time&gt; element definitions</h3>
+    	        </div>
+    	   	</div>
+			
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p>	
+			<pre  ><code>  &lt;struct-time&gt;
+    &lt;Time&gt;
+      &lt;startTime unit="a"&gt;-120000&lt;/startTime&gt;
+      &lt;endTime unit="a"&gt;-110000&lt;/endTime&gt;
+      &lt;layerTime unit="a"&gt;1000&lt;/layerTime&gt;
+      &lt;outputTime unit="a"&gt;2000&lt;/outputTime&gt;
+      &lt;riverInterval unit="a"&gt;250&lt;/riverInterval&gt;
+      &lt;rainInterval unit="a"&gt;500&lt;/rainInterval&gt;
+      &lt;SlopeInterval unit="a"&gt;250&lt;/SlopeInterval&gt;
+      &lt;samplingInterval unit="a"&gt;250&lt;/samplingInterval&gt;
+    &lt;/Time&gt;</code></pre>
+					</p>
+					<p2>
+					It declares general time controlling parameters.<br>
+					<strong> &lt;startTime&gt; element</strong>:  
+		Declaration of simulation starting time in years. 
+			<br>
+			<i>
+			Note: the start time parameter accepts both positive and 
+				negative value to represent time before present.</i>
+		<br>
+		<strong> &lt;endTime&gt; element</strong>:  
+		Declaration of simulation ending time in years. Obviously, this 
+			value needs to be greater than the starting time one.
+			<br>
+			<i>
+			Note: the end time parameter accepts both positive and 
+				negative value to represent time before present.</i>
+			<br>	
+			<strong> &lt;layerTime&gt; element</strong>:  
+		Sedimentary layers are recorded through time and each layer
+			corresponds to a specific time interval. This time interval 
+			is expressed in years. 
+			<br>
+			<i>
+			Note: The smaller the layer time, the higher the temporal resolution
+			of the sedimentary record will be. However it will also impact the 
+			simulation computational time so compromise needs to be made.</i>
+			<br>	
+			<strong> &lt;outputTime&gt; element</strong>:  
+		Time at which a new output is generated. The value should be at least 
+			equal to the layer time interval and could be set as a multiple of this 
+			parameter. In case of simulation creating large output files it is recommend 
+			to set this value to 4 or 5 times the &lt;layerTime&gt; one.
+			<br>
+			<i>
+			Note: Consider increasing the output time interval to gain save some
+			computational time and space on your remote or local machine.</i>
+			<br>
+			<strong> &lt;riverInterval&gt; element</strong>:  
+		Flow time sampling interval expressed in years. It controls how often
+			flow walkers are released from their sources. The sources are defined in
+			the &lt;Sources&gt; element and correspond to rivers or gravity currents flowing
+			within the simulation domain.
+			<br>
+			<i>
+			Note: The value should be a factor of the layer time interval.
+				In case the simulation has no sources declared set this value to a large number.</i>
+			<br>
+			<strong> &lt;rainInterval&gt; element</strong>:  
+		Rain time sampling interval expressed in years. It controls how often
+			flow walkers are released from rainfall grid. The rainfall is defined in
+			the &lt;RainfallGrid&gt; element.
+			<br>
+			<i>
+			Note: The value should be a factor of the layer time interval.
+				In case the simulation has no rain declared set this value to a large number.</i>
+			<br>
+			<strong> &lt;SlopeInterval&gt; element</strong>:  
+		Slope diffusion time sampling interval expressed in years. It controls how 
+			often slope diffusion algorithm is used to smooth top layer newly deposited
+			sediments. 
+			<br>
+			<i>
+			Note: The value should be a factor of the layer time interval.</i>
+			<br>
+			<strong> &lt;samplingInterval&gt; element</strong>:  
+		The sampling interval is expressed in years and controls how 
+			often sea level fluctuations, displacements are updated within the simulation.
+			<br>
+			<i>
+			Note: The value should be a factor of the layer time interval.</i>
+					</p2>
+				</div>
+			</div>	
+
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;CheckPointing&gt; element definitions  - This is an optional element</h3>
+    	        </div>
+    	   	</div>
+			
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p>	
+<pre  ><code>    &lt;CheckPointing&gt;
+      &lt;Frequency&gt;10&lt;/Frequency&gt;	
+    &lt;/CheckPointing&gt;
+  &lt;/struct-time&gt;</code></pre>
+					</p>
+					<p2>
+			The software is not able to restart a simulation from a given time step using the
+		output files generated. To make it possible the &lt;CheckPointing&gt; element needs to be 
+		set. This element enable the creation of a series of restarting files located in the  
+		runfiles directory under the folder specified in the &lt;OutputDirectory&gt; element. These 
+		files are named <i>checkpoint.tID.pID.h5</i> where tID corresponds to a particular time   
+		iteration step and pID to a given processor ID number.
+		<br>
+			<i>Note: This element is optional.<br>
+			Note: By default the code is going to generate a checkpoint file at the end of the
+		simulation.</i>
+		<br>	
+		<strong> &lt;Frequency&gt; element</strong>:  
+		Frequency at which check pointing is performed. This integer is directly linked to the 
+			layer time interval element and corresponding simulation time for a given checkpoint file
+			is retrieved by multiplying the frequency ID number (defined as tID in explanation above) 
+			by the layer time interval and by adding the simulation starting time.		
+					</p2>
+				</div>
+			</div>
+
+		</div>
+		<div class="col-lg-12 text-center">
+   			<hr class="star-primary">
+   		</div>
+ 	</section>
+
+	<section id="ocean">
+    	<div class="container">
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<br><h2>Ocean &amp; Geodynamic Structures</h2>
+					<br>
+					<p>
+					Follows two optional structures which define ocean and geodynamic processes. <br><b>Most of the elements within
+		these structures are optional.</b></p>
+    	        </div>
+    	   	</div>
+
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;struct-ocean&gt; structure definitions</h3><br>
+					<p>&lt;struct-ocean&gt; defines ocean characteristics 
+	and hemipelagic processes.</p>
+    	        </div>
+    	   	</div>
+			
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p>
+<pre  ><code>  &lt;struct-ocean&gt;
+    &lt;SeaLevelFluctuations&gt;
+      &lt;SeaLevelFile&gt;data/sealevel.sl&lt;/SeaLevelFile&gt;
+    &lt;/SeaLevelFluctuations&gt;
+    &lt;HemipelagicRates&gt;
+      &lt;HemipelagicFile&gt;data/hemipelagic.rates&lt;/HemipelagicFile&gt;
+    &lt;/HemipelagicRates&gt;
+    &lt;WaterDensities&gt;
+      &lt;enteringFluid unit="kg/m3"&gt;1.000E3&lt;/enteringFluid&gt;
+      &lt;seaDensity unit="kg/m3"&gt;1.027E3&lt;/seaDensity&gt;
+    &lt;/WaterDensities&gt;
+  &lt;/struct-ocean&gt;</code></pre>
+					</p>
+					<p2>
+					<strong> &lt;SeaLevelFluctuations&gt; element</strong>:  
+		Declaration of the sea-level fluctuations.<br>
+			<i>Note: This element is optional.<br></i>
+			
+			<strong> &lt;SeaLevelFile&gt; element</strong>:  
+		Name of the sea-level fluctuations file and its associated path.
+			The path is from the main input file location. 
+			This ASCII file provides for each line the following information:<br>
+			&nbsp;&nbsp;&nbsp; &#9675; time in years,<br>
+			&nbsp;&nbsp;&nbsp; &#9675; sea-level elevation for the considered time in metres.<br>
+			In addition the defined fluctuation times should be set in increasing 
+			order starting from the oldest time.
+			<br>
+ <strong> &lt;HemipelagicRates&gt; element</strong>:  
+		Sedimentation rates of hemipelagic particles.<br>
+			<i>Note: This element is optional.<br></i>
+			<strong> &lt;HemipelagicFile&gt; element</strong>:  
+		Name of the hemipelagic rates file and its associated path.
+  		The path is from the main input file location. 
+          This ASCII file provides for each line the following information:
+          	<br>
+			&nbsp;&nbsp;&nbsp; &#9675; contour elevation in metres relative to sea-level elevation (should be negative),<br>
+			&nbsp;&nbsp;&nbsp; &#9675; hemipelagic rates in metres per year for the considered contour line.<br>
+			<i>Note: To work correctly an hemipelagic material type is required in 
+          the &lt;Material&gt; element with the following Material named <i>Hemi</i>.<br></i>
+			<strong> &lt;HemipelagicRates&gt; element</strong>:  
+		Sedimentation rates of hemipelagic particles.<br>
+			<i>Note: This element is optional.<br></i>
+			<strong> &lt;WaterDensities&gt; element</strong>:  
+		Water densities declaration.<br>
+			<i>Note: This element is required.<br></i>
+			<strong> &lt;enteringFluid&gt; element</strong>:  
+		Density of fresh water entering the system in kg/m3.
+			This is the density of rivers and rain particles.
+			<br>
+			<strong> &lt;seaDensity&gt; element</strong>:  
+		Sea water density in kg/m3.
+				</p2>
+				</div>
+			</div>
+			
+			<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;struct-geodyn&gt; structure definitions</h3><br>
+					<p>&lt;struct-geodyn&gt; defines the vertical displacement rates.<br>
+			<i>Note: This structure is optional.<br></i></p>
+    	        </div>
+    	   	</div>
+			
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p>
+<pre  ><code>  &lt;struct-geodyn&gt;  
+     &lt;Displacement&gt;
+        &lt;nbDispInterval&gt;1&lt;/nbDispInterval&gt;
+        &lt;disp&gt;
+            &lt;startDispTime unit="a"&gt;-163000000&lt;/startDispTime&gt;
+            &lt;endDispTime unit="a"&gt;-150000001&lt;/endDispTime&gt;
+            &lt;dispFile&gt;data/tectonic.disp&lt;/dispFile&gt;
+        &lt;/disp&gt;
+     &lt;/Displacement&gt;    
+  &lt;/struct-geodyn&gt;</code></pre>
+					</p>
+					<p2>
+ <strong> &lt;Displacement&gt; element</strong>:  
+		Definition of the vertical displacement fields within
+		simulated spatial and temporal domain. <br>
+			<strong> &lt;nbDispInterval&gt; element</strong>:  
+	Total number of displacement intervals that will be simulated. 
+			The displacement intervals need to be declared by increasing
+			time and should not overlap with each others.
+			<br>
+			<i>Note: this is not required to have the displacement start and end times 
+			continuous between each others or within the range of the sampling interval
+			values.<br></i>
+		<strong> &lt;disp&gt; element</strong>:  
+		Definition of an individual displacement field.<br>
+			<strong> &lt;startDispTime&gt; element</strong>:  
+		Time in years at which the considered vertical displacement
+				will start.<br>
+			<strong> &lt;endDispTime&gt; element</strong>:  
+		Time in years at which the considered vertical displacement
+				will end.<br>
+			<strong> &lt;dispFile&gt; element</strong>:  
+		Name of the displacement file and its associated path.
+				The path is from the main input file location. 
+				This ASCII file provides for each line the following information:<br>
+				&nbsp;&nbsp;&nbsp; &#9675; The node ID (which should match with one defined in the basement grid &lt;StrataGrid&gt;),<br>
+				&nbsp;&nbsp;&nbsp; &#9675; cumulative vertical displacement for each considered node in metres.<br>
+				<i>Attention: the file defines the cumulative displacement during the duration defined 
+					above and not a displacement rate.<br></i>
+			<i>Note: the nodes have been defined in increasing order starting from the Sout-West
+				 	corner and going first along the X axis (West to East).<br></i>					
+					</p2>
+				</div>
+			</div>	
+		</div>
+
+		<div class="col-lg-12 text-center">
+   			<hr class="star-primary">
+   		</div>
+ 	</section>
+
+
+	<section id="sed">
+    	<div class="container">
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<br><h2>Sediments Properties</h2>
+					<p><br>The next structure defines sediment types and characteristics 
+	 as well as initial deposit layer composition. <br><b>All of the elements within
+		these structures are required.</b></p>
+    	        </div>
+    	   	</div>
+
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;struct-sediments&gt; structure definitions</h3>
+    	        </div>
+    	   	</div>
+			
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p>
+<pre  ><code>  &lt;struct-sediments&gt;
+    &lt;Materials&gt;
+      &lt;NbSiliciclastics&gt;1&lt;/NbSiliciclastics&gt;
+      &lt;NbCarbonates&gt;1&lt;/NbCarbonates&gt;
+      &lt;NbOrganics&gt;1&lt;/NbOrganics&gt;
+      &lt;MinSlope&gt;0.00001&lt;/MinSlope&gt;
+      &lt;si&gt;
+        &lt;MaterialName&gt;slop_grav&lt;/MaterialName&gt;
+        &lt;Diameter unit="mm"&gt;0.5&lt;/Diameter&gt;
+        &lt;Density unit="kg/m3"&gt;2620.0&lt;/Density&gt;
+        &lt;SlopeMarine&gt;0.007&lt;/SlopeMarine&gt;
+        &lt;SlopeAerial&gt;0.00016&lt;/SlopeAerial&gt;
+      &lt;/si&gt;
+      &lt;carb&gt;
+        &lt;MaterialName&gt;car_grav&lt;/MaterialName&gt;
+        &lt;Diameter unit="mm"&gt;0.5&lt;/Diameter&gt;
+        &lt;Density unit="kg/m3"&gt;2600.0&lt;/Density&gt;
+        &lt;SlopeMarine&gt;0.0141&lt;/SlopeMarine&gt; 
+        &lt;SlopeAerial&gt;0.002&lt;/SlopeAerial&gt; 
+      &lt;/carb&gt;
+      &lt;org&gt;
+        &lt;MaterialName&gt;org_coal&lt;/MaterialName&gt;
+        &lt;Diameter unit="mm"&gt;0.05&lt;/Diameter&gt;
+        &lt;Density unit="kg/m3"&gt;2400.0&lt;/Density&gt;
+        &lt;SlopeMarine&gt;0.05&lt;/SlopeMarine&gt; 
+        &lt;SlopeAerial&gt;0.002&lt;/SlopeAerial&gt; 
+      &lt;/org&gt;
+    &lt;/Materials&gt;</code></pre>
+					</p>
+					<p2>
+					 <strong> &lt;Materials&gt; element</strong>:  
+		Declaration of material classes present in the simulated domain. 
+		The definition of the material classes starts with the declaration of the
+	 	siliciclastics, then the carbonates and finally the organics. <br>
+				<i>
+	 	Note: The total number of materials is equal to the sum of siliciclastics, carbonates
+	 		and organics. It is not required to set some materials for each type but it is 
+	 		required to have at least one material defined. <br>
+	 		
+	 	Note: The total number of materials is set to 10 in the default version of LECODE. 
+	 		If the simulation requires more grain sizes you will need to change the default
+	 		value (called max_grn) within LECODE and recompile it. <br>
+	 	
+	 	Note: Each 3 types of materials needs to be organise by decreasing diameter size. </i><br>
+			<strong> &lt;NbSiliciclastics&gt; element</strong>:  
+	Number of siliclastics defined for this simulation.
+			<br>
+			<strong> &lt;NbCarbonates&gt; element</strong>:  
+	Number of carbonates defined for this simulation.
+			<br>
+			<strong> &lt;NbOrganics&gt; element</strong>:  
+	Number of organics defined for this simulation.
+			<br>
+		<strong> &lt;MinSlope&gt; element</strong>:  
+		Minimum slope of deposited sediment taken into account for slope diffusion
+		  calculation. Below this threshold value, slope diffusion is not computed.<br>
+			<strong> &lt;si&gt; element</strong>:  
+		Collection of siliciclastics classes. <br><i>
+			Note: it is possible to defined two classes with the same parameters as long
+				as they have a different name. This could be useful when looking at 
+				provenance problems.
+		<br>
+			Note: This element is optional.</i><br>
+			<strong> &lt;carb&gt; element</strong>:  
+		Collection of carbonates classes. 
+		<br><i>
+			Note: it is possible to defined two classes with the same parameters as long
+				as they have a different name. This could be useful when looking at 
+				provenance problems.
+		<br>
+			Note: This element is optional.</i><br>
+			<strong> &lt;org&gt; element</strong>:  
+		Collection of organic classes. <br><i>
+			Note: it is possible to defined two classes with the same parameters as long
+				as they have a different name. This could be useful when looking at 
+				provenance problems.
+		<br>
+			Note: This element is optional.</i><br>
+			<strong> &lt;MaterialName&gt; element</strong>:  
+		Name of the considered sediment class.<br>
+				<i>
+				Note: chosen names are not predefined and could be anything but should differ 
+					between each class. 
+					<br>
+				Note: in case the &lt;HemipelagicRates&gt; element has been set, it is required for 
+				 	one of the sediment class to have its name set to <strong>Hemi</strong>. <br></i>
+			<strong> &lt;Diameter&gt; element</strong>:  
+		Grain size diameter of the considered sediment class in millimetres. 
+		<br>
+			<strong> &lt;Density&gt; element</strong>:  
+		Density of the considered sediment class in kg/m3. 
+		<br>
+			<strong> &lt;SlopeMarine&gt; element</strong>:  Angle of repose of the sediment siliciclastic class when deposited in
+				marine environment. This angle is used during the diffusion process to 
+				define the stability of the newly deposited sediments.
+		<br>
+			<strong> &lt;SlopeAerial&gt; element</strong>:  Angle of repose of the considered sediment class when deposited in
+				above sea level. This angle is used during the diffusion process to 
+				define the stability of the newly deposited sediments.
+			<br>
+					</p2>
+				</div>
+			</div>
+
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;Init_deposit&gt; structure definitions</h3>
+    	        </div>
+    	   	</div>
+			
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p>	
+<pre><code>    &lt;Init_deposit&gt;
+      &lt;LayersNb&gt;1&lt;/LayersNb&gt;
+      &lt;dep&gt;
+        &lt;FileName&gt;data/gbr_N.dep&lt;/FileName&gt;
+      &lt;/dep&gt;
+    &lt;/Init_deposit&gt;
+  &lt;/struct-sediments&gt;</code></pre>			
+					</p>
+					<p2>
+ 	<strong> &lt;Init_deposit&gt; element</strong>:  
+		Declaration of initial deposit layers prior to the simulation starting time.
+		This element allows the user to start with a predefined sediment architecture.
+		This architecture could be composed of several layers with various thicknesses
+		throughout the spatial area making it possible to set up initially complex 
+		geometries. <br><i>
+		
+		Note: if your simulation starts without any predefined sedimentary layers, you will
+			not be able to erode the basement and it is in any case required to set up a initial
+			layer of null thicknesses.<br>
+		
+		Note: in case of a restarted simulation the initial deposition layer declaration
+			should not be changed from the original definition. </i>
+		<br>
+			<strong> &lt;LayersNb&gt; element</strong>: Number of initial deposit layers defined.
+		<br>
+			<strong> &lt;dep&gt; element</strong>: Declaration of a specific sedimentary layers. 
+			<br><i>
+			Note: the layers will be arranged one over the other based on how they were
+				declared. Which means that the first <dep> layer will be the bottom one 
+				and the last one the top one.
+			<br>
+			Note: the layer will add up to each others starting from the basement topography
+				defined in the <StrataGrid> element.<br></i>
+			<strong> &lt;FileName&gt; element</strong>:
+				Name of a specific deposit layer file and its path.
+				The path is from the main input file location. 
+				This ASCII file provides for each line the following information:
+          	<br>
+			&nbsp;&nbsp;&nbsp; &#9675; node IDs,<br>
+			&nbsp;&nbsp;&nbsp; &#9675; thickness of first defined material classes on this node in metres,<br>
+			&nbsp;&nbsp;&nbsp; &#9675;  thickness of second defined material classes on this node in metres,<br>
+			&nbsp;&nbsp;&nbsp; &#9675; &nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:
+			&nbsp;&nbsp;:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:<br>
+			&nbsp;&nbsp;&nbsp; &#9675; &nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:
+			&nbsp;&nbsp;:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:&nbsp;&nbsp;	:<br>
+			&nbsp;&nbsp;&nbsp; &#9675; thickness of last defined material classes on this node in metres,<br>
+			&nbsp;&nbsp;&nbsp; &#9675; sedimentary layer hardness.
+				<br><i>
+				Note: the hardness of a given sedimentary layer is a parameter (always positive) 
+					which defines how easy a specific layer can be eroded. A value of 1 or below 
+					means that the layer erodibility is high for this node whereas a value of 10 
+					or above will means that the layer erodibility is low and can be seen as a
+					cemented rock.
+					<br>
+				Note: In case a particular sediment is not present its thickness needs to be set 
+					to 0.0.
+				<br>
+				Note: the nodes have been defined in increasing order starting from the Sout-West
+				 	corner and going first along the X axis (West to East)
+				<br>
+				Attention: this is a requirement to defined the various sediment class thicknesses
+					by following the same order as the one used in the definition of the different
+					materials. If not the initial sedimentary layers will not be set properly.
+					<br></i><br>					
+					</p2>
+				</div>
+			</div>	
+		</div>
+
+		<div class="col-lg-12 text-center">
+   			<hr class="star-primary">
+   		</div>
+ 	</section>
+
+	<section id="proc">
+    	<div class="container">
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<br><h2>Processes definition</h2>
+					<br>
+					<p>Follow several structures used to define the forcing processes such as rivers, rain, 
+	mass movements required to move sediments around and build
+	up the sedimentary architectures. <br><b>Most of the elements within
+		these structures are optional.</b>
+					</p>
+    	        </div>
+    	   	</div>
+
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;StreamClass&gt; structure definitions</h3>
+    	        </div>
+    	   	</div>
+			
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p>
+<pre  ><code>  &lt;struct-processes&gt;
+    &lt;StreamClass&gt;
+      &lt;NbClass&gt;2&lt;/NbClass&gt;
+      &lt;cl&gt;
+        &lt;BedSlope&gt;0.0&lt;/BedSlope&gt;
+        &lt;WDRatio&gt;30&lt;/WDRatio&gt;
+      &lt;/cl&gt;
+      &lt;cl&gt;
+        &lt;BedSlope&gt;0.2&lt;/BedSlope&gt;
+        &lt;WDRatio&gt;10&lt;/WDRatio&gt;
+      &lt;/cl&gt;
+    &lt;/StreamClass&gt;</code></pre>
+					</p>
+					<p2>  	<strong> &lt;StreamClass&gt; element</strong>:  For each flow walker, the continuity equation is solved 
+		using a semi-empirical technique based on stream classification 
+		approach (Rosgen, 2003). <br>
+		Definition of the stream parameters is dependent of the type of
+		simulation which is set. The classification sets the width to depth
+		ratio based on specific slope angles. <br>
+  	<strong> &lt;NbClass&gt; element</strong>: Total number of stream classes required to define river 
+			characteristics over the simulated area.<br><i>
+			Note: the element variable should be equal or greater 
+				than 2.</i><br>
+  	<strong> &lt;cl&gt; element</strong>: Parameters collection for the considered stream class.
+			<br><i>
+            Note: the number of classes needs to be equal to the number given 
+                in the <NbClass> element. </i><br>
+  	<strong> &lt;BedSlope&gt; element</strong>: Value of the local topographic slope (dz/dx).<br>
+  	<strong> &lt;WDRatio&gt; element</strong>: Width to depth ratio for the considered slope.
+					</p2>
+				</div>
+			</div>
+						
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;Sources&gt; structure definitions</h3>
+    	        </div>
+    	   	</div>
+
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p>	
+			<pre  ><code>    &lt;Sources&gt;
+      &lt;totalSourcesNb&gt;1&lt;/totalSourcesNb&gt;
+      &lt;maxDepth unit="m"&gt;6&lt;/maxDepth&gt;
+      &lt;sourceVal&gt;
+        &lt;ts unit="a"&gt;-128000&lt;/ts&gt;
+        &lt;te unit="a"&gt;10000&lt;/te&gt;
+        &lt;recurencePerc&gt;75.0&lt;/recurencePerc&gt;
+        &lt;x unit="m"&gt;310709.3&lt;/x&gt;
+        &lt;y unit="m"&gt;8325284.0&lt;/y&gt;
+        &lt;xRange unit="m"&gt;55&lt;/xRange&gt;
+        &lt;yRange unit="m"&gt;32&lt;/yRange&gt;
+        &lt;streamDepth unit="m"&gt;6&lt;/streamDepth&gt;
+        &lt;Vx unit="m/s"&gt;2.0&lt;/Vx&gt;
+        &lt;Vy unit="m/s"&gt;2.0&lt;/Vy&gt;
+        &lt;Q unit="m3/s"&gt;100&lt;/Q&gt;
+        &lt;Qs unit="Mt/a"&gt;0.07&lt;/Qs&gt;
+        &lt;sedConcentration&gt;0 0 0 20 40 40 0&lt;/sedConcentration&gt;
+        &lt;flowType&gt;0&lt;/flowType&gt;
+      &lt;/sourceVal&gt;
+    &lt;/Sources&gt;</code></pre>
+					</p>
+					<p2>
+<strong> &lt;Sources&gt; element</strong>: Definition of river and turbidity flows transporting sediments within
+	   the simulated domain. These flows will then erode and deposit sediments
+	   depending of their internal characteristics.
+		<br><i>
+	   Note: This element is optional.</i><br>
+  	<strong> &lt;totalSourcesNb&gt; element</strong>: Total number of sources that will be activated within the domain
+		  during the entire simulated time.<br>
+  	<strong> &lt;maxDepth&gt; element</strong>: Maximum sources depth. 
+		<br><i>
+     		Note: this element controls the number of flow walkers released per sources. 
+     			If &lt;maxDepth&gt;  is lower than &lt;streamDepth&gt;  then the source will
+     			be splitted in several flow walkers.</i><br>
+  	<strong> &lt;sourceVal&gt; element</strong>: Collection of parameters defining each source. 
+		<br><i>
+             Note: the number of &lt;sourceVal&gt;   needs to be equal to the number given 
+             	in the &lt;totalSourcesNb&gt;   element. 
+		</i><br>
+  	<strong> &lt;ts&gt; element</strong>: Source start time in years.<br>
+  	<strong> &lt;te&gt; element</strong>: Source end time in years.<br>
+  	<strong> &lt;recurencePerc&gt; element</strong>: Percentage of time the considered flow is active over a year.
+			<br><i>
+    			Note: values are between 0 and 100. <br></i>
+  	<strong> &lt;x&gt; element</strong>: Source location along Ox within the simulated domain space (m). 
+			<br><i>
+    			Note: The simulation will crash if the location of the source
+    				is outside the simulation domain. <br></i>
+  	<strong> &lt;y&gt; element</strong>: Source location along Oy within the simulated domain space (m). 
+			<br><i>
+    			Note: The simulation will crash if the location of the source
+    				is outside the simulation domain. <br></i>
+  	<strong> &lt;xRange&gt; element</strong>: X position of the source can randomly vary from its defined 
+    			location. This element defined the maximum range along along Ox (m). 
+    			<br><i>
+    			Note: Set the value to 0.0 to prevent any change of position along 
+    				X direction.
+    			<br>
+    			Note: The simulation will crash if when applying the random variation
+    				the new source position is outside the simulation domain.<br></i>
+  	<strong> &lt;yRange&gt; element</strong>: Y position of the source can randomly vary from its defined 
+    			location. This element defined the maximum range along along Oy (m). 
+    			<br><i>
+    			Note: Set the value to 0.0 to prevent any change of position along 
+    				Y direction.
+    			<br>
+    			Note: The simulation will crash if when applying the random variation
+    				the new source position is outside the simulation domain.<br></i>
+  	<strong> &lt;streamDepth&gt; element</strong>: Source height (m). 
+				<br><i>
+    			Note: Depending on the value sets for the &lt;maxDepth&gt; element the source 
+    				might be splitted in several flow walkers.</i><br>
+  	<strong> &lt;Vx&gt; element</strong>: Vx is the source velocity component along the
+    			X direction (m/s). 
+				<br><i>
+    			Note: negative means towards West and positive towards East.</i><br>
+  	<strong> &lt;Vy&gt; element</strong>: Vy is the source velocity component along the
+    			Y direction (m/s). 
+				<br><i>
+    			Note: negative means towards South and positive towards North.</i><br>
+  	<strong> &lt;Q&gt; element</strong>: Water flux (m3/s). <br>
+  	<strong> &lt;Qs&gt; element</strong>: Sediment discharge (Mt/year).  <br>
+  	<strong> &lt;sedConcentration&gt; element</strong>: Percentage of each siliciclastic sediments defined in the source. 
+				<br><i>
+    			Note: the sum of each percentage needs to be equal to 100.
+    			<br>
+    			Note: this is a requirement to defined a percentage for each siliciclatic 
+    				sediment defined in the &lt;Materials&gt; element and to follow the same order 
+    				as the one used in the definition of the different siliclastic materials. 
+    				If not the transported sediments will not be set properly.</i><br>
+  	<strong> &lt;flowType&gt; element</strong>: Definition of the source type. Two choices are available:
+  	 <br>
+  		&nbsp;&nbsp;&nbsp; &#9675; 0 for river stream and, <br>
+  		&nbsp;&nbsp;&nbsp; &#9675; 1 for turbidity current.<br>					
+					</p2>
+				</div>
+	   
+	    	<div class="row">
+             	<div class="col-lg-12">
+                	<br><h3>&lt;Sources&gt; structure definitions</h3>
+    	        </div>
+    	   	</div>
+
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p>	<pre  ><code>    &lt;RainfallGrid&gt;
+      &lt;rainFlowAccu&gt;100&lt;/rainFlowAccu&gt;
+      &lt;rainMaxFW&gt;500&lt;/rainMaxFW&gt;
+      &lt;rainElevation unit="m"&gt;1.5&lt;/rainElevation&gt;
+      &lt;rainCombination&gt;0&lt;/rainCombination&gt;
+      &lt;rainStreamQ unit="m3/s"&gt;0.5&lt;/rainStreamQ&gt;
+      &lt;nbRainfallInterval&gt;1&lt;/nbRainfallInterval&gt;
+      &lt;rain&gt;
+        &lt;startTime unit="a"&gt;0&lt;/startTime&gt;
+        &lt;endTime unit="a"&gt;1000000&lt;/endTime&gt;
+        &lt;rainFile&gt;data/ridge.rain&lt;/rainFile&gt;
+      &lt;/rain&gt;
+    &lt;/RainfallGrid&gt;</code></pre>
+					</p>
+					<p2>
+					<strong> &lt;RainfallGrid&gt; element</strong>: Defines rainfall parameters and regime, user specifies a series of maps files
+    	  with rainfall values defined for each nodes.  
+		<br><i>
+	   Note: This element is optional.</i><br>
+  	<strong> &lt;rainFlowAccu&gt; element</strong>: Maximum flow accumulation value used to define the rain flow 
+			walkers places. 
+			<br><i>
+			Note: Flow accumulation operation performs a cumulative   
+				count of the number of pixels that naturally drain 
+				into outlets.</i><br>
+  	<strong> &lt;rainMaxFW&gt; element</strong>: Maximum number of rain flow walkers released per flow interval 
+			time<br>
+  	<strong> &lt;rainElevation&gt; element</strong>: Flow walkers height for the rain in metres. <br>
+  	<strong> &lt;rainCombination&gt; element</strong>: Rain flow walkers combination is used to create a river based 
+			on merging of several rain flow walkers. 
+			<br><i>
+			Note: The value is set to 0 to forbid any combination to occur and should be
+				set to 1 otherwise.
+			<br>
+			Note: this option needs further testing.</i><br>
+	<strong> &lt;rainStreamQ&gt; element</strong>: Water flux used when rain walker combination is enable to define 
+			the minimal flow rate required to transformed the merged rain walkers as 
+			a river flow walker.
+			<br><i>
+			Note: this option is used only if the <rainCombination> is set to 1.</i><br>
+  	<strong> &lt;nbRainfallInterval&gt; element</strong>: Defines the number of rainfall series imported for the considered
+	        simulation.<br>
+  	<strong> &lt;rain&gt; element</strong>: Collection of rainfall parameters defining each rainfall series.<br><i>
+			Note: the number of classes needs to be equal to the number given 
+                in the &lt;nbRainfallInterval&gt; element.
+			</i><br>
+  	<strong> &lt;startTime&gt; element</strong>:Give the start time of the considered rainfall grid interval 
+				in years.<br>
+  	<strong> &lt;endTime&gt; element</strong>: Give the end time of the considered rainfall grid interval 
+				in years.<br>
+  	<strong> &lt;rainFile&gt; element</strong>: Name of the rainfall file and its associated path.
+				The path is from the main input file location. 
+				This ASCII file provides for each line the following two informations:<br>
+				&nbsp;&nbsp;&nbsp; &#9675;the node ID (which should match with one defined in the basement 
+						grid &lt;StrataGrid&gt;),<br>
+				&nbsp;&nbsp;&nbsp; &#9675; the averaged precipitation for each considered node in metres/year.
+					<br><i>
+				Note: the nodes have been defined in increasing order starting from the Sout-West
+				 	corner and going first along the X axis (West to East)
+				 	<br>
+				Note: in case a specific node does not have any precipitation it is required
+					to set it in the file with a 0.0 value <br></i>
+					</p2>
+				</div>
+			</div>	
+		
+	    	<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;MassMovement&gt; structure definitions</h3>
+    	        </div>
+    	   	</div>
+
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p>	
+<pre  ><code>    &lt;MassMovement&gt;
+      &lt;massFlowAccu&gt;20&lt;/massFlowAccu&gt;
+      &lt;massCurvature&gt;0.0&lt;/massCurvature&gt;
+      &lt;Aerial&gt;
+        &lt;upSlopeArea unit="km2"&gt;2.5&lt;/upSlopeArea&gt;
+        &lt;belowUpSlope&gt;
+          &lt;steepnessIndex&gt;0.31&lt;/steepnessIndex&gt;
+          &lt;concavityIndex&gt;0.2&lt;/concavityIndex&gt;
+        &lt;/belowUpSlope&gt;
+        &lt;aboveUpSlope&gt;
+          &lt;steepnessIndex&gt;0.26&lt;/steepnessIndex&gt;
+          &lt;concavityIndex&gt;0.&lt;/concavityIndex&gt;
+        &lt;/aboveUpSlope&gt;
+      &lt;/Aerial&gt;
+      &lt;Marine&gt;
+        &lt;upSlopeArea unit="km2"&gt;2.5&lt;/upSlopeArea&gt;
+        &lt;belowUpSlope&gt;
+          &lt;steepnessIndex&gt;0.31&lt;/steepnessIndex&gt;
+          &lt;concavityIndex&gt;0.2&lt;/concavityIndex&gt;
+        &lt;/belowUpSlope&gt;
+        &lt;aboveUpSlope&gt;
+          &lt;steepnessIndex&gt;0.26&lt;/steepnessIndex&gt;
+          &lt;concavityIndex&gt;0.&lt;/concavityIndex&gt;
+        &lt;/aboveUpSlope&gt;
+      &lt;/Marine&gt;
+    &lt;/MassMovement&gt;</code></pre>
+					</p>
+					<p2>
+					<strong> &lt;MassMovement&gt; element</strong>:Parameter defining mass movements. It encompasses the
+        following types of: <br>
+        	&nbsp;&nbsp;&nbsp; &#9675; landslides, <br>
+        	&nbsp;&nbsp;&nbsp; &#9675; slumps, <br>
+        	&nbsp;&nbsp;&nbsp; &#9675; debris flows. <br>
+        Mass movements susceptibility map is derived from
+        empirical relationships based on surface of the upslope
+        contributing area and slope. The relation is function of 2
+        additional parameters: <br>
+        	&nbsp;&nbsp;&nbsp; &#9675; the steepness index and, <br>
+        	&nbsp;&nbsp;&nbsp; &#9675; the concavity index.
+        <br><i>
+        Note: Example of such relation can be found in several
+        literature papers such as Horton et al. (2008), Blahut et
+        al. (2010) or Kappes et al. (2011).
+        <br>
+	 	    Note: This element is optional.</i><br>
+  	<strong> &lt;massFlowAccu&gt; element</strong>: Flow accumulation threshold under which no mass movement 
+			can be initiated.
+			<br><i>
+			Note: Flow accumulation operation performs a cumulative   
+				count of the number of pixels that naturally drain 
+				into outlets.</i><br>
+  	<strong> &lt;massCurvature&gt; element</strong>: Plan curvature threshold over which no mass movements 
+			can be initiated. This threshold is expected to vary
+		 	with the location and the type of mass flows, and 
+		 	strongly depends on the grid resolution and accuracy.
+		 	<br><i>
+			Note:in western Switzerland, Horton et al. (2013)
+		 		found an optimum at -0.02 per metre. Fisher et al.
+		 		(2012) considered values of -0.015 to -0.005 as more 
+		 		accurate for Norway.</i><br>
+  	<strong> &lt;Aerial&gt; element</strong>: Parameters collection for aerial mass movement.<br>
+  	<strong> &lt;Marine&gt; element</strong>: Parameters collection for marine mass movement.<br>
+  	<strong> &lt;upSlopeArea&gt; element</strong>: Surface of the upslope contributing area (km2).
+				
+			<br><i>
+			Note: on a specific node, it corresponds to the product of
+					the flow accumulation and the stratigraphic grid cell 
+					area.
+					</i><br>
+	<strong> &lt;belowUpSlope&gt; element</strong>: Parameters collection for area below the upslope contributing
+            	area.<br>
+	<strong> &lt;aboveUpSlope&gt; element</strong>: Parameters collection for area above the upslope contributing
+            	area.<br>
+    <strong> &lt;steepnessIndex&gt; element</strong>: Value of the steepness index. <br>
+    <strong> &lt;concavityIndex&gt; element</strong>: Value of the concavity index.
+					</p2>
+				</div>
+			</div>	
+			
+	    	<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;Carbonates-Organic&gt; structure definitions</h3>
+    	        </div>
+    	   	</div>
+
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p>	<pre  ><code>    &lt;Carbonates-Organics&gt;
+      &lt;carborgTime unit="a"&gt;250&lt;/carborgTime&gt;
+      &lt;tempsalFile&gt;data/temperature_salinity.csv&lt;/tempsalFile&gt;
+      &lt;membershipfunctionNb&gt;1&lt;/membershipfunctionNb&gt;
+      &lt;fuzzyfunctionNb&gt;1&lt;/fuzzyfunctionNb&gt;
+      &lt;fuzzyruleNb&gt;1&lt;/fuzzyruleNb&gt;
+      &lt;membershipFunction&gt;
+        &lt;functionName&gt;shallow&lt;/functionName&gt;
+        &lt;functionVariable&gt;depth&lt;/functionVariable&gt;
+        &lt;functionPts&gt;3&lt;/functionPts&gt;
+        &lt;functionSubset&gt;
+          &lt;xypoints&gt;0.0 0.0&lt;/xypoints&gt;
+          &lt;xypoints&gt;0.0 1.0&lt;/xypoints&gt;
+          &lt;xypoints&gt;25.0 0.0&lt;/xypoints&gt;
+        &lt;/functionSubset&gt;
+      &lt;/membershipFunction&gt;
+      &lt;fuzzyFunction&gt;
+        &lt;fuzzyName&gt;slow_growth&lt;/fuzzyName&gt;
+        &lt;fuzzyVariable&gt;growth&lt;/fuzzyVariable&gt; 
+        &lt;fuzzyPts&gt;2&lt;/fuzzyPts&gt;
+        &lt;fuzzySubset&gt;
+          &lt;xycoords&gt;0.0 0.0&lt;/xycoords&gt;
+          &lt;xycoords&gt;0.0005 1.0&lt;/xycoords&gt;
+        &lt;/fuzzySubset&gt;
+      &lt;/fuzzyFunction&gt;
+      &lt;fuzzyRule&gt;
+        &lt;matName&gt;car_sand&lt;/matName&gt;
+        &lt;fuzzyFctName&gt;slow_growth&lt;/fuzzyFctName&gt;
+        &lt;variableNb&gt;1&lt;/variableNb&gt;
+        &lt;membershipSet&gt;
+          &lt;membershipFctName&gt;shallow&lt;/membershipFctName&gt;
+        &lt;/membershipSet&gt;
+      &lt;/fuzzyRule&gt; 
+    &lt;/Carbonates-Organics&gt;
+  &lt;/struct-processes&gt;</code></pre>
+    				</p>
+					<p2>
+					  		<strong> &lt;Carbonates-Organics&gt; element</strong>:Definition of carbonates and organics evolution within the simulated
+    	domain. The evolution is based on fuzzy logic.
+    	<br><i>
+	 	    Note: This element is optional.</i><br>
+  	<strong> &lt;carborgTime&gt; element</strong>: Carbonates and organics evolution time interval expressed in years.
+			<br><i>
+			Note:The value should be a factor of the layer time interval.</i><br>
+  	<strong> &lt;tempsalFile&gt; element</strong>: Name of the salinity and temperature file and its associated path.
+     		The path is from the main input file location. 
+     		This ASCII file provides for each line the following information: 	<br>
+        	&nbsp;&nbsp;&nbsp; &#9675; time in years,  <br>
+        	&nbsp;&nbsp;&nbsp; &#9675; sea temperature for the considered time in Celsius and, <br>
+        	&nbsp;&nbsp;&nbsp; &#9675; sea salinity for the considered time in ppm. 
+    	<br><i>
+	 	    Note: In addition the defined times should be set in increasing
+     			 order starting from the oldest time.</i><br>
+  	<strong> &lt;membershipfunctionNb&gt; element</strong>: Total number of membership functions.
+     		A membership function allows to graphically represent a fuzzy set. 
+     		The x-axis represents the values of a given variable, whereas the
+     		y-axis represents the degrees of membership in the [0,1] interval.<br>
+  	<strong> &lt;fuzzyfunctionNb&gt; element</strong>: Total number of fuzzy functions. 
+     		In LECODE, a fuzzy function defined the evolution of carbonates / 
+     		organics systems based on derived local prediction of their behaviours.<br>
+  	<strong> &lt;fuzzyruleNb&gt; element</strong>: Total number of fuzzy rules. 
+     		The fuzzy rules defined the "defuzzification" process from a set of
+     		fuzzy and membership functions. It will produce for a specific 
+     		carbonate / organic material a quantifiable results of its evolution
+     		for a considered set of conditions.<br>
+  	<strong> &lt;membershipFunction&gt; element</strong>: Definition of the collection of membership	functions.
+				<br><i>
+     		Note: The number of membership functions should equal the number
+     			provided in the &lt;membershipfunctionNb&gt; element.
+     			<br>
+     		Note: Simple functions are used to build membership functions. 
+     			Because we are defining fuzzy concepts, using more complex 
+     			functions does not add more precision.<br></i>
+  	<strong> &lt;functionName&gt; element</strong>: User defined membership function name.
+			<br>
+    			This name in fuzzy logic is called a linguistic variable and is
+    			used to facilitate the expression of fuzzy rules.<br>
+  	<strong> &lt;functionVariable&gt; element</strong>: Default variable name to set up. 
+			<br>
+    			The user can choose between 14 default membership variable names listed below:<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; depth: water depth in metres<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; shore-distance: distance in metres to shoreline<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; river-distance: distance in metres to nearest river source<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; carbonate-distance: distance in metres to nearest surface exposed carbonate<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; organic-distance: distance in metres to nearest surface exposed organic<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; sedimentation-rate: sedimentation rate in metres per year<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; temperature: surface temperature in Celsius<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; salinity: degree of salinity in ppm<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; valley: normalise number of surrounding points uphill from the reference <br>
+    					point (calculated from all grid points within two grid cells): <br>
+    						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#9675;  -1 = all points downhill, <br>
+    						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#9675;   1 = all points uphill [-1,1].<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; gradient: average gradient of the point (calculated from all grid points 
+    					within two grid cells) negative value indicates that most surrounding 
+    					points are downhill from the point.<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; exposed-time: time the layer has been undisturbed on the surface in years.
+    				&nbsp;&nbsp;&nbsp; &#9675; ocean-energy: wind-induced wave and currents circulation velocity in the 
+    					area in m/s. You must have the plugin &lt;OceanPlugin&gt; turns on.<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; burial: depth to which the material has been buried by subsequent 
+    					deposits in metres (affects material subsurface).<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; age: time since the layer was deposited in years (affects material 
+    					subsurface).	<br>
+  	<strong> &lt;functionPts&gt; element</strong>: Number of points describing the shape of the 
+    			membership function.<br>
+  	<strong> &lt;functionSubset&gt; element</strong>:Collection of points defining the membership function.
+			<br><i>
+    			Note: The number of membership function points should equal the 
+    				number provided in the &lt;functionPts&gt; element.</i><br>
+<strong> &lt;xypoints&gt; element</strong>: Function coordinates values.  
+			<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; X coordinates values refer to the values of one of 14
+     				 	default variable names chosen above.<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; Y coordinates must be between 0 and 1.
+    	<br>
+    	
+    	<strong> &lt;fuzzyFunction&gt; element</strong>: Definition of the collection of fuzzy functions.<br><i>
+     		Note: The number of fuzzy functions should equal the number
+     			provided in the &lt;fuzzyfunctionNb&gt; element.
+     			<br>
+     		Note: The fuzzy function defined the evolution of carbonates / 
+    			organics based on derived local prediction of their behaviours.<br></i>
+    	<strong> &lt;fuzzyName&gt; element</strong>: User defined fuzzy function name.
+			<br>This name in fuzzy logic is called a linguistic variable and is
+    			used to facilitate the expression of fuzzy rules.<br>
+    	<strong> &lt;fuzzyVariable&gt; element</strong>: Default variable name to set up. 
+			<br>
+    			The user can choose between 14 default fuzzy function variable names listed below:<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; growth: function controlling carbonates or organics growth rate 
+     					in metres per years.<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; erosion: function controlling carbonates or organics erosion rate 
+     					in metres per years.<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; porosity: function controlling carbonates or organics porosity 
+     					reduction between 0 and 1.<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; hardness: Function controlling carbonates or organics hardness 
+     					(&gt; 1)<br>
+    		<strong> &lt;fuzzyPts&gt; element</strong>: Collection of points defining the fuzzy function.
+    		<br><i>
+    		
+    			Note: The number of membership function points should equal the 
+    				number provided in the <fuzzyPts> element.
+    		</i>
+    		<br>		
+    		<strong> &lt;fuzzySubset&gt; element</strong>: Number of points describing the shape of the fuzzy logic 
+    			function.<br>	
+    	    <strong> &lt;xycoords&gt; element</strong>: Function coordinates values.  
+			<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; X coordinates values refer to the values of one of 4
+     				 	default variable names chosen above.<br>
+    				&nbsp;&nbsp;&nbsp; &#9675; Y coordinates must be between 0 and 1.
+    	<br>	
+    	
+    	 	<strong> &lt;fuzzyRule&gt; element</strong>: Definition of the collection of fuzzy functions.<br>
+     		The fuzzy rules defined the "defuzzification" process from a set of
+     		fuzzy and membership functions. <br>
+    	<strong> &lt;matName&gt; element</strong>: Name of the carbonate or organic type defined in the &lt;Materials&gt; 
+    			element. <br><i>
+    			
+    			Note: This is one of the name (&lt;MaterialName>) defined in the &lt;carb&gt; or 
+    			&lt;org&gt; element.</i><br>
+    	<strong> &lt;fuzzyFctName&gt; element</strong>:Previously user defined fuzzy logic function name to be used 
+    			with the considered material. 
+			<br><i>
+			Note: This is one of the &lt;fuzzyName&gt; element.
+			</i><br>
+    		<strong> &lt;variableNb&gt; element</strong>:Number of membership functions describing the fuzzy rule. 
+    		<br>		
+    		<strong> &lt;membershipSet&gt; element</strong>: Collection of membership functions used during the defuzzification
+     			process.<br>	<i>
+     			Note: It will produce for the chosen carbonate / organic material a 
+     				quantifiable results of its evolution.
+     				</i><br>
+    	    <strong> &lt;membershipFctName&gt; element</strong>:User defined name &lt;functionName&gt; used to define membership
+            	functions. <br><i>
+            	  Note: The number of membership function element &lt;membershipFctName&gt; 
+     					should equal the number provided in the &lt;variableNb&gt; element.
+			</i>
+					</p2>
+				</div>
+			</div>	
+			
+		</div>
+
+		<div class="col-lg-12 text-center">
+   			<hr class="star-primary">
+   		</div>
+ 	</section>
+
+	<section id="param">
+    	<div class="container">
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<br><h2>Parameters &amp; Outputs</h2>
+					<p><br>The next structures define additional processes parameters such as
+	flow walkers sediment transport controlling factors and
+	evolution of porosity and compaction in buried sedimentary 
+	layers as well as output declarations.<br><b>Most of the elements within
+		these structures are required.</b></p>
+    	        </div>
+    	   	</div>
+
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;SedimentTransportParameters&gt; element definitions</h3>
+    	        </div>
+    	   	</div>
+			
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p>
+<pre  ><code>  &lt;struct-param&gt;
+    &lt;SedimentTransportParameters&gt;
+      &lt;streamMinDepth unit="m"&gt;0.05&lt;/streamMinDepth&gt;
+      &lt;streamMaxDepth unit="m"&gt;20&lt;/streamMaxDepth&gt;
+      &lt;streamMinWidth unit="m"&gt;1&lt;/streamMinWidth&gt;
+      &lt;streamMaxWidth unit="m"&gt;1000&lt;/streamMaxWidth&gt;
+      &lt;flowWalkerMinVelocity unit="m/s"&gt;0.0001&lt;/flowWalkerMinVelocity&gt;
+      &lt;flowWalkerErosionLimit unit="m"&gt;0.25&lt;/flowWalkerErosionLimit&gt;
+      &lt;flowWalkerDepositionLimit unit="m"&gt;0.25&lt;/flowWalkerDepositionLimit&gt;
+      &lt;minSedimentLoad unit="t/a"&gt;0.000000000001&lt;/minSedimentLoad&gt;
+      &lt;maxFWStepPerCell&gt;150&lt;/maxFWStepPerCell&gt;
+    &lt;/SedimentTransportParameters&gt;</code></pre>
+					</p>
+					<p2>
+					<strong> &lt;struct-param&gt; element</strong>: Definition of additional processes parameters such as
+	flow walkers sediment transport controlling factors and
+	evoution of porosity and compaction in buried sedimentary 
+	layers.<br>
+  	<strong> &lt;SedimentTransportParameters&gt; element</strong>: Controlling factors for flow walker and sediment
+		transport.<br>
+  	<strong> &lt;streamMinDepth&gt; element</strong>: Minimum depth for a river stream in the simulation in metres.<br>
+  	<strong> &lt;streamMaxDepth&gt; element</strong>: Maximum depth for a river stream in the simulation in metres.<br>
+  	<strong> &lt;streamMinWidth&gt; element</strong>: Minimum width for a river stream in the simulation in metres.<br>
+  	<strong> &lt;streamMaxWidth&gt; element</strong>: Maximum width for a river stream in the simulation in metres.<br>
+  	<strong> &lt;flowWalkerMinVelocity&gt; element</strong>: Minimum velocity of flow walkers (m/s) under which flow walkers
+			are supposed to have no influence on topography.
+			<br><i>
+			Note: When a flow walker velocity decreases below this threshold value, 
+				all sediment load is forced to be deposited. </i><br>
+  	<strong> &lt;flowWalkerErosionLimit&gt; element</strong>: Maximum eroded thickness for each flow computation step in metres.
+			<br><i>
+			Note:  This value could be set to a large number in case no limits 
+				are required regarding erosion thickness.</i><br>
+				<strong> &lt;flowWalkerDepositionLimit&gt; element</strong>: Maximum deposited thickness for each flow computation step in metres.
+			<br><i>
+			Note: This value could be set to a large number in case no limits 
+				are required regarding deposition thickness. </i><br>
+				<strong> &lt;minSedimentLoad&gt; element</strong>: Minimum sediment load threshold in tons per year under which flow walkers  
+			are supposed to have no influence on topography. Below this threshold, flow
+			walkers are erased from the simulation.
+			<br><i>
+			Note:This value does not have to be modified for most of the simulations.  </i><br>
+				<strong> &lt;maxFWStepPerCell&gt; element</strong>: Maximum authorised number of iterations a given flow walker can remain in a 
+			stratigraphic grid cell before deposition is forced. Possible values range 
+			between 100 and 400.
+			<br><i>
+			Note: In flat area, flow walker velocity decreases and sediments are deposited. 
+				In some cases, the flow walker remains within a cell without really having
+				much influence on the topography. This parameter helps to speed up the flow 
+				walker computation process by forcing deposition after a given number of time
+				step.  </i><br>
+					</p2>
+				</div>
+			</div>	
+			
+			<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;Manning&gt; element definitions</h3>
+    	        </div>
+    	   	</div>
+			
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p>
+<pre  ><code>    &lt;Manning&gt;
+      &lt;openchannelFlow&gt;0.02&lt;/openchannelFlow&gt;
+      &lt;hyperpycnalFlow&gt;0.01&lt;/hyperpycnalFlow&gt;
+      &lt;hypopycnalFlow&gt;0.080&lt;/hypopycnalFlow&gt;
+    &lt;/Manning&gt;</code></pre>
+					</p>
+					<p2>
+					<strong> &lt;Manning&gt; element</strong>: Bottom friction coefficient for flow walker is approximated using the approach  
+		of Manning combined with a Chezy’s type form for equation. The Manning’s 
+		roughness coefficient is required for different types of flows. <br>
+		<strong> &lt;openchannelFlow&gt; element</strong>: Coefficient for open-channel flow.<br>
+		<strong> &lt;hyperpycnalFlow&gt; element</strong>: Coefficient for hyperpycnal flow.<br>
+		<strong> &lt;hypopycnalFlow&gt; element</strong>: Coefficient for hypopycnal flow.<br>
+					</p2>
+				</div>
+			</div>	
+			
+			<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;Porosity&gt; element definitions</h3>
+    	        </div>
+    	   	</div>
+			
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+					<p><pre  ><code>    &lt;Porosity&gt;
+      &lt;EffPressureNb&gt;6&lt;/EffPressureNb&gt;
+      &lt;PorosityFile&gt;data/porosity.por&lt;/PorosityFile&gt;
+    &lt;/Porosity&gt;
+  &lt;/struct-param&gt;</code></pre>
+					</p>
+    	        	<p2>
+<strong> &lt;Porosity&gt; element</strong>The porosity changes and associated compaction of burial sedimentary layers 
+		is defined as a function of grain size and lithostatic pressure expressed in 
+		MPa (also called overburden or vertical pressure). 
+    	<br><i>
+	 	    Note: This element is optional.</i><br>
+  	<strong> &lt;EffPressureNb&gt; element</strong>: Number of effective pressures used to defined the porosity evolution 
+			table.<br>
+  	<strong> &lt;PorosityFile&gt; element</strong>: Name of the porosity look-up table file and its path.
+			The path is from the main input file location. 
+			<br>
+			This ASCII file provides on its first line the effective pressure values
+			arranged by increasing order starting at 0 MPa on the surface. 
+			<br><i>
+			Note: the lithostatic pressure gradient is usually assumed to be around 
+				25 MPa/km.
+			<br>
+			Then follows one line for each sediment type defined in the &lt;Materials&gt;
+			element. Each line contains values of porosity of the considered sediment 
+			type for the given lithostatic pressure value provided on the first line. 
+			<br>
+			Note: The lines should be ordered in the same way as the declaration of the 
+				&lt;Materials&gt;
+			<br>
+			Note: The table forms a matrix with a number of columns equal to &lt;EffPressureNb&gt;
+				and a number of lines equal to the total number of materials plus 1.<br>
+			</i>
+					</p2>
+				</div>
+			</div>	
+			
+			<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;struct-output&gt; structure definitions</h3>
+    	        </div>
+    	   	</div>
+			
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p><pre  ><code>  &lt;struct-output&gt;
+    &lt;OutputDirectory&gt;outSPM&lt;/OutputDirectory&gt;
+    &lt;OutputWaterLevel&gt;1&lt;/OutputWaterLevel&gt;
+  &lt;/struct-output&gt;</code></pre>
+					</p>
+					<p2>
+					  		<strong> &lt;struct-output&gt; element</strong>: Definition of output information.
+    	<br><i>
+	 	    Note: This element is required.</i><br>
+  	<strong> &lt;OutputDirectory&gt; element</strong>: Definition of the output directory where both simulation
+		results and runfiles will be stored.<br>
+		The directory is divided in two sub-directories:<br>
+			&nbsp;&nbsp;&nbsp; &#9675;  one called "outputs" which record simulation output, <br>
+			&nbsp;&nbsp;&nbsp; &#9675;  one called "runfiles" which record simulation informations
+			<br><i>
+		Note: the outputs sub-directory contains time-series files that can be visualised
+			in Paraview or Visit for both the TIN grid, recorded stratigraphic mesh and flow walkers
+			evolution.
+		<br>
+		Note: the runfiles sub-directory contains the checkpointing files required to restart 
+			a simulation.
+		<br>
+		Note: to preserve previous runs, change the output directory name otherwise it will be
+			automatically rewritten and previous outputs will be lost.</i><br>
+	<strong> &lt;OutputWaterLevel&gt; element</strong>: Sea-level fluctuations output control parameter. To save some space sea-level
+		fluctuations outputs can be turned on and off. The value for this element can be: <br>
+			&nbsp;&nbsp;&nbsp; &#9675;  0 meaning sea-level will not need to be visualised, <br>
+			&nbsp;&nbsp;&nbsp; &#9675;  1 meaning sea-level fluctuations will be outputted (this is the default value). 
+			<br><i>
+		Note: This element is optional.
+		<br>
+		Note: to preserve previous runs, change the output directory name otherwise it will be
+			automatically rewritten and previous outputs will be lost.</i><br>
+					</p2>
+				</div>
+			</div>	
+			
+		</div>
+
+		<div class="col-lg-12 text-center">
+   			<hr class="star-primary">
+   		</div>
+ 	</section>
+
+	<section id="plug">
+    	<div class="container">
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<br><h2>Plugins</h2>
+					<p><br>Definition of elements to increase LECODE
+    modularity by interaction with other codes.
+     <br><b>All the elements presented in this 
+        structure are optional. </b></p>
+    	        </div>
+    	   	</div>
+
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;SeismicLine&gt; element definitions</h3>
+    	        </div>
+    	   	</div>
+			
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p><pre  ><code>  &lt;struct-plugin&gt;
+    &lt;SeismicLine&gt;
+      &lt;Xmin unit="m"&gt;1000.0&lt;/Xmin&gt;
+      &lt;Xmax unit="m"&gt;1000.0&lt;/Xmax&gt;
+      &lt;Ymin unit="m"&gt;30000.0&lt;/Ymin&gt;
+      &lt;Ymax unit="m"&gt;50000.0&lt;/Ymax&gt;
+    &lt;/SeismicLine&gt;</code></pre>
+					</p>
+					<p2>
+					<strong> &lt;SeismicLine&gt; element</strong>: Export of a 2D pseudo seismic section. The pseudo seismic section
+        records along the X or Y direction the sedimentary layer
+        characteristics. <br>
+        
+        Two files are generated in the runfiles sub-directory of the output
+        directory (<OutputDirectory> element). 
+        The first one is the seismic data itself called seismic.csv and 
+        records:<br>
+            &nbsp;&nbsp;&nbsp; &#9675;  the position along the X or Y direction depending of the seismic 
+                line orientation,<br>
+            &nbsp;&nbsp;&nbsp; &#9675; the layer top elevation,<br>
+            &nbsp;&nbsp;&nbsp; &#9675;  the mean grain size for the considered layer and,<br>
+           &nbsp;&nbsp;&nbsp; &#9675;  the average porosity for the considered layer.<br>
+        
+        The second file represents the envelop of the seismic section and
+        is called "envelop.csv" it records for each stratigraphic grid nodes
+        present in the seismic line the top and bottom elevation.
+        <br><i>
+        Note: the export is realised at the end of the simulation.
+        <br>
+        Note: the section needs to be aligned with the mesh girding
+    <br>
+        Going beyond: These two files could then be further processed to create  
+            regularly spaced grid interpolating the seismic data values using 
+            Fatiando tools.
+            Scripts have been developed to make this conversion and could be 
+            provided if required.</i><br>
+  		<strong> &lt;Xmin&gt; element</strong>: Seismic line minimum coordinate along X. <br>
+  		<strong> &lt;Xmax&gt; element</strong>: Seismic line maximum coordinate along X. <br>
+  		<strong> &lt;Ymin&gt; element</strong>: Seismic line minimum coordinate along Y. <br>
+  		<strong> &lt;Ymax&gt; element</strong>: Seismic line maximum coordinate along Y. <br>
+					</p2>
+				</div>
+			</div>	
+			
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;RMSModel&gt; element definitions</h3>
+    	        </div>
+    	   	</div>
+			
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p><pre  ><code>    &lt;RMSModel&gt;
+      &lt;Xmin unit="m"&gt;200300&lt;/Xmin&gt;
+      &lt;Xmax unit="m"&gt;250300&lt;/Xmax&gt;
+      &lt;Ymin unit="m"&gt;3928300&lt;/Ymin&gt;
+      &lt;Ymax unit="m"&gt;4928300&lt;/Ymax&gt;
+    &lt;/RMSModel&gt;</code></pre>
+					</p>
+					<p2><strong> &lt;RMSModel&gt; element</strong>: Export of a geo-cellular box model defined by its X and Y minimum
+        and maximum coordinates. The geo-cellular model records for within
+        the defined box the sedimentary layers characteristics.
+        <br>
+        The geo-cellular file is generated in the runfiles sub-directory of 
+        the output directory (&lt;OutputDirectory&gt; element). 
+        The file is called "geocellular.grdecl" and records:<br>
+            &nbsp;&nbsp;&nbsp; &#9675; the coordinate of each sedimentary points within the box,<br>
+            &nbsp;&nbsp;&nbsp; &#9675; the averaged porosity and,<br>
+            &nbsp;&nbsp;&nbsp; &#9675; the proportion of each sediment types composing each 
+                sedimentary layer.<br><i>
+        
+        Note: the export is realised at the end of the simulation.<br>
+            
+        Note: the RMSModel plugin only works in serial.<br>
+        
+        Note: the model can be used within a reservoir model and as been 
+            tested using RMS and Temis.</i>
+     <br>
+  		<strong> &lt;Xmin&gt; element</strong>: Geo-cellular model minimum coordinate along X (West border). <br>
+  		<strong> &lt;Xmax&gt; element</strong>: Geo-cellular model maximum coordinate along X (East border). <br>
+  		<strong> &lt;Ymin&gt; element</strong>: Geo-cellular model minimum coordinate along Y (South border).<br>
+  		<strong> &lt;Ymax&gt; element</strong>: Geo-cellular model maximum coordinate along Y (North border). <br>
+  		
+					</p2>
+				</div>
+			</div>	
+			
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;UnderworldPlugin&gt; element definitions</h3>
+    	        </div>
+    	   	</div>
+			
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p><pre  ><code>    &lt;UnderworldPlugin&gt;
+      &lt;UsyncFolder&gt;udw_lecode&lt;/UsyncFolder&gt;
+      &lt;UsyncTime unit="a"&gt;500000&lt;/UsyncTime&gt;
+    &lt;/UnderworldPlugin&gt;</code></pre>
+					</p>
+					<p2>	<strong> &lt;UnderworldPlugin&gt; element</strong>: This plugin enable the soft coupling between Underworld geodynamic
+        model and LECODE.
+        <br>
+        To work the plugin requires that both Underworld and Lecode have been
+        compiled on the same machine. In Underworld specific input parameters
+        have to be turn on to enable the coupling.
+        <br>
+        The communications between the codes are done at specific time steps and 
+        are driven by a file called 'maestro' localised in a synchronisation
+        folder known by the 2 codes.
+        <br>
+        Lecode will provide to Underworld a VTK file containing top surface 
+        information ('topsurface.vtk'). <br>
+        Underworld will provide to Lecode an ASCII file containing vertical
+        displacement fields ('uw_output.ascii').<br>
+        <i>
+        Note: the plugin only looks at vertical displacements.</i>
+        <br>
+  		<strong> &lt;UsyncFolder&gt; element</strong>: Path to the synchronisation folder used by each code to read and
+            write required coupling files.<br>
+            The path is from the main input file location.  <br>
+  		<strong> &lt;UsyncTime&gt; element</strong>: Time for synchronisation of LECODE and Underworld. <br>
+  		
+					</p2>
+				</div>
+			</div>	
+			
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<h3>&lt;OceanPlugin&gt; element definitions</h3>
+    	        </div>
+    	   	</div>
+			
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p><pre  ><code>    &lt;OceanPlugin&gt;
+      &lt;circForcing&gt;1&lt;/circForcing&gt;
+      &lt;waveForcing&gt;1&lt;/waveForcing&gt;
+      &lt;OsyncFolder&gt;lecode_ocean&lt;/OsyncFolder&gt;
+      &lt;OsyncTime unit="a"&gt;500&lt;/OsyncTime&gt;
+      &lt;morphLimit unit="m"&gt;2.5&lt;/morphLimit&gt;
+      &lt;morphAc&gt;500.0&lt;/morphAc&gt;
+      &lt;nbForecast&gt;1&lt;/nbForecast&gt;
+      &lt;forecastClass&gt;
+        &lt;subgroupNb&gt;1&lt;/subgroupNb&gt;
+        &lt;Ostart unit="a"&gt;-120000&lt;/Ostart&gt;
+        &lt;Oend unit="a"&gt;1000&lt;/Oend&gt;
+        &lt;subgroupProp&gt;0.1&lt;/subgroupProp&gt;
+      &lt;/forecastClass&gt;
+    &lt;/OceanPlugin&gt;
+  &lt;/struct-plugin&gt;</code></pre>
+					</p>
+					<p2><strong> &lt;OceanPlugin&gt; element</strong>:  Ocean plugin for waves and currents circulation. This module
+        enable the coupling with CSIRO wave/current ocean circulation
+        code that could be provided if requested.
+        <br>
+        The plugin allows the simulation of wind generated waves and
+        currents circulation for various climatic scenarios.
+        <br>
+        <i>Note: These elements need to be appropriately filled in relation
+            to what has been set up in the ocean code input file.</i>
+        <br>
+  		<strong> &lt;circForcing&gt; element</strong>: Calculation of wind induced ocean currents circulation is 
+            enable if the element is set to 1 (otherwise 0).<br>
+  		<strong> &lt;waveForcing&gt; element</strong>: Calculation of wind generated wave currents is 
+            enable if the element is set to 1 (otherwise 0). <br>
+  		<strong> &lt;OsyncFolder&gt; element</strong>: Path to the synchronisation folder used by each code to read and
+            write required coupling files.<br>
+            The path is from the main input file location.  <br>
+  		<strong> &lt;OsyncTime&gt; element</strong>: Time for synchronisation of LECODE and the Ocean code. <br>
+  		<strong> &lt;morphLimit&gt; element</strong>: Maximum morphological change thickness for each ocean computation 
+            step in metres.<br><i>Note: This value could be set to a large number in case no limits 
+				are required regarding morphological change. </i><br>
+  		<strong> &lt;morphAc&gt; element</strong>: Morphological acceleration factor. Long-term morphological 
+			evolution is achieved using hydrodynamic calculations of only 
+			a fraction of the simulated duration. This need to be calibrated 
+			based on temporal and spatial resolution of the considered 
+			simulation. <br>
+  		<strong> &lt;nbForecast&gt; element</strong>: Number of wind climate classes defined during the simulation time. <br>
+  		<strong> &lt;forecastClass&gt; element</strong>: Collection of wind hind cast parameters for each forecast class. 
+            <br><i>
+            Note: the number of classes needs to be equal to the number given 
+                in the &lt;nbForecast&gt;  element.  </i> <br>
+  		<strong> &lt;subgroupNb&gt; element</strong>: Number of subgroup regime defined for the considered forecast 
+                class.
+            <br><i>
+            Note: this needs to match with the definition provided in the
+                    ocean code input file. </i> <br>
+  		<strong> &lt;Ostart&gt; element</strong>: Starting time of the considered forecast in year. 
+            <br><i>
+            Note: this needs to match with the definition provided in the
+                    ocean code input file. </i> <br>
+  		<strong> &lt;Oend&gt; element</strong>: Ending time of the considered forecast in year. 
+            <br><i>
+            Note: this needs to match with the definition provided in the
+                    ocean code input file. </i> <br>
+  		<strong> &lt;subgroupProp&gt; element</strong>: Proportion of time a considered wind subgroup is active over a year. 
+                The subgroup parameters such as wind velocity and direction are provided 
+                in the ocean code input file.
+            <br><i>
+            Note:the value for the element could not exceed 1. 
+                <br>
+                Note: this needs to match with the definition provided in the
+                    ocean code input file.</i> <br>
+					</p2>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-12 text-center">
+   			<hr class="star-primary">
+   		</div>
+ 	</section>
+
+	<section id="xml2">
+    	<div class="container">
+	       	<div class="row">
+             	<div class="col-lg-12">
+                	<h2>Footer</h2>
+					<br>
+    	        </div>
+    	   	</div>
+	
+			<div class="row">
+    	    	<div class="col-xs-10 col-xs-offset-1">
+    	        	<p>
+ 	   	<pre><code  >&lt;/lecode:lecodeInput&gt;</code></pre>
+					</p>
+	        	</div>
+			</div>
+
+		</div>
+ 	</section>
+
+	<footer class="text-center">
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; 2014 - SgFm Framework
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+			
+    <div class="scroll-top page-scroll visible-xs visble-sm">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+    <script src="js/freelancer.js"></script>
+
+</body>
+
+</html>
