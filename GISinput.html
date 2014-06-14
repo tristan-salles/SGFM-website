@@ -125,17 +125,23 @@
     	      	<div class="col-lg-12 text-left">
 	    	  		<p>
 						The standard scientific python stack is needed for having the <strong>SgFm Notebook</strong> working and are required before installing the specific packages listed below. <br>
-						It is recommended to start with a standard scientific python distribution such as <a href="https://store.continuum.io/cshop/anaconda" target="_blank">Anaconda</a>. Then the following packages will need to be installed: 
+						<br>
+						The easiest and preferred way to get all dependencies is using the <a href="https://store.continuum.io/cshop/anaconda" target="_blank">Anaconda</a> Python distribution by Continuum Analytics. It does not require administrative rights to your computer and doesn’t interfere with the Python installed in your system. For Windows users, it even comes with MinGW so you don’t have to worry about the many, many, many issues of compiling under Windows.<br>
+						Once you have downloaded and installed Anaconda, open a terminal (or cmd.exe on Windows) and run:
+						<pre><code>conda install numpy scipy matplotlib basemap imaging mayavi pip</code></pre>
+						Then the following packages will need to be installed: 
 						<br><br>
-		    			&otimes; <a href="" target="_blank">PyProj</a> python interface to PROJ.4 library,
+		    			&otimes; <a href="http://code.google.com/p/pyproj" target="_blank">PyProj</a> python interface to PROJ.4 library,
 						<br><br>
-		    			&otimes; <a href="" target="_blank">Basemap</a> plot on map projections using matplotlib,
+		    			&otimes; <a href="https://github.com/matplotlib/basemap" target="_blank">Basemap</a> plot on map projections using matplotlib,
 						<br><br>
-		    			&otimes; <a href="" target="_blank">Gdal</a> python bindings for Geospatial Data Abstraction Library (and OGR)
+		    			&otimes; <a href="https://pypi.python.org/pypi/GDAL" target="_blank">Gdal</a> python bindings for Geospatial Data Abstraction Library (and OGR)
 						<br><br>
-		    			&otimes; <a href="" target="_blank">Shapely</a> pythonic library for geometric tasks
+		    			&otimes; <a href="http://toblerity.github.io/shapely" target="_blank">Shapely</a> pythonic library for geometric tasks
 						<br><br>
-		    			&otimes; <a href="" target="_blank">Fiona</a> pythonic interface to OGR data formats
+		    			&otimes; <a href="http://toblerity.github.io/fiona" target="_blank">Fiona</a> pythonic interface to OGR data formats
+						<br><br>
+		    			&otimes; <a href="http://fatiando.readthedocs.org/en/releases/install.html" target="_blank">Fiatando</a> a geophysical modelling and 				inversion toolkit
 						<br><br>
 						The excellent compilation of <a href="https://github.com/kjordahl/SciPy2013" target="_blank">materials</a> and <a http://nbviewer.ipython.org/github/mqlaql/geospatial-data/blob/master/Geospatial-Data-with-Python.ipynb" target="_blank"> tutorial</a> from Kelsey Jordahl <i>"Using Geospatial Data With Python"</i> (Jun 25, 2013, SciPy 2013 conference) is a nice guide and starting point to install and test your own IPython GIS environment.<br><br>
 						In addition to the required packages you could also use the <a href="http://www.kyngchaos.com/software/grass"> KingChaos Wiki </a> from William Kyngesburye (if you are on Mac OS X) to install some additional packages such as <a href="http://grass.osgeo.org/" target="_blank">GRASS</a> to increase the capability of the IPython integrated environment.   
