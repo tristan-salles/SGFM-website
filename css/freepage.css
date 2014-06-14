@@ -252,9 +252,9 @@ section.success {
 
 .btn-outline {
     margin-top: 15px;
-    border: solid 2px #333333;
+    border: solid 2px #2c3e50;
     font-size: 20px;
-    color: #333333;
+    color: #2c3e50;
     background: 0 0;
     transition: all .3s ease-in-out;
 }
