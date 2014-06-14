@@ -102,7 +102,7 @@
         	 		<p>	
 					Here you will find several workflows to generate topographic and stratigraphic input files to run your own <strong>Lecode</strong> simulations. 
 					These workflows are built using <a href="http://ipython.org/notebook.html" target="_blank">IPython Notebook</a> interactive environment.<br><br>
-					A series of notebooks are available for download and present a step by step guide to generate the required nodes and deposits files used for <strong>Lecode</strong> initialisation. <br><br>
+					A series of essential notebooks are available for download and present a step by step guide to generate the required nodes and deposits files used for <strong>Lecode</strong> initialisation. <br><br>
 					We encourage you to start with these guides but to quickly develop your own functionalities based on these scripts. <br>
 					Feel free to share your experience and notebooks with others by giving access to your workflows. 
 					</p>
@@ -124,6 +124,21 @@
 	   		<div class="row">
     	      	<div class="col-lg-12 text-left">
 	    	  		<p>
+						The standard scientific python stack is needed for having the <strong>SgFm Notebook</strong> working and are required before installing the specific packages listed below. <br>
+						It is recommended to start with a standard scientific python distribution such as <a href="https://store.continuum.io/cshop/anaconda" target="_blank">Anaconda</a>. Then the following packages will need to be installed: 
+						<br><br>
+		    			&otimes; <a href="" target="_blank">pyproj</a> python interface to PROJ.4 library,
+						<br><br>
+		    			&otimes; <a href="" target="_blank">Basemap</a> plot on map projections using matplotlib,
+						<br><br>
+		    			&otimes; <a href="" target="_blank">Gdal</a> python bindings for Geospatial Data Abstraction Library (and OGR)
+						<br><br>
+		    			&otimes; <a href="" target="_blank">Shapely</a> pythonic library for geometric tasks
+						<br><br>
+		    			&otimes; <a href="" target="_blank">Fiona</a> pythonic interface to OGR data formats
+						<br><br>
+						The excellent compilation of <a href="https://github.com/kjordahl/SciPy2013" target="_blank">materials</a> and <a http://nbviewer.ipython.org/github/mqlaql/geospatial-data/blob/master/Geospatial-Data-with-Python.ipynb" target="_blank"> tutorial</a> from Kelsey Jordahl <i>"Using Geospatial Data With Python"</i> (Jun 25, 2013, SciPy 2013 conference) is a nice guide and starting point to install and test your own IPython GIS environment.<br>
+						In addition to the required packages you could also use the <a href="http://www.kyngchaos.com/software/grass"> KingChaos Wiki </a> from William Kyngesburye (if you are on Mac OS X) to install some additional packages such as <a href="http://grass.osgeo.org/" target="_blank">GRASS</a> to increase the capability of the IPython integrated environment.   
 					</p>
 				</div>
     	   	</div>
