@@ -179,24 +179,24 @@
 						For a general place to get started with geospatial work with Python, Erik Westra’s <i>"Python Geospatial Development"</i> is an excellent <a href="http://books.google.com.au/books/about/Python_Geospatial_Development.html?id=V1db5u98SjkC&redir_esc=y" target="_blank">resource</a>, and we strongly encourage users to take time to read some general materials on geospatial work before looking at specific datasets.<br> <br>
 						Before working with your own datasets, it is important to understand how things can be referenced geographically in particular you will need to know about:<br><br>
 						&otimes; <strong>Coordinate Systems</strong> (<i>Unprojected</i> vs <i>Projected</i> systems),
-						<br><br>
+						<br>
 						&otimes; <strong>Earth’s Shape and Datums</strong>  (<i>Geographic Information Systems</i> such as <strong>WGS84</strong>),
-						<br><br>
+						<br>
 						&otimes; <strong>Map Projections</strong> specially about the <i>Universal Transverse Mercator</i> (<strong>UTM</strong>) projection which is used for <strong>Lecode</strong> input files transformation.<br><br>
 						The Notebooks are developed to provide users with an easy interface to produce <strong>Lecode</strong> input files and are not a replacement of a proper GIS platform such as <a href="http://grass.osgeo.org/" target="_blank">GRASS</a> or <a href="http://www.qgis.org/en/site/" target="_blank">QGIS</a>. If you are already familiar with these tools you might be able to produce your <strong>Lecode</strong> input files without these notebooks.
 						In a nutshell, the <a href="https://github.com/lecode-model/SgFm-Notebook" target="_blank">SgFm Notebooks</a> will give you an easy interface to:
 						<br><br>
 						&otimes; Apply a set of transformations to your geospatial data (merge tiles, project dataset to UTM), 
-						<br><br>
-						&otimes; Combine bathymetric and topographic datasets,
-						<br><br>
-						&otimes; Clip your dataset to the simulation area you want to perform within <strong>Lecode</strong>,
-						<br><br>
-						&otimes; Define the resolution of your simulation area as well as the initial geological layer, and
-						<br><br>
-						&otimes; Determine <strong>Geo-metrics</strong> information such as <i>flow accumulation</i> and <i>slope</i> maps to define several parameters required in <strong>Lecode</strong> <a href="http://lecode-model.github.io/SGFM/input.html" target="_blank">XmL input file</a>.
 						<br>
-						In case you want to build a model using a <strong>uniform distribution</strong> of sediment classes over the all simulation area you can use the <code>SGFMTopoGen_Basic.ipynb</code> or <code>SGFMTopoGen.ipynb</code> notebooks. For these 2 notebooks, definition of the geology is not required and you will produce a initial <strong>Lecode</strong> model which will conform with the dataset bathymetry and topography. <br>
+						&otimes; Combine bathymetric and topographic datasets,
+						<br>
+						&otimes; Clip your dataset to the simulation area you want to perform within <strong>Lecode</strong>,
+						<br>
+						&otimes; Define the resolution of your simulation area as well as the initial geological layer, and
+						<br>
+						&otimes; Determine <strong>Geo-metrics</strong> information such as <i>flow accumulation</i> and <i>slope</i> maps to define several parameters required in <strong>Lecode</strong> <a href="http://lecode-model.github.io/SGFM/input.html" target="_blank">XmL input file</a>.
+						<br><br>
+						In case you want to build a model using an <strong>uniform distribution</strong> of sediment classes over the all simulation area you can use the <code>SGFMTopoGen_Basic.ipynb</code> or <code>SGFMTopoGen.ipynb</code> notebooks. For these 2 notebooks, definition of the geology is not required and you will produce a initial <strong>Lecode</strong> model which will conform with the dataset bathymetry and topography. <br>
 						<strong>Lecode</strong> uses a regular orthogonal grid to store stratigraphic information through time and it is required that your input nodes definition are oriented in a E-W / S-N direction. In case your simulation area is not directly in these directions (rotated area in respect to UTM projection) the <code>SGFMTopoGen.ipynb</code> notebook needs to be used. This notebook will assist you in defining a new projection to rotate the map and to produce a regularly space grid based on the <code>gridder</code> facility from <a href="http://fatiando.readthedocs.org/en/releases/install.html" target="_blank">Fatiando</a> library.    
 					</p>
 				</div>
