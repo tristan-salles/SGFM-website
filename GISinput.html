@@ -173,11 +173,6 @@
 					<img src="figures/gis1.png" class="img-responsive img-centered" alt=""><br>
 				</div>
 			</div>
-			<div class="row">
-  				<div class="col-lg-12"><br>
-				<h3> Building a Geo-referenced Lecode model </h3>
-				</div>
-			</div>
 	   		<div class="row">
     	      	<div class="col-lg-12 text-left">
 	    	  		<p>
@@ -201,23 +196,11 @@
 						<br><br>
 						&otimes; Determine <strong>Geo-metrics</strong> information such as <i>flow accumulation</i> and <i>slope</i> maps to define several parameters required in <strong>Lecode</strong> <a href="http://lecode-model.github.io/SGFM/input.html" target="_blank">XmL input file</a>.
 						<br>
-
+						In case you want to build a model using a <strong>uniform distribution</strong> of sediment classes over the all simulation area you can use the <code>SGFMTopoGen_Basic.ipynb</code> or <code>SGFMTopoGen.ipynb</code> notebooks. For these 2 notebooks, definition of the geology is not required and you will produce a initial <strong>Lecode</strong> model which will conform with the dataset bathymetry and topography. <br>
+						<strong>Lecode</strong> uses a regular orthogonal grid to store stratigraphic information through time and it is required that your input nodes definition are oriented in a E-W / S-N direction. In case your simulation area is not directly in these directions (rotated area in respect to UTM projection) the <code>SGFMTopoGen.ipynb</code> notebook needs to be used. This notebook will assist you in defining a new projection to rotate the map and to produce a regularly space grid based on the <code>gridder</code> facility from <a href="http://fatiando.readthedocs.org/en/releases/install.html" target="_blank">Fatiando</a> library.    
 					</p>
 				</div>
-    	   	</div>
-			<div class="row">
-  				<div class="col-lg-12"><br>
-				<h3> Clipping a rotated model </h3>
-				</div>
-			</div>
-	   		<div class="row">
-    	      	<div class="col-lg-12 text-left">
-					<p>
-					Fatiando<br>
-					Rotated projection.
-					</p>
-				</div>
-			</div> 	   	
+    	   	</div>   	
 		</div>
 		<div class="col-lg-12 text-center">
    			<hr class="star-primary">
