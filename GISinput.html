@@ -178,11 +178,25 @@
 	    	  		<p>
 						For a general place to get started with geospatial work with Python, Erik Westra’s <i>"Python Geospatial Development"</i> is an excellent <a href="http://books.google.com.au/books/about/Python_Geospatial_Development.html?id=V1db5u98SjkC&redir_esc=y" target="_blank">resource</a>, and we strongly encourage users to take time to read some general materials on geospatial work before looking at specific datasets.<br> <br>
 						Before working with your own datasets, it is important to understand how things can be referenced geographically in particular you will need to know about:<br><br>
-						&otimes; <strong>Coordinate Systems</strong> (<i>Unprojected</i> vs <i>Projected</i> systems,
+						&otimes; <strong>Coordinate Systems</strong> (<i>Unprojected</i> vs <i>Projected</i> systems),
 						<br><br>
 						&otimes; <strong>Earth’s Shape and Datums</strong>  (<i>Geographic Information Systems</i> such as <strong>WGS84</strong>),
 						<br><br>
-						&otimes; <strong>Map Projections</strong> specially about the <i>Universal Transverse Mercator</i> (<strong>UTM</strong>) projection which is used for <strong>Lecode</strong> input file transformation.<br>
+						&otimes; <strong>Map Projections</strong> specially about the <i>Universal Transverse Mercator</i> (<strong>UTM</strong>) projection which is used for <strong>Lecode</strong> input files transformation.<br><br>
+						The Notebooks are developed to provide users with an easy interface to produce <strong>Lecode</strong> input files and are not a replacement of a proper GIS platform such as <a href="http://grass.osgeo.org/" target="_blank">GRASS</a> or <a href="http://www.qgis.org/en/site/" target="_blank">QGIS</a>. If you are already familiar with these tools you might be able to produce your <strong>Lecode</strong> input files without these notebooks.<br>
+						In a nutshell, the <a href="https://github.com/lecode-model/SgFm-Notebook" target="_blank">SgFm Notebooks</a> will give you an easy interface to:
+						<br><br>
+						&otimes; Apply a set of transformations to your geospatial data (merge tiles, project dataset to UTM), 
+						<br><br>
+						&otimes; Combine bathymetric and topographic datasets,
+						<br><br>
+						&otimes; Clip your dataset to the simulation area you want to perform within <strong>Lecode</strong>,
+						<br><br>
+						&otimes; Define the resolution of your simulation area as well as the initial geological layer, and
+						<br><br>
+						&otimes; Help you define some <strong>Geometrics</strong> information such as <i>flow accumulation</i> and <i>slope</i> maps which will help you to define some of the parameters required in <strong>Lecode</strong> <a href="http://lecode-model.github.io/SGFM/input.xml" target="_blank">XmL input file</a>.
+						<br>
+
 					</p>
 				</div>
     	   	</div>
