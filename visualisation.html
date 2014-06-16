@@ -167,184 +167,16 @@
 				</div>
     	   	</div>
 			
-			<div class="col-lg-12 portfolio-item">
-					<a href="portfolioModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-								<p> <strong>Seismic script</strong> </p>
-                            </div>
+			<div class="col-lg-4 col-lg-offset-6 portfolio-item">
+            	<a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
+                	<div class="caption">
+                    	<div class="caption-content">
+                        	<i class="fa fa-eye fa-1x"></i>
+							<p> <h6>Seismic script</h6></p>
                         </div>
-					</a>
-                </div>
-			
-			<div class="row">
-    	    	<div class="col-xs-10 col-xs-offset-1">
-    	        	<p>
-<pre><code>"""
-Transforming Lecode irregularly sampled cross section dataset to a regularly spaced grid.
-python lecode_gridding.py -s seismic.csv -e envelop.csv -l 54375 -r 108750 -b -2740 -t -470 -d 5
-"""
-import sys, math, numpy, getopt
-from scipy import interpolate
-from numpy import *
-from scipy import *
-import matplotlib 
-from fatiando import gridder, utils
-from fatiando.vis import mpl
-
-#def main(argv):
-
-# Define font size and type
-font = {'family' : 'normal',
-        'size'   : 6}
-matplotlib.rc('font', **font)
-
-total = len(sys.argv)
-
-if total == 1:
-    print 'Some required fields are missing'
-    print 'Use: python lecode_gridding.py -h for parameter declaration'
-    sys.exit(2)
-elif total > 2 and total < 15:
-    print 'Some required fields are missing'
-    print 'Use: python lecode_gridding.py -h for parameter declaration'
-    sys.exit(2)
-
-try:
-    opts, args = getopt.getopt(sys.argv[1:],"hs:e:l:r:b:t:d:")
-except getopt.GetoptError:
-    print 'Usage: python lecode_gridding.py -s &lt;seismic&gt; -e &lt;envelop&gt; -l &lt;hmin&gt; -r &lt;hmax&gt; -b &lt;vmin&gt; -t &lt;vmax&gt; -d &lt;dx&gt;'
-    print '-s : name of the seismic file exported from Lecode simulation'
-    print '-e : name of the envelop file exported from Lecode simulation'
-    print '-l : regular grid minimal horizontal value (left)'
-    print '-r : regular grid maximal horizontal value (right)'
-    print '-b : regular grid minimal vertical value (bottom)'
-    print '-t : regular grid maximal vertical value (top)'
-    print '-d : regular grid spacing'
-    print 'Note: you need to ensure that the vertical and horizontal are both multiple of the specify spacing'
-    sys.exit(2)
- 
-for opt, arg in opts:
-    if opt == '-h':
-    	print 'Usage: python lecode_gridding.py -s &lt;seismic&gt; -e &lt;envelop&gt; -l &lt;hmin&gt; -r &lt;hmax&gt; -b &lt;vmin&gt; -t &lt;vmax&gt; -d &lt;dx&gt;'
-    	print '-s : name of the seismic file exported from LECODE simulation'
-    	print '-e : name of the envelop file exported from LECODE simulation'
-    	print '-l : regular grid minimal horizontal value (left)'
-    	print '-r : regular grid maximal horizontal value (right)'
-    	print '-b : regular grid minimal vertical value (bottom)'
-    	print '-t : regular grid maximal vertical value (top)'
-    	print '-d : regular grid spacing'
-    	print 'Note: you need to ensure that the vertical and horizontal are both multiple of the specify spacing'
-        sys.exit()
-    elif opt == "-s":
-        ifile = arg
-    elif opt == "-e":
-        ofile = arg
-    elif opt == "-l":
-        hmin = float( arg )
-    elif opt == "-r":
-        hmax = float( arg )
-    elif opt == "-b":
-        vmin = float( arg )
-    elif opt == "-t":
-        vmax = float( arg )
-    elif opt == "-d":
-        dx = float( arg )
-        
-# Open and read file from std, and assign data (horizontal, vertical, mean grain size & porosity) 
-# columns to an array.
-x,y,mgz,poro = loadtxt( ifile, skiprows=0, delimiter=',', unpack = True)
-            
-# Extensions
-hext = int( ( hmax - hmin ) / dx )
-vext = int( ( vmax - vmin ) / dx )
-
-# !!! Be careful the shape is defined as ( ny, nx )
-shape = ( int( vext ) + 1, int( hext ) + 1 )
-
-# Interpolation
-grdx, grdy, gmgz = gridder.interp( x, y, mgz, shape, area=(hmin, hmax, vmin, vmax) , algorithm='cubic', extrapolate=True)
-gx, gy, gporo = gridder.interp( x, y, poro, shape, area=(hmin, hmax, vmin, vmax) , algorithm='cubic', extrapolate=True)
-
-# Open and read file from std, and assign first three (horizontal, low, high) columns to an array.
-line,low,high = loadtxt( ofile, skiprows=0, delimiter=',', unpack = True)
-xnew = linspace(hmin,hmax,int(rint((hmax-hmin)/dx+1)))
-
-# Create the envelop bottom function
-bfunc = interpolate.splrep(line,low,s=0)
-envbot = interpolate.splev(xnew,bfunc,der=0)
-
-# Create the envelop top function
-tfunc = interpolate.splrep(line,high,s=0)
-envtop = interpolate.splev(xnew,tfunc,der=0)
-
-# Mask interpolated regular data using the envelope
-k = 0
-p = 0
-vp = zeros(grdx.size)
-vs = zeros(grdx.size)
-
-# Here is a simple example which link porosity to velocity using Dominico formula 
-for i in nditer(grdx):
-    if k > hext:
-        k = 0
-    if grdy[ p ] < envbot[ k ] :		
-        gmgz[ p ] = nan
-        gporo[ p ] = nan
-        vp[ p ] = nan
-        vs[ p ] = nan
-    elif grdy[ p ] > envtop[ k ] :		
-        gmgz[ p ] = nan
-        gporo[ p ] = nan
-        vp[ p ] = nan
-        vs[ p ] = nan
-    else:
-       	vp[ p ] = 1.0 / (0.163 + 0.365 * gporo[ p ] ) 
-        vs[ p ] = 1.0 / (0.224 + 0.889 * gporo[ p ] )
-    k = k + 1
-    p = p + 1
-       
-savetxt('seismic_reg.csv',column_stack((grdx, grdy, gmgz, gporo)), fmt='%g', delimiter=',')
-                
-# Plot interpolated values
-mpl.figure()
-
-mpl.subplot(5, 1, 1)
-mpl.title("Lecode line scattered points and cubic-spline envelop")
-mpl.scatter(x, y, c=gmgz, label='points')
-mpl.plot(xnew,envbot,c="cyan",linewidth=2.5)
-mpl.plot(xnew,envtop,c="magenta",linewidth=2.5)
-mpl.colorbar()
-
-mpl.subplot(5, 1, 2)
-mpl.title("Density map")
-mpl.contourf(grdx, grdy, gmgz, shape, 200)
-mpl.colorbar()
-
-mpl.subplot(5, 1, 3)
-mpl.title("Net 2 Gross map")
-mpl.contourf(grdx, grdy, gporo, shape, 200)
-mpl.colorbar()
-mpl.axis('scaled')
-mpl.plot(x, y, '.k', label='data points', alpha=0.4, ms=4 )
-mpl.legend(loc='lower right', numpoints=1)
-
-mpl.subplot(5, 1, 4)
-mpl.title("S-wave velocity map")
-mpl.contourf(grdx, grdy, vs, shape, 200)
-mpl.colorbar()
-
-mpl.subplot(5, 1, 5)
-mpl.title("P-wave velocity map")
-mpl.contourf(grdx, grdy, vp, shape, 200)
-mpl.colorbar()
-
-mpl.show()
-</code></pre>
-					</p>
-				</div>
-			</div>
+                    </div>
+                </a>
+            </div>
 			
 			<div class="row">
   				<div class="col-lg-10 col-lg-offset-1 text-center"><br>
@@ -401,7 +233,7 @@ mpl.show()
     </div>
 
   	<!-- Portfolio Modals -->
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
                 <div class="lr">
@@ -409,13 +241,11 @@ mpl.show()
                     </div>
                 </div>
             </div>
-			<div class="container">
-            	<div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-    	    				<!--div class="col-xs-10 col-xs-offset-1"-->
-    	        			<p>
-<pre><code>"""
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 col-lg-offset-1">
+                        <div class="modal-body" align="left">
+                            <pre><code>"""
 Transforming Lecode irregularly sampled cross section dataset to a regularly spaced grid.
 python lecode_gridding.py -s seismic.csv -e envelop.csv -l 54375 -r 108750 -b -2740 -t -470 -d 5
 """
