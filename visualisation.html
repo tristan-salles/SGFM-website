@@ -143,7 +143,19 @@
 						Feel free to contact us if you want to get some of these scripts, we will be happy to share ...
 					</p>
 				</div>
-    	   	</div>   	
+    	   	</div>   
+			
+			<div class="col-lg-10 col-lg-offset-1 text-center">
+            	<a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                	<div class="caption">
+                    	<div class="caption-content">
+                        	<span style="color:#2c3e50"><i class="fa fa-eye fa-1x"></i> </span>
+<span style="color:#2c3e50; font-family:Montserrat; font-size:17px; font-weight:normal;">Relative change of elevation Paraview programmable filter example</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+	
 		</div>
 		<div class="col-lg-12 text-center">
    			<hr class="star-primary">
@@ -426,6 +438,86 @@ mpl.show()
             </div>
         </div>
     </div>
+
+	<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 col-lg-offset-1">
+                        <div class="modal-body" align="left">
+                            <pre><code>'''
+This Paraview Programmable Filter will produce a time series of 
+cumulative elevation changes for your area (erosion/deposition area).
+It could easily be adapted to look at the instantaneous elevation change.
+
+Prior to applying the filter, you will need to use the - Merge Blocks -
+filter from Paraview with the Points unchecked in the Properties list.
+
+After applying the filter you will have to use the - Delaunay2D -
+filter from Paraview to visualise the cumulative elevation change.
+
+'''
+# Import Paraview Numpy Library
+from paraview.vtk.dataset_adapter import numpyTovtkDataArray
+
+data = inputs[0]
+newPoints = vtk.vtkPoints()
+
+# Offset should correspond to the initial deposit layer 
+# It will work if you started with an uniform thickness
+offset = -10000
+
+# Definition of the current top layer
+youngestIndex = max(data.PointData['Layer Index'])
+
+# Find the Points within the stratigraphy corresponding to the 
+# top layer
+youngestLayer = data.PointData['Layer Index'] == youngestIndex
+
+# Find the Points corresponding to the bottom layer
+# Note in case you want to look at the instantaneous change
+# replace it by youngestIndex - 1
+oldestLayer = data.PointData['Layer Index'] == 1
+
+# Define the X coordinates
+youngestX = data.Points[:,0][youngestLayer].transpose()
+
+# Define the Y coordinates
+youngestY = data.Points[:,1][youngestLayer].transpose()
+youngestZ = data.Points[:,2][youngestLayer].transpose()
+
+# Define the Z coordinates
+# The cumulative change of elevation will coincide with the
+# current topography
+oldestZ = data.Points[:,2][oldestLayer].transpose()
+
+
+# Define the cumulative change of elevation
+deltaZ = youngestZ - oldestZ + offset
+
+# Create the VTK array grid
+coords = hstack((youngestX, youngestY, youngestZ))
+Points = numpyTovtkDataArray(coords,name="Points")
+newPoints.SetData(Points)
+
+# Add the cumulative elevation change property
+output.PointData.append(deltaZ, "deltaZ")
+</code></pre>
+					</p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.min.js"></script>
