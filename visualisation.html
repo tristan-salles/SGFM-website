@@ -509,6 +509,7 @@ deltaZ = youngestZ - oldestZ + offset
 coords = hstack((youngestX, youngestY, youngestZ))
 Points = numpyTovtkDataArray(coords,name="Points")
 newPoints.SetData(Points)
+output.SetPoints(newPoints)
 
 # Add the cumulative elevation change property
 output.PointData.append(deltaZ, "deltaZ")
