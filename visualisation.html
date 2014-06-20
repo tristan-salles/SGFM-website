@@ -140,11 +140,22 @@
 					The <code>&lt;OutputDirectory&gt;</code> contains two subfolders: <br>
 					<br>
 					<span class="glyphicon glyphicon-ok-sign" style="vertical-align:center; font-size:15px;"></span> <code>runfiles</code> which contains information for checkpointing and restart.<br>
-					
+					<br>
 					<span class="glyphicon glyphicon-ok-sign" style="vertical-align:center; font-size:15px;"></span> <code>outputs</code> which contains information about stratigraphy, flow walkers and TIN. <br>
 					<br>
-					The <code>outputs</code> directory mostly contains binary <strong>HdF5</strong> files written at each time step and for each processor. For each time step, these <strong>Hdf5</strong> files are bundle within a <strong>XmF</strong> file containing the collection of attributes (both for nodes and cells). On top of the output structure, a <strong>Xdmf</strong> file is used to wrap time-series informations.<br><br>
+					The <code>outputs</code> directory mostly contains binary <strong>HdF5</strong> files written at each time step and for each processor. For each time step, these <strong>Hdf5</strong> files are bundle within a <strong>XmF</strong> file containing the collection of attributes (both for nodes and cells). On top of the output structure, a <strong>Xdmf</strong> file is used to wrap time-series informations.
+					<br><br>
 					To visualise <strong>Lecode</strong> results a visualisation platform able to read these types of files is required. We recommend using  <a href="http://www.paraview.org" target="_blank">Paraview</a> or  <a href="https://wci.llnl.gov/codes/visit/" target="_blank">Visit</a> . 
+					<br><br>
+					To start looking at your outputs and the model evolution through time, it is only necessary to load the <code>_series.xdmf</code> files. Depending on the set of parameters defined in your simulation the following  <code>_series.xdmf</code> files will exist:<br>
+					<br>
+					<span class="glyphicon glyphicon-ok-sign" style="vertical-align:center; font-size:15px;"></span> a <code>Stratal_series.xdmf</code> file containing a combination of the stratigraphic information (mean grain size, sediment proportion, cell thicknesses, layer time...) over all processors and for all time steps; <br>
+					<br>
+					<span class="glyphicon glyphicon-ok-sign" style="vertical-align:center; font-size:15px;"></span> a <code>TIN_series.xdmf</code> file containing the Triangular Irregular Network grid information for all time steps and the associated flow accumulation dataset;<br>
+					<br>
+					<span class="glyphicon glyphicon-ok-sign" style="vertical-align:center; font-size:15px;"></span> a <code>FW_series.xdmf</code> file containing the Flow Walkers information (flow velocity, stream width and depth ...) over all processors and for all time steps;<br>
+					<br>
+					<span class="glyphicon glyphicon-ok-sign" style="vertical-align:center; font-size:15px;"></span> a <code>Ocean_series.xdmf</code> file representing sea level fluctuations (if any) for all time steps.
 					</p>
 				</div>
     	   	</div>   	
