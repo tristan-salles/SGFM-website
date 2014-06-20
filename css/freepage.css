@@ -444,16 +444,17 @@ footer .footer-below {
 }
 
 .videoWrapper {
-   text-align: center;
 	position: relative;
 	padding-bottom: 56.25%; /* 16:9 */
 	padding-top: 25px;
+	padding-left: 25px;
 	height: 0;
 }
 .videoWrapper object,
 .videoWrapper embed,  {
 	position: absolute;
 	top: 0;
+	left: 0;
 	width: 100%;
 	height: 100%;
 }
