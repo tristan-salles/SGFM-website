@@ -139,7 +139,12 @@
 					For each <code>&lt;outputTime&gt;</code> step, <strong>Lecode</strong> generates a series of output files. These files are stored on a local folder which name is defined in the <code>&lt;struct-output&gt;</code> structure within the <a href="http://lecode-model.github.io/SGFM/input.html" target="_blank">XmL Input</a> file. <br>
 					The <code>&lt;OutputDirectory&gt;</code> contains two subfolders: <br>
 					<br>
-					<span class="glyphicon glyphicon-ok-sign" style="vertical-align:center; font-size:15px;"></span> <code>runfiles</code> which 
+					<span class="glyphicon glyphicon-ok-sign" style="vertical-align:center; font-size:15px;"></span> <code>runfiles</code> which contains information for checkpointing and restart.<br>
+					
+					<span class="glyphicon glyphicon-ok-sign" style="vertical-align:center; font-size:15px;"></span> <code>outputs</code> which contains information about stratigraphy, flow walkers and TIN. <br>
+					<br>
+					The <code>outputs</code> directory mostly contains binary <strong>HdF5</strong> files written at each time step and for each processor. For each time step, these <strong>Hdf5</strong> files are bundle within a <strong>XmF</strong> file containing the collection of attributes (both for nodes and cells). On top of the output structure, a <strong>Xdmf</strong> file is used to wrap time-series informations.<br><br>
+					To visualise <strong>Lecode</strong> results a visualisation platform able to read these types of files is required. We recommend using  <a href="http://www.paraview.org" target="_blank">Paraview</a> or  <a href="https://wci.llnl.gov/codes/visit/" target="_blank">Visit</a> . 
 					</p>
 				</div>
     	   	</div>   	
