@@ -446,14 +446,14 @@ footer .footer-below {
 .videowrapper {
     float: none;
     clear: both;
-    width: 60%;
-    position: center;
+    width: 100%;
+    position: relative;
     padding-bottom: 56.25%;
     padding-top: 2px;
     height: 0;
 }
 .videowrapper iframe {
-    position: absolute;
+    position: center;
     top: 0;
     left: 0;
     width: 100%;
