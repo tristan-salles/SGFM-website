@@ -153,17 +153,17 @@
 						<pre><code>conda install numpy scipy matplotlib basemap imaging mayavi pip</code></pre></p><p>
 						Then the following packages will need to be installed: 
 						<br><br>
-		    			<span class="glyphicon glyphicon-plus-sign" style="vertical-align:center; font-size:15px;"></span> <a href="http://code.google.com/p/pyproj" target="_blank">PyProj</a> python interface to PROJ.4 library,
+		    			<span class="glyphicon glyphicon-download-alt" style="vertical-align:center; font-size:15px;"></span> <a href="http://code.google.com/p/pyproj" target="_blank">PyProj</a> python interface to PROJ.4 library,
 						<br>
-		    			<span class="glyphicon glyphicon-plus-sign" style="vertical-align:center; font-size:15px;"></span> <a href="https://github.com/matplotlib/basemap" target="_blank">Basemap</a> plot on map projections using matplotlib,
+		    			<span class="glyphicon glyphicon-download-alt" style="vertical-align:center; font-size:15px;"></span> <a href="https://github.com/matplotlib/basemap" target="_blank">Basemap</a> plot on map projections using matplotlib,
 						<br>
-		    			<span class="glyphicon glyphicon-plus-sign" style="vertical-align:center; font-size:15px;"></span> <a href="https://pypi.python.org/pypi/GDAL" target="_blank">Gdal</a> python bindings for Geospatial Data Abstraction Library (and OGR)
+		    			<span class="glyphicon glyphicon-download-alt" style="vertical-align:center; font-size:15px;"></span> <a href="https://pypi.python.org/pypi/GDAL" target="_blank">Gdal</a> python bindings for Geospatial Data Abstraction Library (and OGR)
 						<br>
-		    			<span class="glyphicon glyphicon-plus-sign" style="vertical-align:center; font-size:15px;"></span> <a href="http://toblerity.github.io/shapely" target="_blank">Shapely</a> pythonic library for geometric tasks
+		    			<span class="glyphicon glyphicon-download-alt" style="vertical-align:center; font-size:15px;"></span> <a href="http://toblerity.github.io/shapely" target="_blank">Shapely</a> pythonic library for geometric tasks
 						<br>
-		    			<span class="glyphicon glyphicon-plus-sign" style="vertical-align:center; font-size:15px;"></span> <a href="http://toblerity.github.io/fiona" target="_blank">Fiona</a> pythonic interface to OGR data formats
+		    			<span class="glyphicon glyphicon-download-alt" style="vertical-align:center; font-size:15px;"></span> <a href="http://toblerity.github.io/fiona" target="_blank">Fiona</a> pythonic interface to OGR data formats
 						<br>
-		    			<span class="glyphicon glyphicon-plus-sign" style="vertical-align:center; font-size:15px;"></span> <a href="http://fatiando.readthedocs.org/en/releases/install.html" target="_blank">Fatiando</a> a geophysical modelling and 				inversion toolkit
+		    			<span class="glyphicon glyphicon-download-alt" style="vertical-align:center; font-size:15px;"></span> <a href="http://fatiando.readthedocs.org/en/releases/install.html" target="_blank">Fatiando</a> a geophysical modelling and 				inversion toolkit
 						<br><br>
 						The excellent compilation of <a href="https://github.com/kjordahl/SciPy2013" target="_blank">materials</a> and <a http://nbviewer.ipython.org/github/mqlaql/geospatial-data/blob/master/Geospatial-Data-with-Python.ipynb" target="_blank"> tutorial</a> from Kelsey Jordahl <i>"Using Geospatial Data With Python"</i> (Jun 25, 2013, SciPy 2013 conference) is a nice guide and starting point to install and test your own IPython GIS environment.<br><br>
 						In addition to the required packages you could also use the <a href="http://www.kyngchaos.com/software/grass"> KingChaos Wiki </a> from William Kyngesburye (if you are on Mac OS X) to install some additional packages such as <a href="http://grass.osgeo.org/" target="_blank">GRASS</a> to increase the capability of the IPython integrated environment.   
@@ -200,23 +200,23 @@
 	    	  		<p>
 						For a general place to get started with geospatial work with Python, Erik Westra’s <i>"Python Geospatial Development"</i> is an excellent <a href="http://books.google.com.au/books/about/Python_Geospatial_Development.html?id=V1db5u98SjkC&redir_esc=y" target="_blank">resource</a>, and we strongly encourage users to take time to read some general materials on geospatial work before looking at specific datasets.<br> <br>
 						Before working with your own datasets, it is important to understand how things can be referenced geographically in particular you will need to know about:<br><br>
-						<span class="glyphicon glyphicon-plus-sign" style="vertical-align:center; font-size:15px;"></span> <strong>Coordinate Systems</strong> (<i>Unprojected</i> vs <i>Projected</i> systems),
+						<span class="glyphicon glyphicon-check" style="vertical-align:center; font-size:15px;"></span> <strong>Coordinate Systems</strong> (<i>Unprojected</i> vs <i>Projected</i> systems),
 						<br>
-						<span class="glyphicon glyphicon-plus-sign" style="vertical-align:center; font-size:15px;"></span> <strong>Earth’s Shape and Datums</strong>  (<i>Geographic Information Systems</i> such as <strong>WGS84</strong>),
+						<span class="glyphicon glyphicon-check" style="vertical-align:center; font-size:15px;"></span> <strong>Earth’s Shape and Datums</strong>  (<i>Geographic Information Systems</i> such as <strong>WGS84</strong>),
 						<br>
-						<span class="glyphicon glyphicon-plus-sign" style="vertical-align:center; font-size:15px;"></span> <strong>Map Projections</strong> specially about the <i>Universal Transverse Mercator</i> (<strong>UTM</strong>) projection which is used for <strong>Lecode</strong> input files transformation.<br><br>
+						<span class="glyphicon glyphicon-check" style="vertical-align:center; font-size:15px;"></span> <strong>Map Projections</strong> specially about the <i>Universal Transverse Mercator</i> (<strong>UTM</strong>) projection which is used for <strong>Lecode</strong> input files transformation.<br><br>
 						The Notebooks are developed to provide users with an easy interface to produce <strong>Lecode</strong> input files and are not a replacement of a proper GIS platform such as <a href="http://grass.osgeo.org/" target="_blank">GRASS</a> or <a href="http://www.qgis.org/en/site/" target="_blank">QGIS</a>. If you are already familiar with these tools you might be able to produce your <strong>Lecode</strong> input files without these notebooks.
 						In a nutshell, the <a href="https://github.com/lecode-model/SgFm-Notebook" target="_blank">SgFm Notebooks</a> will give you an easy interface to:
 						<br><br>
-						<span class="glyphicon glyphicon-plus-sign" style="vertical-align:center; font-size:15px;"></span> Apply a set of transformations to your geospatial data (merge tiles, project dataset to UTM), 
+						<span class="glyphicon glyphicon-edit" style="vertical-align:center; font-size:15px;"></span> Apply a set of transformations to your geospatial data (merge tiles, project dataset to UTM), 
 						<br>
-						<span class="glyphicon glyphicon-plus-sign" style="vertical-align:center; font-size:15px;"></span> Combine bathymetric and topographic datasets,
+						<span class="glyphicon glyphicon-edit" style="vertical-align:center; font-size:15px;"></span> Combine bathymetric and topographic datasets,
 						<br>
-						<span class="glyphicon glyphicon-plus-sign" style="vertical-align:center; font-size:15px;"></span> Clip your dataset to the  area you want to simulate within <strong>Lecode</strong>,
+						<span class="glyphicon glyphicon-edit" style="vertical-align:center; font-size:15px;"></span> Clip your dataset to the  area you want to simulate within <strong>Lecode</strong>,
 						<br>
-						<span class="glyphicon glyphicon-plus-sign" style="vertical-align:center; font-size:15px;"></span> Define the resolution of your simulation area as well as the initial geological layer, and
+						<span class="glyphicon glyphicon-edit" style="vertical-align:center; font-size:15px;"></span> Define the resolution of your simulation area as well as the initial geological layer, and
 						<br>
-						<span class="glyphicon glyphicon-plus-sign" style="vertical-align:center; font-size:15px;"></span> Determine <strong>Geo-metrics</strong> information such as <i>flow accumulation</i> and <i>slope</i> maps to define several parameters required in <strong>Lecode</strong> <a href="http://lecode-model.github.io/SGFM/input.html" target="_blank">XmL input file</a>.
+						<span class="glyphicon glyphicon-edit" style="vertical-align:center; font-size:15px;"></span> Determine <strong>Geo-metrics</strong> information such as <i>flow accumulation</i> and <i>slope</i> maps to define several parameters required in <strong>Lecode</strong> <a href="http://lecode-model.github.io/SGFM/input.html" target="_blank">XmL input file</a>.
 						<br><br>
 						In case you want to build a model using an <strong>uniform distribution</strong> of sediment classes over the all simulation area you can use the <code>SGFMTopoGen_Basic.ipynb</code> or <code>SGFMTopoGen.ipynb</code> notebooks. For these 2 notebooks, definition of the geology is not required and you will produce a initial <strong>Lecode</strong> model which will only conform with the dataset bathymetry and topography. <br><br>
 						<strong>Lecode</strong> uses a regular orthogonal grid to store stratigraphic information through time and it is required that your input nodes definition are oriented in a E-W / S-N direction. <br>
@@ -275,17 +275,17 @@
 						Like for the previous notebooks, there is no magic here and you will need to understand how the dataset you are using have been built as well as the geological codes and specific informations related to the projection, the geological units... In many cases there are series of information and metadata files associated with the dataset you have downloaded and you will need to have a look through it to find what you are interested in.<br><br>
 						The provided notebooks will help you to: 
 						<br><br>
-						<span class="glyphicon glyphicon-plus-sign" style="vertical-align:center; font-size:15px;"></span> Extract information from the Geological dataset (mainly from shapefiles), 
+						<span class="glyphicon glyphicon-edit" style="vertical-align:center; font-size:15px;"></span> Extract information from the Geological dataset (mainly from shapefiles), 
 						<br>
-						<span class="glyphicon glyphicon-plus-sign" style="vertical-align:center; font-size:15px;"></span> Apply a set of transformations to the Geological dataset (merge tiles, project dataset to UTM),
+						<span class="glyphicon glyphicon-edit" style="vertical-align:center; font-size:15px;"></span> Apply a set of transformations to the Geological dataset (merge tiles, project dataset to UTM),
 						<br>
-						<span class="glyphicon glyphicon-plus-sign" style="vertical-align:center; font-size:15px;"></span> Clip your dataset to the  area you want to simulate within <strong>Lecode</strong>,
+						<span class="glyphicon glyphicon-edit" style="vertical-align:center; font-size:15px;"></span> Clip your dataset to the  area you want to simulate within <strong>Lecode</strong>,
 						<br>
-						<span class="glyphicon glyphicon-plus-sign" style="vertical-align:center; font-size:15px;"></span> Define the resolution of your simulation area as well as the initial geological layer, 
+						<span class="glyphicon glyphicon-edit" style="vertical-align:center; font-size:15px;"></span> Define the resolution of your simulation area as well as the initial geological layer, 
 						<br>
-						<span class="glyphicon glyphicon-plus-sign" style="vertical-align:center; font-size:15px;"></span> Combine several geological units to specific sediment class used to defined material types in <strong>Lecode</strong> <a href="http://lecode-model.github.io/SGFM/input.html" target="_blank">XmL input file</a>, and
+						<span class="glyphicon glyphicon-edit" style="vertical-align:center; font-size:15px;"></span> Combine several geological units to specific sediment class used to defined material types in <strong>Lecode</strong> <a href="http://lecode-model.github.io/SGFM/input.html" target="_blank">XmL input file</a>, and
 						<br>
-						<span class="glyphicon glyphicon-plus-sign" style="vertical-align:center; font-size:15px;"></span> Defined some default sediment classes for specific regions in the simulated area.
+						<span class="glyphicon glyphicon-edit" style="vertical-align:center; font-size:15px;"></span> Defined some default sediment classes for specific regions in the simulated area.
 						<br><br> 
 						The <code>SGFMGeolGen_Basic.ipynb</code> & <code>SGFMGeolGen_Ocean.ipynb</code> notebooks have been designed for the 2 commonly used geological datasets that we have been coming across when using <strong>Lecode</strong>. <br><br>
 						<code>SGFMGeolGen_Basic.ipynb</code> is relevant for datasets using <strong>shapefiles</strong> which is usually the case when dealing with continental simulation. The notebook will assist in defining specific sediment classes for distinct geological units. 
