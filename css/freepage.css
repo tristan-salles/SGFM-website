@@ -447,13 +447,13 @@ footer .footer-below {
     float: none;
     clear: both;
     width: 100%;
-    position: relative;
+    position: center;
     padding-bottom: 56.25%;
     padding-top: 2px;
     height: 0;
 }
 .videowrapper iframe {
-    position: center;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
