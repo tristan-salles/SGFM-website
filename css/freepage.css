@@ -448,7 +448,7 @@ footer .footer-below {
     clear: both;
     width: 100%;
     position: relative;
-    padding-bottom: 0px;
+    padding-bottom: 20%;
     padding-top: 0px;
     height: 0;
 }
