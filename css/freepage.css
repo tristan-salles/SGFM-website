@@ -465,6 +465,7 @@ footer .footer-below {
   margin-bottom: 10px;
   position: relative;
   overflow: hidden;
+  max-width: 480px;
 }
  
 .js-video.widescreen {
@@ -480,6 +481,5 @@ footer .footer-below {
   left: 0;
   width: 100%;
   height: 100%;
-  max-width: 480px;
   position: absolute;
 }
