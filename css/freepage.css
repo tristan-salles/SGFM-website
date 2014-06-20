@@ -444,6 +444,7 @@ footer .footer-below {
 }
 
 .videoWrapper {
+   text-align: center;
 	position: relative;
 	padding-bottom: 56.25%; /* 16:9 */
 	padding-top: 25px;
@@ -451,6 +452,7 @@ footer .footer-below {
 }
 .videoWrapper object,
 .videoWrapper embed,  {
+    text-align: center;
 	position: absolute;
 	top: 0;
 	left: 0;
